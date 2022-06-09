@@ -18,6 +18,8 @@ public class AddressListBook {
     }
 
     public void run() throws IOException {
+        load();
+
         int sel;
         while (true) {
             System.out.println("[주소록 프로그램]");
@@ -37,7 +39,6 @@ public class AddressListBook {
                 break;
             }
 
-            load();
             switch (sel) {
                 case 1:
                     insert();
@@ -60,6 +61,7 @@ public class AddressListBook {
             }
         }
         save();
+
     }
 
     private void insert() {
@@ -102,9 +104,6 @@ public class AddressListBook {
     private void save() throws IOException {
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
         for (Person p : people) {
-            if (p == null) {
-                break;
-            }
             pw.println(p.getName() + "," + p.getAge() + "," + p.getPhone() + "," + p.getAddress() + "," + p.getMemo());
         }
         pw.close();
@@ -112,9 +111,6 @@ public class AddressListBook {
 
     private void printAll() {
         for (Person p : this.people) {
-            if (p == null) {
-                break;
-            }
             System.out.println(p);
         }
     }
