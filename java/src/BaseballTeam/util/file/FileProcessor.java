@@ -1,4 +1,4 @@
-package BaseballTeam.util;
+package BaseballTeam.util.file;
 
 import BaseballTeam.domain.Batter;
 import BaseballTeam.domain.Human;
@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.List;
 
 public class FileProcessor {
-    private File file = new File("./baseball-team.txt");
+    private static File file = new File("./baseball-team.txt");
 
     public void createFile(String fname) {
 
@@ -19,7 +19,7 @@ public class FileProcessor {
      * @return 마지막 선수 번호
      * @throws IOException
      */
-    public int loadFile(List<Human> player) throws IOException {
+    public static int loadFile(List<Human> player) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         String str;
@@ -37,7 +37,7 @@ public class FileProcessor {
         return (player.size() == 0) ? 0 : player.get(player.size() - 1).getNo() + 1;
     }
 
-    public void saveFile(List<Human> player) throws IOException {
+    public static void saveFile(List<Human> player) throws IOException {
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
 
         String str = "";

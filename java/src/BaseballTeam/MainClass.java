@@ -1,12 +1,13 @@
 package BaseballTeam;
 
-import BaseballTeam.dao.BaseballPlayerManager;
+import BaseballTeam.controller.BaseballController;
+import BaseballTeam.dao.BaseballDao;
 
 import java.io.IOException;
 
 public class MainClass {
 
     public static void main(String[] args) throws IOException {
-        (new BaseballPlayerManager()).run();
+        (new BaseballController()).run();
     }
 }
