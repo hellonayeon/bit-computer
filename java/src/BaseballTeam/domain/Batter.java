@@ -29,18 +29,6 @@ public class Batter extends Human {
         batAvg = (double)hits/atBats;
     }
 
-    public int getAtBats() {
-        return atBats;
-    }
-
-    public int getHits() {
-        return hits;
-    }
-
-    public double getBatAvg() {
-        return batAvg;
-    }
-
     @Override
     public String toString() {
         return super.toString() +
@@ -49,5 +37,10 @@ public class Batter extends Human {
                     ", hits=" + hits +
                     ", batAvg=" + batAvg +
                 "} ";
+    }
+
+    @Override
+    public String toStringData() {
+        return super.toStringData() + "," + atBats + "," + hits + "," + batAvg;
     }
 }

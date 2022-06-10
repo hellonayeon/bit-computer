@@ -40,20 +40,18 @@ public class FileProcessor {
     public static void saveFile(List<Human> player) throws IOException {
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
 
-        String str = "";
+        String strData = "";
         for (Human h : player) {
-            str +=  h.getNo() + "," + h.getName() + "," + h.getAge() + "," + h.getHeight() + ",";
-
             if (h instanceof Pitcher) {
                 Pitcher pitcher = (Pitcher) h;
-                str += pitcher.getWin() + "," + pitcher.getLoss() + "," + pitcher.getEra() + "," + "투수";
+                strData += pitcher.toStringData() + ",투수";
             }
             else if (h instanceof Batter) {
                 Batter batter = (Batter) h;
-                str += batter.getAtBats() + "," + batter.getHits() + "," + batter.getBatAvg() + "," + "타자";
+                strData += batter.toStringData() + ",타자";
             }
 
-            pw.println(str);
+            pw.println(strData);
         }
 
         pw.close();

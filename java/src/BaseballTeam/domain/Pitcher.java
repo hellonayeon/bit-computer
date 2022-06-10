@@ -28,18 +28,6 @@ public class Pitcher extends Human {
         era = (double)(loss*9)/(win + loss);
     }
 
-    public int getWin() {
-        return win;
-    }
-
-    public int getLoss() {
-        return loss;
-    }
-
-    public double getEra() {
-        return era;
-    }
-
     @Override
     public String toString() {
         return super.toString() +
@@ -48,5 +36,10 @@ public class Pitcher extends Human {
                     ", loss=" + loss +
                     ", era=" + era +
                 '}';
+    }
+
+    @Override
+    public String toStringData() {
+        return super.toStringData() + "," + win + "," + loss + "," + era;
     }
 }

@@ -1,9 +1,5 @@
 package BaseballTeam.domain;
 
-import BaseballTeam.domain.Batter;
-import BaseballTeam.domain.Human;
-import BaseballTeam.domain.Pitcher;
-
 import java.util.Scanner;
 
 public class HumanFactory {
@@ -11,6 +7,7 @@ public class HumanFactory {
     public static Human getHuman(String position, int no) {
         Scanner sc = new Scanner(System.in);
 
+        // TODO: 여기서 받는 입력은 😱
         System.out.print("이름: ");
         String name = sc.next();
 

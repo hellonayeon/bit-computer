@@ -28,14 +28,6 @@ public class Human {
         return name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
     @Override
     public String toString() {
         return "Human{" +
@@ -44,5 +36,9 @@ public class Human {
                 ", age=" + age +
                 ", height=" + height +
                 '}';
+    }
+
+    public String toStringData() {
+        return no + "," + name + "," + age + "," + height;
     }
 }
