@@ -1,8 +1,6 @@
-import thread.ClientThread;
+import thread.ReadThread;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -33,7 +31,7 @@ public class Main {
                 System.out.println("서버 접속 실패 :(");
             }
 
-            ClientThread thread = new ClientThread(socket);
+            ReadThread thread = new ReadThread(socket);
             thread.start();
 
             while (true) {

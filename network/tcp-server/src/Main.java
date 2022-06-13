@@ -1,3 +1,4 @@
+import thread.ClientExitException;
 import thread.ServerThread;
 
 import java.io.BufferedReader;
@@ -6,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,29 +99,30 @@ public class Main {
             // 문지기 소켓
             ServerSocket serverSocket = new ServerSocket(9000); // 버전 확인, 바인딩, 리스닝 포함
             List<Socket> clients = new ArrayList<>();
-            List<ServerThread> serverThreads = new ArrayList<>();
 
             while (true) {
                 System.out.println("접속 대기중...");
                 clientSocket = serverSocket.accept(); // 클라이언트의 정보, 클라이언트가 송신한 문자열
 
                 clients.add(clientSocket);
-                for (ServerThread t : serverThreads) {
-                    t.setList(clients);
-                }
+                // 초기에 리스트의 레퍼런스 값을 넘겨줬으니,
+                // 이후에 추가되도 변경사항 정보 가지고 있음
+//                for (ServerThread t : serverThreads) {
+//                    t.setList(clients);
+//                }
+
 
                 // 접속 client 확인
                 System.out.println("client IP: " + clientSocket.getInetAddress() + " Port: " + clientSocket.getPort());
 
                 ServerThread thread = new ServerThread(clientSocket, clients);
+                thread.setUncaughtExceptionHandler((t, e) -> System.out.println(e.getMessage()));
                 thread.start();
-                serverThreads.add(thread);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 }
