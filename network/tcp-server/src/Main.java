@@ -96,20 +96,25 @@ public class Main {
 
             // 문지기 소켓
             ServerSocket serverSocket = new ServerSocket(9000); // 버전 확인, 바인딩, 리스닝 포함
+            List<Socket> clients = new ArrayList<>();
+            List<ServerThread> serverThreads = new ArrayList<>();
 
-            List<Socket> list = new ArrayList<>();
+            while (true) {
+                System.out.println("접속 대기중...");
+                clientSocket = serverSocket.accept(); // 클라이언트의 정보, 클라이언트가 송신한 문자열
 
-            System.out.println("접속 대기중...");
-            clientSocket = serverSocket.accept(); // 클라이언트의 정보, 클라이언트가 송신한 문자열
+                clients.add(clientSocket);
+                for (ServerThread t : serverThreads) {
+                    t.setList(clients);
+                }
 
-            list.add(clientSocket);
+                // 접속 client 확인
+                System.out.println("client IP: " + clientSocket.getInetAddress() + " Port: " + clientSocket.getPort());
 
-            // 접속 client 확인
-            System.out.println("client IP: " + clientSocket.getInetAddress() + " Port: " + clientSocket.getPort());
-
-
-            new ServerThread(clientSocket, list).start();
-
+                ServerThread thread = new ServerThread(clientSocket, clients);
+                thread.start();
+                serverThreads.add(thread);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

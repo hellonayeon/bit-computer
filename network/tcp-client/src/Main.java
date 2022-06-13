@@ -1,3 +1,5 @@
+import thread.ClientThread;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,21 +33,18 @@ public class Main {
                 System.out.println("서버 접속 실패 :(");
             }
 
+            ClientThread thread = new ClientThread(socket);
+            thread.start();
+
             while (true) {
                 // 4. Packet 송수신
                 // 송신 (send)
-                System.out.print("[client 메시지]: ");
-                String str = sc.next();
+//                System.out.print("[client 메시지]: ");
+                String str = sc.nextLine();
 
                 PrintWriter writer = new PrintWriter(socket.getOutputStream());
                 writer.println(str);
                 writer.flush();
-
-                // 수신 (receive)
-                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                str = reader.readLine();
-
-                System.out.println("[server 메시지]: " + str);
             }
 
         } catch (IOException e) {

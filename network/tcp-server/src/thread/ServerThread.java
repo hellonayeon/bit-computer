@@ -10,11 +10,15 @@ import java.util.List;
 public class ServerThread extends Thread {
 
     Socket socket; // 담당자 (not 문지기)
-    List<Socket> list;
+    List<Socket> clients;
 
-    public ServerThread(Socket socket, List<Socket> list) {
+    public ServerThread(Socket socket, List<Socket> clients) {
         this.socket = socket;
-        this.list = list;
+        this.clients = clients;
+    }
+
+    public void setList(List<Socket> clients) {
+        this.clients = clients;
     }
 
     @Override
@@ -27,14 +31,19 @@ public class ServerThread extends Thread {
                 // 수신 (receive)
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 String str = reader.readLine();
-                System.out.println("[client 메시지]: " + str);
+//                System.out.println("[client 메시지]: " + str);
 
                 // 송신 (send)
-                str = "반값습니다 \\' \'/: " + str;
+                // 자기 자신을 제외한 다른 모든 클라이언트에게 메시지 송신
+                for (Socket client : clients) {
+                    if (client.equals(socket)) {
+                        continue;
+                    }
 
-                PrintWriter writer = new PrintWriter(socket.getOutputStream());
-                writer.println(str);
-                writer.flush();
+                    PrintWriter writer = new PrintWriter(client.getOutputStream());
+                    writer.println(str);
+                    writer.flush();
+                }
 
                 Thread.sleep(300);
             }
