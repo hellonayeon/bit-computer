@@ -5,3 +5,6 @@ out
 
 # Java
 *.class
+
+# Data
+database/mysql/data
