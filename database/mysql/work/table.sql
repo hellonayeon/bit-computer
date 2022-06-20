@@ -128,9 +128,9 @@ create table consumer_tb(
 -- CART(장바구니) : 장바구니 번호, 소비자 ID, 구입일, 상품번호, 수량
 create table cart_tb(
 	cart_id int,
-    consumer_id int,
+    consumer_id int not null,
     purchase_date date,
-    product_id int,
+    product_id int not null,
     quantity int,
     primary key (cart_id),
     foreign key (consumer_id) references consumer_tb(consumer_id),
