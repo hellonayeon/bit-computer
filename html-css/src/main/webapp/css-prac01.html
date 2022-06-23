@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>과제 CSS 1</title>
+
+</head>
+<style>
+    #div-frame {
+        display: grid;
+        grid-template-columns: 200px 200px 200px;
+        width: 600px;
+        height: 600px;
+        margin: auto; /* center of window */
+    }
+
+    .div-col {
+        display: inline-block;
+        height: 600px;
+    }
+</style>
+<body>
+    <div id="div-frame">
+        <div class="div-col">
+            <div class="div-comp" style="height: 500px; background: lightsalmon"></div>
+            <div class="div-comp" style="height: 100px; background: mediumpurple;"></div>
+        </div>
+        <div class="div-col">
+            <div class="div-comp" style="height: 200px; background: lightblue"></div>
+            <div class="div-comp" style="height: 400px; background: lightgreen"></div>
+        </div>
+        <div class="div-col">
+            <div class="div-comp" style="height: 300px; background: lightgray"></div>
+            <div class="div-comp" style="height: 300px; background: lightpink;"></div>
+        </div>
+    </div>
+</body>
+</html>
