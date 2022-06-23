@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>과제 HTML 6</title>
+</head>
+<style>
+    body {
+        width: 600px;
+        height: 350px;
+
+        margin: 50px auto 50px auto;
+    }
+
+    table {
+        border-collapse: collapse;
+        border: 1px solid black;
+
+        width: 100%;
+        height: 100%;
+
+        text-align: center;
+    }
+
+    caption {
+        caption-side: bottom;
+        text-align: right;
+        color: gray;
+    }
+
+    th, td {
+        border: 1px solid black;
+    }
+
+    .table-record-td {
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    tr > th {
+        padding: 10px;
+
+        background: cornflowerblue;
+        color: white;
+        font-weight: bold;
+    }
+</style>
+<body>
+<h1>수영 고등학교 기록</h1>
+
+<table>
+    <caption>202X년 X월 XX일 기준</caption>
+    <thead>
+    <tr>
+        <th>종목</th>
+        <th>거리</th>
+        <th>성별</th>
+        <th>기록</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="4">자유형</td>
+            <td rowspan="2">100m</td>
+            <td>남자</td>
+            <td class="table-record-td">49초 49</td>
+        </tr>
+        <tr>
+            <td>여자</td>
+            <td class="table-record-td">55초 07</td>
+        </tr>
+        <tr>
+            <td rowspan="2">200m</td>
+            <td>남자</td>
+            <td class="table-record-td">1분 47초 37</td>
+        </tr>
+        <tr>
+            <td>여자</td>
+            <td class="table-record-td">1분 59초 45</td>
+        </tr>
+
+        <tr>
+            <td rowspan="4">배영</td>
+            <td rowspan="2">200m</td>
+            <td>남자</td>
+            <td class="table-record-td">53초 82</td>
+        </tr>
+        <tr>
+            <td>여자</td>
+            <td class="table-record-td">59초 44</td>
+        </tr>
+        <tr>
+            <td rowspan="2">200m</td>
+            <td>남자</td>
+            <td class="table-record-td">1분 55초 74</td>
+        </tr>
+        <tr>
+            <td>여자</td>
+            <td class="table-record-td">2분 08초 52</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

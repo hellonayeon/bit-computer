@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>과제 HTML 5</title>
+</head>
+<style>
+    body {
+        width: 600px;
+        height: 800px;
+
+        margin: 50px auto 50px auto;
+    }
+
+    table {
+        width: 100%;
+
+        border: 2px solid black;
+        border-collapse: collapse;
+
+        background: yellowgreen;
+    }
+
+     th {
+        border-bottom: 1px solid black;
+
+         padding: 10px;
+
+         font-weight: bold;
+     }
+
+     td {
+         border-bottom: 1px solid black;
+
+         padding: 10px;
+     }
+
+    #div-table-title {
+        text-align: center;
+    }
+
+    .td-highlight {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+<body>
+    <div id="div-table-title">
+        가격표
+    </div>
+    <div id="div-table">
+        <table>
+            <thead>
+                <tr><th>크기</th><th>내용량</th><th>가격</th></tr>
+            </thead>
+            <tbody>
+                <tr><th>보통</th><td>500g</td><td>4,800원</td></tr>
+                <tr><th>대</th><td>800g</td><td>7,200원</td></tr>
+                <tr><th>특대</th><td class="td-highlight">1,200g</td><td class="td-highlight">10,000원</td></tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

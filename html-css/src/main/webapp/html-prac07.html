@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>과제 HTML 7</title>
+</head>
+<style>
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
+    body {
+        width: 1000px;
+        height: 800px;
+
+        margin: 50px auto 50px auto;
+    }
+
+    textarea {
+        width: 400px;
+        height: 200px;
+    }
+</style>
+<body>
+    <h1>설문조사</h1>
+
+    <div>
+        이름: <input type="text" placeholder="이름을 기입">
+    </div>
+    <hr>
+
+    <div>
+        <h5>질문(1)</h5>
+        <p>영어 회화에 관심이 있습니까?</p><br>
+
+        <input type="radio" name="eng-speak" id="eng-speak-radio1" checked/>
+        <label for="eng-speak-radio1">예</label>
+
+        <input type="radio" name="eng-speak" id="eng-speak-radio2"/>
+        <label for="eng-speak-radio2">둘 다 말할 수 없음</label>
+
+        <input type="radio" name="eng-speak" id="eng-speak-radio3"/>
+        <label for="eng-speak-radio3">아니오</label>
+    </div>
+    <hr>
+
+    <div>
+        <h5>질문(2)</h5>
+
+        <p>영어 이외에 관심이 있는 어학이 있으면 선택해주세요 (복수 답변 가능)</p><br>
+
+        <label><input type="checkbox" name="lang" value="german"> 독일어 </label>
+        <label><input type="checkbox" name="lang" value="french"> 프랑스어 </label>
+        <label><input type="checkbox" name="lang" value="italian"> 이탈리아어 </label>
+        <label><input type="checkbox" name="lang" value="spanish"> 스페인어 </label>
+        <label><input type="checkbox" name="lang" value="japanese"> 일본어 </label>
+    </div>
+    <hr>
+
+    <div>
+        <h5>질문(3)</h5>
+
+        <p>영어 수업에 대한 의견</p>
+        <textarea placeholder="의견을 기입"></textarea>
+    </div>
+
+    <div>
+        <h5>질문(4)</h5>
+        <div>
+            나이를 선택하세요.
+            <select name="age">
+                <option>아래에서 선택</option>
+                <option value="age-10-19">10~19세</option>
+                <option value="age-20-29">20~29세</option>
+                <option value="age-30-39">30~39세</option>
+                <option value="age-40-49">40~49세</option>
+                <option value="age-50-59">50~59세</option>
+                <option value="age-60-69">60~69세</option>
+                <option value="age-70">70세 이상</option>
+            </select>
+        </div>
+    </div>
+    <hr>
+
+    <input type="button" value="제출"/> <input type="button" value="초기화">
+</body>
+</html>
