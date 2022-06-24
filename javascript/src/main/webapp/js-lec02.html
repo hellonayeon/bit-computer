@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="application/javascript">
+
+    // Array == Object
+
+    let cars = [ 'saab', 'volvo', 'bmw' ];
+    console.log(cars[1]);
+
+    let i;
+    for (i = 0; i < cars.length; i++) {
+        console.log(cars[i]);
+    }
+    for (i in cars) {
+        console.log(i);
+    }
+
+    cars.forEach(element => console.log(element));
+
+    // Object = HashMap (key: value) => JSON
+    let obj = {
+        firstname: "길동",
+        lastname: "홍",
+        age: 24,
+        func: function() {
+            console.log('func 호출');
+        }
+    }
+
+    console.log(obj.firstname);
+    console.log(obj.age);
+    obj.func();
+
+    class Person {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        print() {
+            console.log(this.name + " " + this.age);
+        }
+    }
+
+    let per = new Person('홍길동', 24);
+    console.log(per.name)
+
+</script>
+</body>
+</html>

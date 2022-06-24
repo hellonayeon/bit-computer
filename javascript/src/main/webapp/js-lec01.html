@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 연습 1</title>
+</head>
+<body>
+
+<!--
+    Java Script (Front End) != Java (Back End)
+
+    Front End (웹 브라우저, 화면)
+    목적: web 접근
+         tag 들을 접근하여 데이터를 취득, 수정
+         보조 프로그래밍 언어이다.
+         컴파일을 하지 않는다. -> 빠르다. -> 가볍다.
+
+    TTS (Text To Speach) -> Cloud (Restful)
+
+    회원가입 -> 빈칸 조사. ID 글자 수. PW 형식 검사
+    CSS 제어, 구현
+    Timer 설정해서 특수효과들을 표현
+
+    Java Script -> JQuery (자바 스크립트 경량화) -> Angular, React, Vue
+    JQuery 안에 'load()' 함수는 사용 권장 X
+
+    function
+    class
+
+    접근자 Attribute (속성), Property (특성)
+    <h3 id="myh3"></h3>
+    <h3 class="myh3cls"></h3>
+    <input type="text" name="name">
+
+    element (요소)
+    id      -> 1개 : Javascript 접근용 **
+    class   -> 다수 : Javascript 접근용 **
+    name    -> 다수 : link
+-->
+
+<p id="demo">hello java script</p>
+<script type="text/javascript">
+
+    console.log("Java Script 가 실행됐습니다.");
+    alert('Java Script 가 실행');
+
+    var v = document.getElementById("demo"); // DOM: Document Object Model
+    v.innerHTML = "안녕 자바스크립트"; // setter
+
+
+</script>
+
+</body>
+</html>
