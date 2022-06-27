@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 연습 4</title>
+</head>
+<style>
+    #left-div {
+        float:left;
+        margin-right: 50px;
+    }
+</style>
+<body>
+<h3>사진들</h3>
+<div>
+    <div id="left-div">
+        <image src="./images/image01.jpg" id="selected-image"></image>
+    </div>
+    <div id="right-div">
+        <p>사진 선택</p>
+        <select name="images" onchange="setImage(this)">
+            <option value="">사진 선택</option>
+            <option value="./images/image01.jpg">사진1</option>
+            <option value="./images/image02.jpg">사진2</option>
+            <option value="./images/image03.jpg">사진3</option>
+            <option value="./images/image04.jpg">사진4</option>
+        </select>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function setImage(option) {
+        let imgSrc = option.value;
+        if (imgSrc == '') {
+            return;
+        }
+
+        document.getElementById("selected-image").src = imgSrc;
+    }
+</script>
+
+</body>
+</html>

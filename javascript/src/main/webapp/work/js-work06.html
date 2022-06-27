@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 연습 6</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        padding: 10px;
+    }
+</style>
+<body onload="addCell()">
+<h3>단가 x 수량 일람표</h3>
+<table >
+    <thead>
+        <tr>
+            <th>번호</th>
+            <th>제품A</th>
+            <th>제품B</th>
+            <th>제품C</th>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+        <tr>
+            <th>1</th>
+        </tr>
+        <tr>
+            <th>2</th>
+        </tr>
+        <tr>
+            <th>3</th>
+        </tr>
+        <tr>
+            <th>4</th>
+        </tr>
+        <tr>
+            <th>5</th>
+        </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    function addCell() {
+        let arrA = [ 23, 45, 11, 36, 27 ];
+        let arrB = [ 31, 29, 73, 12, 78 ];
+        let arrC = [ 36, 28, 33, 12, 85 ];
+
+        let arrs = [ arrA, arrB, arrC ];
+
+        let tbody = document.getElementById("table-body");
+        let rows = tbody.getElementsByTagName("tr");
+        for (i = 0; i < arrs.length; i++) {
+            let arr = arrs[i]
+            for (j = 0; j < rows.length; j++) {
+                let row = rows[j];
+                let td = document.createElement("td");
+                row.appendChild(td);
+                td.textContent = arr[j];
+            }
+        }
+    }
+</script>
+</body>
+</html>

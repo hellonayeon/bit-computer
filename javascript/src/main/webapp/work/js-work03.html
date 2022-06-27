@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 연습 3</title>
+</head>
+<body>
+
+<h3>2개의 주사위</h3>
+<div>
+    버튼을 클릭하면 2개의 주사위가 랜덤됩니다.
+</div>
+<div>
+    <image src="./images/sai_1.gif" id="dice1-img"></image>
+    <image src="./images/sai_6.gif" id="dice2-img"></image>
+</div>
+<br>
+<div>
+    <button type="button" onclick="dice()">주사위를 굴린다</button>
+</div>
+
+<script type="text/javascript">
+
+function  dice() {
+    let num1 = randomIntFromInterval(1, 6);
+    let num2 = randomIntFromInterval(1, 6);
+    console.log("dice num = " + num1 + ", " + num2);
+
+    document.getElementById("dice1-img").src = getImageSrc(num1);
+    document.getElementById("dice2-img").src = getImageSrc(num2);
+}
+
+function randomIntFromInterval(min, max) { // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function getImageSrc(num) {
+    return "./images/" + "sai_" + num + ".gif";
+}
+
+</script>
+</body>
+</html>

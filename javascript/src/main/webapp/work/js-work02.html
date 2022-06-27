@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 연습 2</title>
+</head>
+<body>
+<h3>체육관 이용 요금 1</h3>
+
+<p>기본 사용료 (4시간) <span id="default-price">40,800원</span></p>
+
+<div>
+    <input type="checkbox" name="price" value="20000" onchange="getTotalPrice()">야간조명 (20,000원)<br>
+    <input type="checkbox" name="price" value="4000" onchange="getTotalPrice()">배구 네트 x 2장 (4,000원)<br>
+    <input type="checkbox" name="price" value="20000" onchange="getTotalPrice()">배구공 x 10 (20,000원)<br>
+</div>
+<div>
+    합계 금액: <input type="text" id="result-input"> 원 정
+</div>
+
+<script type="text/javascript">
+    function getTotalPrice() {
+        const query = 'input[name="price"]:checked';
+        const selectedEls = document.querySelectorAll(query);
+
+        // 선택된 목록에서 value 찾기
+        let defaultPrice = document.getElementById("default-price").innerHTML;
+        defaultPrice = defaultPrice.substr(0, defaultPrice.length - 1).replace(',', '');
+
+        let result = parseInt(defaultPrice);
+        selectedEls.forEach((el) => {
+            console.log(el.value);
+            result += parseInt(el.value);
+        });
+
+        document.getElementById("result-input").value = result;
+    }
+</script>
+</body>
+</html>

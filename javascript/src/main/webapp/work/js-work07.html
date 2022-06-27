@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 연습 7</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        padding: 10px;
+    }
+</style>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>첨자</th>
+            <th>a</th>
+            <th>b</th>
+            <th>a x b</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>0</th>
+            <td>5</td>
+            <td>33</td>
+            <td><button type="button" onclick="calc(this)">계산 결과</button></td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>12</td>
+            <td>14</td>
+            <td><button type="button" onclick="calc(this)">계산 결과</button></td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>18</td>
+            <td>32</td>
+            <td><button type="button" onclick="calc(this)">계산 결과</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    function calc(button) {
+        let tds = button.parentNode.parentNode.childNodes;
+        console.log(tds);
+        let num1 = parseInt(tds[3].innerText);
+        let num2 = parseInt(tds[5].innerText);
+
+        alert(num1 * num2);
+    }
+</script>
+</body>
+</html>

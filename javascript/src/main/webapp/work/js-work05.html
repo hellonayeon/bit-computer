@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 연습 5</title>
+</head>
+<body>
+<h3>미술관 및 박물관 링크</h3>
+<select name="museum" onchange="printLink(this)">
+    <option value="">--- 대상을 선택 ---</option>
+    <option value="">--- 미술관 ---</option>
+
+    <option value="http://sema.seoul.go.kr/">서울 시립 미술관</option>
+    <option value="http://www.mmca.go.kr/">국립 현대 미술관</option>
+    <option value="http://www.sac.or.kr">예술의 전당</option>
+
+    <option value="">--- 박물관 ---</option>
+    <option value="http://www.museum.go.kr">국립 중앙 박물관</option>
+    <option value="http://www.museum.seoul.kr">서울 역사 박물관</option>
+    <option value="http://www.nfm.go.kr">국립 민속 박물관</option>
+</select>
+<br><br>
+
+<p>
+    <span id="museum-link"></span> &nbsp;&nbsp; <span id="museum-name"></span>
+</p>
+
+<script type="text/javascript">
+   function printLink(select) {
+       if (select.value == "") {
+           return;
+       }
+
+       document.getElementById("museum-link").innerHTML = select.value;
+       document.getElementById("museum-name").innerHTML = `<li>${select[select.selectedIndex].text}</li>`;
+   }
+</script>
+</body>
+</html>

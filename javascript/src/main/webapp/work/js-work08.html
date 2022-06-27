@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 연습 8</title>
+</head>
+<style>
+    .tag-span {
+        font-weight: bold;
+    }
+</style>
+<body>
+<h3>10진수를 2진수, 8진수, 16진수로 변환</h3>
+
+<span class="tag-span">10진수: </span> <input type="text" id="dec-input"><br><br>
+<span class="tag-span">2진수: </span> <input type="text" id="digit-input"><br><br>
+<span class="tag-span">8진수: </span> <input type="text" id="oct-input"><br><br>
+<span class="tag-span">16진수: </span> <input type="text" id="hex-input">
+<br><br>
+
+<button type="button" onclick="decToAnother()">클릭</button>
+<script>
+    function decToAnother() {
+        let dec = document.getElementById("dec-input").value;
+        if (dec.trim() == '' || isNaN(dec)) {
+            alert("올바른 형식을 입력하세요.");
+            return;
+        }
+
+        let num = parseInt(dec);
+        document.getElementById("digit-input").value = num.toString(2);
+        document.getElementById("oct-input").value = num.toString(8);
+        document.getElementById("hex-input").value = num.toString(16);
+    }
+</script>
+</body>
+</html>
