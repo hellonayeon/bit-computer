@@ -1,10 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<!-- appendChild(뒤), insertChild(앞) -->
+<div id="div1">
+  <p id="p1">첫 번째 p 태그</p>
+  <p id="p2">두 번째 p 태그</p>
+</div>
+
+<button type="button" onclick="appendFunc()">뒤에 추가</button>
+<button type="button" onclick="insertFunc()">앞에 추가</button>
+<button type="button" onclick="deleteFunc()">삭제</button>
+
+<script type="text/javascript">
+  function appendFunc() {
+    let ptag = document.createElement('p');
+    let textNode = document.createTextNode("새로운 p 태그");
+
+    // id 와 class 를 추가
+    ptag.id = "new-p";
+    ptag.className = "new-p-class";
+
+    // 문자열
+    ptag.appendChild(textNode);
+
+    let element = document.getElementById('div1');
+    element.appendChild(ptag);
+  }
+
+  function insertFunc() {
+    let ptag = document.createElement('p');
+    let textNode = document.createTextNode("새로운 p 태그");
+
+    // 문자열
+    ptag.appendChild(textNode);
+
+    let element = document.getElementById('div1');
+    let elementBefore = document.getElementById('p2');
+
+    element.insertBefore(ptag, elementBefore);
+  }
+
+  function deleteFunc() {
+    let element = document.getElementById('div1');
+    let removeElement = document.getElementById('p2');
+
+    element.removeChild(removeElement);
+  }
+
+</script>
+
 </body>
 </html>
