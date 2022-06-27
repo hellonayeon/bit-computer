@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Hello,</p>
+<p>World!</p>
+<p>I can do it</p>
+<p>Never change my mind</p>
+
+<button type="button" onclick="listFunc()">nodelist</button>
+
+<script type="text/javascript">
+  function listFunc() {
+    let nodelist = document.getElementsByTagName("p");
+
+    nodelist[2].innerHTML = "나는 문제없어";
+
+    for (i = 0; i < nodelist.length; i++) {
+      nodelist[i].style.backgroundColor = '#ff0000';
+    }
+  }
+</script>
+</body>
+</html>
