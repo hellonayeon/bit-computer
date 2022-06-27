@@ -5,16 +5,18 @@
     <title>Title</title>
 </head>
 <body>
+<div id="date"></div>
 
 <script type="text/javascript">
-    function displayDate() {
-        document.getElementById("demo").innerHTML = Date();
-    }
 
-    setInterval("displayDate()", 1000);
+    let d = new Date();
+
+    d = new Date(2022, 6 - 1, 27, 9, 15, 0, 0);
+
+    // d = new Date("October 12, 2022 14:35:47");
+
+    document.getElementById("date").innerHTML = d;
+
 </script>
-    <div id="demo">
-
-    </div>
 </body>
 </html>
