@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--
+        DOM: Document Object Model
+            각 tag 를 접근하기 위한 Object
+            그 object 를 접근하기 위한 함수들
+
+        document -> html 문서 안의 tag 를 접근하도록 만들어진 Object
+
+     -->
+<!-- Child Nodes -->
+<p id="demo">p tag id = demo</p>
+
+<button type="button" onclick="carFunc()">button</button>
+
+<script type="text/javascript">
+    function carFunc() {
+        let carName = document.getElementById('cars').childNodes; // <select> 0번지, <option> 1번지, "\n" (text) 1번지 ...
+        // alert(carName.length); // 7
+
+        for (let i=0; i<carName.length; i++) {
+            console.log(carName[i]);
+        }
+
+    }
+</script>
+<br><br>
+
+<select id="cars">
+    <option>Benz</option>
+    <option>BMW</option>
+    <option>Volvo</option>
+</select>
+
+<button type="button" onclick="carFunc()">선택</button>
+
+
+</body>
+</html>
