@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript to JSP (Move)</title>
+</head>
+<body>
+
+<!-- <a> -->
+<a href="js-lec06/index-af.jsp?name=홍길동&age=24">index-af.jsp</a>
+
+<!-- <form> -->
+<form action = "js-lec06/index-af.jsp">
+    이름: <input type="text" name = "name">
+    <br>
+    나이: <input type="text" name="age">
+    <br>
+    <input type="submit" onclick="move()" value="이동">
+</form>
+
+<script type="text/javascript">
+    function move() {
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+
+        if (name.trim() == '') {
+            alert("이름을 입력해 주십시오");
+            return;
+        }
+        else if (name.trim().length < 2) {
+            alert("문자 수가 너무 적습니다.");
+            return;
+        }
+
+        location.href = "index-af.jsp?name=" + name + "&age=" + age;
+    }
+</script>
+
+</body>
+</html>

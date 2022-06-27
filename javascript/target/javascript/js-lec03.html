@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+10진수: <input type="text" id="num" size="20">
+<button type="button" onclick="func()">변환</button>
+<br><br>
+결과: <input type="text" id="result">
+
+<script type="text/javascript">
+    function func() {
+        let str = document.getElementById('num').value;
+        let num = parseInt(str);
+
+        let num2 = num.toString(2);
+
+        let obj = document.getElementById('result');
+        obj.value = num2;
+    }
+</script>
+</body>
+</html>

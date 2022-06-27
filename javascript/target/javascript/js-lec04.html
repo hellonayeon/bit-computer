@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+    Access Attribute
+
+    id: 현 문서에서 1개만 유효
+    class: 다수의 태그에 설정. CSS, this -> className
+    name: 다수의 태그에 설정. 데이터 전송용
+-->
+
+<p id="pid">p tag id=pid</p>
+<p id="pid">p tag id=pid</p>
+<br>
+
+<p class="cls">p tag class=cls</p>
+<p class="cls">p tag class=cls</p>
+<h3 class="cls">h3 tag class=cls</h3>
+
+<button type="button" onclick="func()">button</button>
+
+<script type="text/javascript">
+    function func() {
+        document.getElementById('pid').innerHTML = 'p 태그입니다';
+
+        document.getElementsByClassName("cls")[0].innerHTML = 'class 는 cls 입니다';
+    }
+</script>
+
+</body>
+</html>
