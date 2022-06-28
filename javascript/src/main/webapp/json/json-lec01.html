@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+    JSON: Java Script Object Notation
+                               표기법
+
+    데이터의 한쌍 (pair) key: value ==> HashMap
+
+    web (json)      java (map, list)
+
+    [10, 20, 180] => { num:10, age:20, height:180 }
+
+    xml -> tag 로 명시
+    json -> key 로 명시
+
+ -->
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+    let jsonData = [
+        {
+            name: "홍길동",
+            age: 24
+        },
+        {
+            name: "성춘향",
+            age: 16
+        },
+        {
+            name: "일지매",
+            age: 22
+        }
+    ];
+
+    document.getElementById("demo").innerHTML = jsonData[0].name + " " + jsonData[0].age;
+
+    let arrText = '{"name": "홍길동", "age":24, "address":"서울시"}';
+
+    // alert(arrText);
+
+    let jsonObj = JSON.parse(arrText);
+
+    document.getElementById("demo").innerHTML = jsonObj.name;
+
+    let str = JSON.stringify(jsonObj);
+    alert(str);
+
+</script>
+
+</body>
+</html>
