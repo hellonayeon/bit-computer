@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="demo"></p>
+<button onclick="loadXmlDoc()">내용 변경</button>
+
+<script type="text/javascript">
+
+    function loadXmlDoc() {
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function () {
+            console.log(this.readyState);
+            console.log(this.status);
+
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML = this.responseText;
+            }
+        }
+        console.log('onreadystatechange');
+
+        xhttp.open("GET", "./files/test.txt", true);
+        // xhttp.open("GET", "http://localhost:8090/getData", true); // AJAX .. ?
+        console.log('xhttp.open');
+
+        xhttp.send();
+        console.log('xhttp.send');
+    }
+
+    /*
+    * 0: open() 메소드를 수행하기 전
+    * 1: loading 중
+    * 2: loading 완료
+    * 3: server 처리중
+    * 4: server 처리완료
+    * */
+
+    /*
+    * status
+    * 200: success
+    * 403: 접근 거부
+    * 404: 찾을 수 없음
+    * 500: 문법의 에러 interval server error
+    *
+    * */
+
+</script>
+</body>
+</html>
