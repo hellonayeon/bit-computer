@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+let parser, xmlDoc;
+
+let xmlData = "<bookstore>" +
+                    "<book>" +
+                        "<title>탈무드</title>" +
+                        "<author>man</author>" +
+                        "<year>2001</year>" +
+                    "</book>" +
+                "</bookstore>";
+
+parser = new DOMParser();
+xmlDoc = parser.parseFromString(xmlData, "text/xml");
+
+document.getElementById("demo").innerHTML = xmlDoc.getElementsByTagName("book")[0].childNodes[1].childNodes[0].textContent;
+
+</script>
+
+</body>
+</html>
