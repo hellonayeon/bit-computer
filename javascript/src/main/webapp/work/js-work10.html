@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 연습 10</title>
+</head>
+<style>
+    .container {
+        width: 800px;
+        margin: 200px auto 200px auto;
+        text-align: center;
+    }
+</style>
+<body>
+<div class="container">
+    <h4>라면 타이머</h4>
+    <select name="timer-time" id="time-select">
+        <option value="">원하는 시간을 선택 해주세요</option>
+        <option value="300">5분</option>
+        <option value="195">3분 15초</option>
+        <option value="180">3분</option>
+        <option value="165">2분 45초</option>
+        <option value="150">2분 30초</option>
+        <option value="120">2분</option>
+        <option value="60">1분</option>
+        <option value="30">30초</option>
+    </select>
+
+    <button onclick="timer()">GO!</button>
+
+    <p id="desc-timer-p"></p>
+
+    <script type="text/javascript">
+        function timer() {
+            let select = document.getElementById("time-select");
+            let sSec = select[select.selectedIndex].value;
+            let sec = parseInt(sSec);
+
+            let p = document.getElementById("desc-timer-p");
+            p.innerHTML = "완료까지 " + sec + "초 남았습니다.";
+
+            let timer = setInterval(() => {
+                sec--;
+                if (sec == 0) {
+                    p.innerHTML = "완료 !";
+                    clearInterval(timer);
+                }
+                else {
+                    p.innerHTML = "완료까지 " + sec + "초 남았습니다.";
+                }
+            }, 1000);
+
+            let divContainer = document.getElementsByClassName("container")[0];
+            console.log(divContainer);
+            let closeBtn = document.createElement("button");
+            closeBtn.innerText = "닫기"
+            divContainer.appendChild(closeBtn);
+
+            closeBtn.addEventListener("click", function () {
+                clearInterval(timer);
+                location.reload();
+            });
+        }
+    </script>
+</div>
+</body>
+</html>

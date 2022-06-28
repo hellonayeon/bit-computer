@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 연습 9</title>
+</head>
+<style>
+
+    .container {
+        width: 800px;
+        margin: 100px auto 100px auto;
+        text-align: center;
+    }
+
+    a {
+        margin: 20px;
+    }
+
+    body {
+        color: blue;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div>
+        <image id="changed-image" src="./images/chg_img0.jpg"></image>
+    </div>
+    <div>
+        <a onclick="changeImage('chg_img1.jpg')">이미지 1</a>
+        <a onclick="changeImage('chg_img2.jpg')">이미지 2</a>
+        <a onclick="changeImage('chg_img3.jpg')">이미지 3</a>
+    </div>
+    <div style="float: left; margin-left: 200px; margin-top: 20px">
+        위 문자를 클릭하면 그림이 바뀝니다.
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function changeImage(imageFile) {
+        const imageDir = "./images/";
+
+        let image = document.getElementById("changed-image");
+        image.src = imageDir + imageFile;
+    }
+</script>
+</body>
+</html>
