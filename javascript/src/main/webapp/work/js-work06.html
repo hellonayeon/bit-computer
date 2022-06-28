@@ -12,9 +12,9 @@
         padding: 10px;
     }
 </style>
-<body onload="addCell()">
+<body>
 <h3>단가 x 수량 일람표</h3>
-<table >
+<table id="table">
     <thead>
         <tr>
             <th>번호</th>
@@ -23,44 +23,44 @@
             <th>제품C</th>
         </tr>
     </thead>
-    <tbody id="table-body">
-        <tr>
-            <th>1</th>
-        </tr>
-        <tr>
-            <th>2</th>
-        </tr>
-        <tr>
-            <th>3</th>
-        </tr>
-        <tr>
-            <th>4</th>
-        </tr>
-        <tr>
-            <th>5</th>
-        </tr>
+    <tbody>
+
     </tbody>
 </table>
 
 <script type="text/javascript">
-    function addCell() {
-        let arrA = [ 23, 45, 11, 36, 27 ];
-        let arrB = [ 31, 29, 73, 12, 78 ];
-        let arrC = [ 36, 28, 33, 12, 85 ];
 
-        let arrs = [ arrA, arrB, arrC ];
+    let arrA = [ 23, 45, 11, 36, 27 ];
+    let arrB = [ 31, 29, 73, 12, 78 ];
+    let arrC = [ 36, 28, 33, 12, 85 ];
 
-        let tbody = document.getElementById("table-body");
-        let rows = tbody.getElementsByTagName("tr");
-        for (i = 0; i < arrs.length; i++) {
-            let arr = arrs[i]
-            for (j = 0; j < rows.length; j++) {
-                let row = rows[j];
-                let td = document.createElement("td");
-                row.appendChild(td);
-                td.textContent = arr[j];
-            }
-        }
+    let table = document.getElementById("table");
+
+    for (let i=0; i<arrA.length; i++) {
+        let tr = document.createElement("tr"); // <tr> </tr>
+        let th = document.createElement("th");
+
+        // 태그 사이에 들어갈 문자열 노드
+        // <th>1</th>
+        // 텍스트도 결국 Child
+        th.appendChild(document.createTextNode(i+1 + ""));
+
+        let td1 = document.createElement("td");
+        td1.appendChild(document.createTextNode(arrA[i] + "")); // <td>23</td>
+
+        let td2 = document.createElement("td");
+        td2.appendChild(document.createTextNode(arrB[i] + "")); // <td>23</td>
+
+        let td3 = document.createElement("td");
+        td3.appendChild(document.createTextNode(arrC[i] + "")); // <td>23</td>
+
+        tr.appendChild(th);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+
+        table.appendChild(tr);
+
     }
 </script>
 </body>
