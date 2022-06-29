@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<p id="demo">여기가 p 태그입니다.</p>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // render 후에 실행
+        console.log("$(document).ready()");
+
+        let p = $("p").html(); // Getter // document.getElementsByTagName("p").innerHTML
+
+        alert(p);
+
+        $("p").html('hello jquery');
+
+        $("p").html("<b>Hello, jQuery!</b>"); // Setter // document.getElementsByTagName("p").innerHTML = "<b>Hello, jQuery!</b>"
+    });
+
+    $(function () {
+        // render 전에 실행
+
+    })
+</script>
+</body>
+</html>
