@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>jQuery 연습과제1</title>
+</head>
+<body>
+
+<h3>Photo Library</h3>
+<p>기본 라인 처리 color:green</p>
+<image src="./images/picture.jpg" id="green-line-image"></image>
+
+<h3>Life on the water</h3>
+<p>이미지 클릭 시 라인 처리 color:red</p>
+<image src="./images/photo1.jpg" class="click-image"></image> <image src="./images/photo2.jpg" class="click-image"></image>
+
+<h3>Room Image</h3>
+<p>마우스 커서가 이미지 위로 이동하면 이미지 변경</p>
+<image src="./images/living.jpg" id="cursor-image"></image>
+
+<script type="text/javascript">
+
+    $('#green-line-image').css({"border": "5px solid green", "width": "200px"});
+
+    let clickImage = $(".click-image");
+    clickImage.css({"width": "100px"});
+    clickImage.click(function () {
+        $(this).css({"border": "5px solid red"});
+
+        // let curClickImage = $(this);
+        // // 하나의 이미지에 라인을 씌우면, 다른 이미지는 라인 제거
+        // clickImage.each(function (){
+        //     if ($(this) !== curClickImage[0]) {
+        //         $(this).css("border", "0px");
+        //     }
+        // });
+    });
+
+    let cursorImage = $("cursor-image");
+    cursorImage.mouseenter(function () {
+        $("#cursor-image").attr("src", "./images/bedroom.jpg");
+    });
+    cursorImage.mouseleave(function () {
+        $("#cursor-image").attr("src", "./images/living.jpg");
+    });
+</script>
+</body>
+</html>

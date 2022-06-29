@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>jQuery 연습과제4</title>
+</head>
+<style>
+    table {
+        width: 600px;
+    }
+</style>
+<body>
+    <h3>동적 테이블</h3>
+    <table id="dynamic-table" border="1">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>생년월일</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <br><br>
+
+    <h4>추가 입력</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>생년월일</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" id="num-input"/></td>
+                <td><input type="text" id="name-input"/></td>
+                <td><input type="text" id="birth-input"/></td>
+                <td><button type="button">데이터 추가</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+        });
+
+        $('button').click(function (){
+            console.log("??");
+            let num = $("#num-input").val();
+            let name = $("#name-input").val();
+            let birth = $("#birth-input").val();
+
+            if (isInvalidInput(num, name, birth)) {
+                alert("내용을 다시 입력해주세요.");
+                return;
+            }
+
+            $('#dynamic-table').append(`<tr>
+                            <td>${num}</td><td>${name}</td><td>${birth}</td>
+                            <td onclick="removeRow(this)"><a href="javascript:void(0);">삭제</a></td>
+                            </tr>`);
+
+            initAllInput();
+        });
+
+        function isInvalidInput(num, name, birth) {
+            return num.trim() == "" || name.trim() == "" || birth.trim() == "";
+        }
+
+        function initAllInput() {
+            $("#num-input").val("");
+            $("#name-input").val("");
+            $("#birth-input").val("");
+        }
+
+        function removeRow(col) {
+            col.closest('tr').remove();
+        }
+
+    </script>
+</body>
+</html>

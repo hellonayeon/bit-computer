@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>jQuery 연습과제2</title>
+</head>
+<style>
+    image {
+        width: 100px;
+        height: 300px;
+    }
+</style>
+<body>
+
+<h3>사진들</h3>
+
+<img src="./images/img01.jpg" alt="성 자비에르 성당(외관)"/>
+<img src="./images/img02.jpg" alt="성 자비에르 성당(내관)"/>
+<img src="./images/img03.jpg" alt="낡은 건물"/>
+<img src="./images/img04.jpg" alt="가로등"/>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('img').click(function () {
+            alert($(this).attr("alt"));
+        });
+    });
+
+</script>
+</body>
+</html>
