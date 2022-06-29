@@ -1,93 +1,106 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
+    <title>Insert title here</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <title>jQuery 연습과제4</title>
 </head>
-<style>
-    table {
-        width: 600px;
-    }
-</style>
 <body>
-    <h3>동적 테이블</h3>
-    <table id="dynamic-table" border="1">
-        <thead>
-            <tr>
-                <th>번호</th>
-                <th>이름</th>
-                <th>생년월일</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
 
-        </tbody>
-    </table>
+<h1>동적 테이블</h1>
 
-    <br><br>
+<table border="1" id="list_table">
+    <colgroup>
+        <col style="width: 70px">
+        <col style="width: 200px">
+        <col style="width: 300px">
+        <col style="width: 200px">
+    </colgroup>
 
-    <h4>추가 입력</h4>
-    <table>
-        <thead>
-            <tr>
-                <th>번호</th>
-                <th>이름</th>
-                <th>생년월일</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="text" id="num-input"/></td>
-                <td><input type="text" id="name-input"/></td>
-                <td><input type="text" id="birth-input"/></td>
-                <td><button type="button">데이터 추가</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <thead>
+    <tr>
+        <th>번호</th><th>이름</th><th>생년월일</th><th>Action</th>
+    </tr>
+    </thead>
 
-    <script type="text/javascript">
+    <tbody>
+    <tr>
+        <th>1</th><td>홍길동</td><td>2001/03/12</td>
+        <td>
+            <a href="#" class="delete_link">삭제</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
-        $(document).ready(function () {
+<br><br>
+
+<!-- 입력테이블 -->
+<table id="append_table">
+    <colgroup>
+        <col style="width: 70px">
+        <col style="width: 200px">
+        <col style="width: 300px">
+        <col style="width: 200px">
+    </colgroup>
+
+    <thead>
+    <tr>
+        <th>번호</th><th>이름</th><th>생년월일</th><th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td align="center"><input type="text" id="add_no"></td>
+        <td align="center"><input type="text" id="add_name"></td>
+        <td align="center"><input type="text" id="add_birth"></td>
+        <td align="center"><button type="button" id="append_row">데이터 추가</button></td>
+    </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(function () {
+
+        $("#append_row").click(function() {
+
+            $("#list_table").append(
+
+                $("<tr></tr>").append(
+
+                    $("<th></th>").append( $("#add_no").val() ),
+                    $("<td></td>").append( $("#add_name").val() ),
+                    $("<td></td>").append( $("#add_birth").val() ),
+                    $("<td></td>").append(
+                        $("<a></a>").attr("href", "#").attr("class","delete_link").append("삭제")
+                    )
+                )
+            );
+        });
+
+        /* 처음 문서를 읽었을 때 설정 */
+        /*
+        $(".delete_link").click(function() {
+            alert('delete_link click');
+        });
+        */
+
+        /* 문서를 새로 읽은 후 리스너 설정 */
+        $(document).on("click", ".delete_link", function () {
+            // 	alert('delete_link click');
+
+            $(this).parent().parent().remove();
 
         });
 
-        $('button').click(function (){
-            console.log("??");
-            let num = $("#num-input").val();
-            let name = $("#name-input").val();
-            let birth = $("#birth-input").val();
+    });
+</script>
 
-            if (isInvalidInput(num, name, birth)) {
-                alert("내용을 다시 입력해주세요.");
-                return;
-            }
 
-            $('#dynamic-table').append(`<tr>
-                            <td>${num}</td><td>${name}</td><td>${birth}</td>
-                            <td onclick="removeRow(this)"><a href="javascript:void(0);">삭제</a></td>
-                            </tr>`);
-
-            initAllInput();
-        });
-
-        function isInvalidInput(num, name, birth) {
-            return num.trim() == "" || name.trim() == "" || birth.trim() == "";
-        }
-
-        function initAllInput() {
-            $("#num-input").val("");
-            $("#name-input").val("");
-            $("#birth-input").val("");
-        }
-
-        function removeRow(col) {
-            col.closest('tr').remove();
-        }
-
-    </script>
 </body>
 </html>
+
+
+
