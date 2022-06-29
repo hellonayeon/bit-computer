@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+<body>
+
+<p id="demo"></p>
+
+<table>
+    <thead>
+        <tr><th>이름</th><th>나이</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>홍길동</td><td>22</td></tr>
+        <tr><td>성춘향</td><td>33</td></tr>
+        <tr><td>일지매</td><td>44</td></tr>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $("td").click(function () {
+        alert( $(this).text() ); // $("td") 로 사용 X, $("this")
+    })
+
+</script>
+</body>
+</html>
