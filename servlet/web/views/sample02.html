@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample02</title>
+</head>
+<body>
+<h3>Sample02 HelloServlet</h3>
+
+<!--
+    [link]
+
+    <a href         -> Get
+    <form action    -> Get/Post
+    location.href   -> Get
+ -->
+
+<a href="/servlet/helloServlet">Hello Servlet 이동</a>
+
+<br><br>
+
+<form action="/servlet/helloServlet" method="post">
+    <input type="submit" value="이동">
+</form>
+
+<br>
+
+<button type="button" onclick="func()">move</button>
+<script type="text/javascript">
+    function func() {
+        location.href = "/servlet/helloServlet";
+    }
+</script>
+</body>
+</html>

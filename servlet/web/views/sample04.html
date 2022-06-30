@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Sample04 HelloServlet</h3>
+<form action="/servlet/about" method="post"> <!-- Context Root -->
+    <h5>좋아하는 과일</h5>
+    <label><input type="radio" name="fruit" value="딸기">딸기</label> &nbsp;
+    <label><input type="radio" name="fruit" value="수박">수박</label> &nbsp;
+    <label><input type="radio" name="fruit" value="참외">참외</label> &nbsp;
+
+    <br>
+
+    <h5>취미</h5>
+    <label><input type="checkbox" name="hobby" value="그림">그림</label> &nbsp;
+    <label><input type="checkbox" name="hobby" value="수영">수영</label> &nbsp;
+    <label><input type="checkbox" name="hobby" value="게임">게임</label> &nbsp;
+
+    <br>
+
+    <h5>자기소개</h5>
+    <label><textarea name="introduce" cols="20" rows="20"></textarea></label>
+
+    <input type="submit" value="확인">
+</form>
+</body>
+</html>
