@@ -2,7 +2,6 @@ package sample05;
 
 import sample05.dto.StudentDto;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +23,9 @@ public class HelloServlet extends HttpServlet {
 
         req.setAttribute("student", dto);
 
-        RequestDispatcher rd = req.getRequestDispatcher("world");
-        rd.forward(req, resp);
+//        RequestDispatcher rd = req.getRequestDispatcher("world");
+//        rd.forward(req, resp);
+
+        resp.sendRedirect("world?name=" + name + "&age=" + age + "&address=" + address);
     }
 }

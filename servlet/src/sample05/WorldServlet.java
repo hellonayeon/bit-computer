@@ -14,9 +14,14 @@ public class WorldServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+//        req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html; charset=utf-8");
 
-        StudentDto st = (StudentDto) req.getAttribute("student");
+//        StudentDto st = (StudentDto) req.getAttribute("student");
+
+        String name = req.getParameter("name");
+        int age = Integer.parseInt(req.getParameter("age"));
+        String address = req.getParameter("address");
 
         PrintWriter pw = resp.getWriter();
 
@@ -28,9 +33,13 @@ public class WorldServlet extends HttpServlet {
 
         pw.println("<body>");
 
-        pw.println("<p>name: " + st.getName() + "</p>");
-        pw.println("<p>age: " + st.getAge() + "</p>");
-        pw.println("<p>address: " + st.getAddress() + "</p>");
+//        pw.println("<p>name: " + st.getName() + "</p>");
+//        pw.println("<p>age: " + st.getAge() + "</p>");
+//        pw.println("<p>address: " + st.getAddress() + "</p>");
+
+        pw.println("<p>name: " + name + "</p>");
+        pw.println("<p>age: " + age + "</p>");
+        pw.println("<p>address: " + address + "</p>");
 
         pw.println("</body>");
 
