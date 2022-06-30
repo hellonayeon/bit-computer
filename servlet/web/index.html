@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Servlet 기본</h1>
+
+<h3>Sample01 HelloServlet</h3>
+<form action="location" method="get">
+    <input type="submit" value="Get 방식">
+</form>
+
+<br>
+
+<form action="location" method="post">
+    <input type="submit" value="Post 방식">
+</form>
+
+<h3>Sample02 HelloServlet</h3>
+
+<!--
+    [link]
+
+    <a href         -> Get
+    <form action    -> Get/Post
+    location.href   -> Get
+ -->
+
+<a href="helloServlet">Hello Servlet 이동</a>
+
+<br><br>
+
+<form action="helloServlet" method="post">
+    <input type="submit" value="이동">
+</form>
+
+<br>
+
+<button type="button" onclick="func()">move</button>
+<script type="text/javascript">
+    function func() {
+        location.href = "helloServlet";
+    }
+</script>
+
+<br><br>
+
+<h3>Sample03 HelloServlet</h3>
+
+<form action="hello">
+    name: <input type="text" name="name"/><br><br>
+    age: <input type="text" name="age"/><br><br>
+    좋아하는 음식:
+    <select name="food" multiple>
+        <option value="햄버거">햄버거</option>
+        <option value="치킨">치킨</option>
+        <option value="피자">피자</option>
+    </select> <br><br>
+
+    <input type="submit" value="확인">
+</form>
+
+<br>
+
+<h3>Sample04 HelloServlet</h3>
+    <form action="about" method="post">
+        <h5>좋아하는 과일</h5>
+        <label><input type="radio" name="fruit" value="딸기">딸기</label> &nbsp;
+        <label><input type="radio" name="fruit" value="수박">수박</label> &nbsp;
+        <label><input type="radio" name="fruit" value="참외">참외</label> &nbsp;
+
+        <br>
+
+        <h5>취미</h5>
+        <label><input type="checkbox" name="hobby" value="그림">그림</label> &nbsp;
+        <label><input type="checkbox" name="hobby" value="수영">수영</label> &nbsp;
+        <label><input type="checkbox" name="hobby" value="게임">게임</label> &nbsp;
+
+        <br>
+
+        <h5>자기소개</h5>
+        <label><textarea name="introduce" cols="20" rows="20"></textarea></label>
+
+        <input type="submit" value="확인">
+    </form>
+
+</body>
+</html>
