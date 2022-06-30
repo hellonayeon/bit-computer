@@ -13,6 +13,8 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("sample06.HelloServlet doGet.");
+
         resp.setContentType("text/html; charset=utf-8");
 
         PrintWriter pw = resp.getWriter();

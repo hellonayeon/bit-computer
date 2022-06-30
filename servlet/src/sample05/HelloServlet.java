@@ -13,6 +13,8 @@ import java.io.IOException;
 public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("sample05.HelloServlet doGet.");
+
         String name = req.getParameter("name");
         int age = Integer.parseInt(req.getParameter("age"));
         String address = req.getParameter("address");
@@ -26,6 +28,7 @@ public class HelloServlet extends HttpServlet {
 //        RequestDispatcher rd = req.getRequestDispatcher("world");
 //        rd.forward(req, resp);
 
-        resp.sendRedirect("world?name=" + name + "&age=" + age + "&address=" + address);
+        req.getSession().setAttribute("dto", dto);
+        resp.sendRedirect("world");
     }
 }
