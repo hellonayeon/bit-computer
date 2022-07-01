@@ -6,6 +6,14 @@
     <title>Register</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <style type="text/css">
+        .center {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #00FF00;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="center">

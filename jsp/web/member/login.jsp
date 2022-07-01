@@ -26,7 +26,7 @@
 <h2>Login Page</h2>
 
 <div class="center">
-<form action="loginAf,jsp" method="post"></form>
+<form action="loginAf.jsp" method="post">
 <table border="1">
     <tr>
         <th>아이디</th>
@@ -48,6 +48,7 @@
         </td>
     </tr>
 </table>
+</form>
 </div>
 
 <script type="text/javascript">

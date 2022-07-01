@@ -50,14 +50,14 @@ public class MemberDao {
         return count > 0 ;
     }
 
-    public boolean isExistId(String id) throws SQLException {
+    public MemberDto findById(String id) throws SQLException {
         String sql = "select * from member  " +
                      "where id=?";
 
         Connection conn = null;
         PreparedStatement psmt = null;
         ResultSet rs = null;
-        boolean isExist = false;
+        MemberDto findMember = null;
 
         try {
             conn = DBConnection.getConnection();
@@ -66,13 +66,17 @@ public class MemberDao {
             psmt.setString(1, id);
 
             rs = psmt.executeQuery();
-            isExist = rs.next();
+
+            if (rs.next()) {
+                findMember = new MemberDto(rs.getString(1), rs.getString(2),
+                                            rs.getString(3), rs.getString(4), rs.getInt(5));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DBClose.close(conn, psmt, null);
         }
 
-        return isExist;
+        return findMember;
     }
 }
