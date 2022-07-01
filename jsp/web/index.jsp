@@ -14,10 +14,19 @@
 <h2>JSP Lecture</h2>
 
 <ul>
-    <li><a href="jsp-lec01.jsp">JSP 사용: 코드 선언부 코드부 값 사용</a></li>
-    <li><a href="jsp-lec02.jsp">내장객체</a></li>
-    <li></li>
-</ul>
+    <li><a href="jsp/jsp-lec01.jsp">JSP 사용: 코드 선언부 코드부 값 사용</a></li>
+    <li><a href="jsp/jsp-lec02.jsp">내장객체</a></li>
+    <li><a href="ajax/ajax-lec03.jsp">AJAX jQuery .load()</a></li>
+    <li><a href="ajax/ajax-lec04.jsp">AJAX callback func</a></li>
+    <li><a href="ajax/ajax-lec05.jsp">AJAX JSON data</a></li>
+    <li><a href="ajax/ajax-lec06.jsp">AJAX + Servlet</a></li>
+    <li><a href="db/db-lec07.jsp">Database Conn</a></li>
+</ul><br><br>
 
+<h3>MVC Model</h3>
+
+<ul>
+    <li><a href="member/login-index.jsp">로그인 구현</a></li>
+</ul><br><br>
 </body>
 </html>
