@@ -4,8 +4,10 @@ import login.db.DBClose;
 import login.db.DBConnection;
 import login.dto.MemberDto;
 
+import java.lang.reflect.Member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MemberDao {
@@ -46,5 +48,31 @@ public class MemberDao {
         }
 
         return count > 0 ;
+    }
+
+    public boolean isExistId(String id) throws SQLException {
+        String sql = "select * from member  " +
+                     "where id=?";
+
+        Connection conn = null;
+        PreparedStatement psmt = null;
+        ResultSet rs = null;
+        boolean isExist = false;
+
+        try {
+            conn = DBConnection.getConnection();
+
+            psmt = conn.prepareStatement(sql);
+            psmt.setString(1, id);
+
+            rs = psmt.executeQuery();
+            isExist = rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBClose.close(conn, psmt, null);
+        }
+
+        return isExist;
     }
 }

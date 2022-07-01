@@ -1,18 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: nayeon
-  Date: 2022/07/01
-  Time: 2:36 오후
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="login.dao.MemberDao" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-
-
-%>
 <html>
 <head>
     <title>Register</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
 <div class="center">
@@ -55,8 +48,19 @@
     </form>
 </div>
 
-<script>
 
+<script type="text/javascript">
+    $("#id-btn").click(function () {
+        let id = $("#id").val().trim();
+        if (id == "") {
+            alert("아이디를 입력해주세요 !");
+            return;
+        }
+        window.location.replace("login-id-check.jsp?id=" + id);
+    });
 </script>
+
+
+
 </body>
 </html>
