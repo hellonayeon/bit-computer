@@ -3,62 +3,68 @@ package login.dto;
 import java.io.Serializable;
 
 public class MemberDto implements Serializable {
+	
+	private String id;
+	private String pwd;
+	private String name;
+	private String email;
+	private int auth;	// 3:일반회원, 1:관리자
+	
+	public MemberDto() {
+	}
 
-    private String id;
+	public MemberDto(String id, String pwd, String name, String email, int auth) {
+		super();
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+		this.email = email;
+		this.auth = auth;
+	}
 
-    private String pwd;
+	public String getId() {
+		return id;
+	}
 
-    private String name;
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    private String email;
+	public String getPwd() {
+		return pwd;
+	}
 
-    private int auth;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
 
-    public MemberDto(String id, String pwd, String name, String email, int auth) {
-        this.id = id;
-        this.pwd = pwd;
-        this.name = name;
-        this.email = email;
-        this.auth = auth;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getId() {
-        return id;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getPwd() {
-        return pwd;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
+	public int getAuth() {
+		return auth;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setAuth(int auth) {
+		this.auth = auth;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	@Override
+	public String toString() {
+		return "MemberDto [id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", auth=" + auth + "]";
+	}
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getAuth() {
-        return auth;
-    }
-
-    public void setAuth(int auth) {
-        this.auth = auth;
-    }
 }

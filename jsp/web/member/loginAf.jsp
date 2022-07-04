@@ -1,44 +1,55 @@
 <%@ page import="login.dao.MemberDao" %>
-<%@ page import="login.dto.MemberDto" %><%--
-  Created by IntelliJ IDEA.
-  User: nayeon
-  Date: 2022/07/01
-  Time: 5:18 오후
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="login.dto.MemberDto" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <%
-  String id = request.getParameter("id");
-  String pwd = request.getParameter("pwd");
+//	request.setCharacterEncoding("utf-8");
 
-  MemberDao dao = MemberDao.getInstance();
-  MemberDto dto = dao.findById(id);
-
-  if (dto == null) {
-%>
-  <script type="text/javascript">
-      alert("아이디를 확인해주세요 :<");
-  </script>
-<%
-  }
-  else {
-      // 아이디에 해당되는 멤버 찾았고,
-      // 비밀번호도 일치하는 경우
-      if (dto.getPwd().equals(pwd)) {
-%>
-
-          <script type="text/javascript">
-              alert("로그인 성공 !!");
-          </script>
+	String id = request.getParameter("id");
+	String pwd = request.getParameter("pwd");
+%>   
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
 
 <%
-      }
-      else {
+MemberDao dao = MemberDao.getInstance();
+
+MemberDto mem = dao.login(new MemberDto(id, pwd, null, null, 0));
+
+if(mem != null && !mem.getId().equals("")){
+	
+	session.setAttribute("login", mem);
+	session.setMaxInactiveInterval(60 * 60 * 2);
+	%>
+	<script type="text/javascript">
+	alert("안녕하세요. <%=mem.getName() %>님");
+	location.href = "bbslist.jsp";
+	</script>
+	<%
+}else{
+	%>
+	<script type="text/javascript">
+	alert("아이디나 패스워드를 찾을 수 없습니다");
+	location.href = "login.jsp";
+	</script>
+	<%
+}
 %>
-          <script type="text/javascript">
-            alert("비밀번호를 확인해주세요 :<");
-          </script>
-<%
-      }
-  }
-%>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
