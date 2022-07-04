@@ -19,9 +19,20 @@ if (obj == null) {
 }
 mem = (MemberDto) obj;
 
+    String choice = request.getParameter("choice");
+    String search = request.getParameter("search");
+
+    if (choice == null) {
+        choice = "";
+    }
+    if (search == null) {
+        search = "";
+    }
+
 BbsDao dao = BbsDao.getInstance();
-List<BbsDto> list = dao.getBbslist();
+List<BbsDto> list = dao.getBbsSearchlist(choice, search);
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,10 +95,10 @@ List<BbsDto> list = dao.getBbslist();
         let choice = document.getElementById("choice").value;
         let search = document.getElementById("search").value;
 
-        if (search.trim() == '') {
-            alert("검색어를 입력해 주십시오");
-            return;
-        }
+        // if (search.trim() == '') {
+        //     alert("검색어를 입력해 주십시오");
+        //     return;
+        // }
 
         location.href = "bbslist.jsp?choice=" + choice + "&search=" + search;
     }

@@ -99,8 +99,7 @@ public class BbsDao {
     public List<BbsDto> getBbsSearchlist(String choice, String search) {
         String sql = "select seq, id, ref, step, depth, "
                 + "title, content, wdate, del, readcount "
-                + "from bbs "
-                + "order by ref desc, step asc";
+                + "from bbs ";
 
         String sWord = "";
         if (choice.equals("title")) {
