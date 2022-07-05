@@ -1,5 +1,5 @@
-<%@ page import="login.dto.MemberDto" %>
-<%@ page import="login.dto.BbsDto" %><%--
+<%@ page import="login.bbs.model1.dto.MemberDto" %>
+<%@ page import="login.bbs.model1.dto.BbsDto" %><%--
   Created by IntelliJ IDEA.
   User: nayeon
   Date: 2022/07/04

@@ -1,4 +1,4 @@
-package login.db;
+package login.bbs.model2.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

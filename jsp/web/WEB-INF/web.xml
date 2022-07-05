@@ -5,13 +5,26 @@
          version="4.0">
 
 
-    <servlet>
-        <servlet-name>helloServlet</servlet-name>
-        <servlet-class>ajax.HelloServlet</servlet-class>
-    </servlet>
+    <!-- JSP -->
+<!--    <servlet>-->
+<!--        <servlet-name>helloServlet</servlet-name>-->
+<!--        <servlet-class>ajax.HelloServlet</servlet-class>-->
+<!--    </servlet>-->
 
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>helloServlet</servlet-name>-->
+<!--        <url-pattern>/</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+
+    <!-- Model2 -->
+    <servlet>
+        <servlet-name>member</servlet-name>
+        <servlet-class>login.bbs.model2.controller.MemberController</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>helloServlet</servlet-name>
+        <servlet-name>member</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>

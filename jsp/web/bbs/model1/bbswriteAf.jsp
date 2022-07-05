@@ -1,5 +1,5 @@
-<%@ page import="login.dto.BbsDto" %>
-<%@ page import="login.dao.BbsDao" %>
+<%@ page import="login.bbs.model1.dto.BbsDto" %>
+<%@ page import="login.bbs.model1.dao.BbsDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String id = request.getParameter("id");

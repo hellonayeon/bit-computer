@@ -1,8 +1,8 @@
-package login.dao;
+package login.bbs.model1.dao;
 
-import login.db.DBClose;
-import login.db.DBConnection;
-import login.dto.MemberDto;
+import login.bbs.model1.db.DBClose;
+import login.bbs.model1.db.DBConnection;
+import login.bbs.model1.dto.MemberDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

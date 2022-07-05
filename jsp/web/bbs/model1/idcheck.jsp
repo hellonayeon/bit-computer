@@ -1,4 +1,4 @@
-<%@ page import="login.dao.MemberDao" %>
+<%@ page import="login.bbs.model1.dao.MemberDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <%

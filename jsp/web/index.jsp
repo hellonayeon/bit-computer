@@ -26,7 +26,8 @@
 <h3>MVC Model</h3>
 
 <ul>
-    <li><a href="member/login-index.jsp">로그인 구현</a></li>
+    <li><a href="bbs/model1/login-index.jsp">로그인 구현 [Model1]</a></li>
+    <li><a href="bbs/model2/index.jsp">로그인 구현 [Model2]</a></li>
 </ul><br><br>
 </body>
 </html>
