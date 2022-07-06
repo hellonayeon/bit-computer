@@ -19,51 +19,51 @@
 </pre>
 
 <%
-  Class.forName("com.mysql.cj.jdbc.Driver");
+    Class.forName("com.mysql.cj.jdbc.Driver");
 
-  String url = "jdbc:mysql://localhost:3306/mydb";
-  String user = "root";
-  String password = "hellonayeon";
+    String url = "jdbc:mysql://localhost:3306/mydb";
+    String user = System.getenv("DB_USERNAME");
+    String password = System.getenv("DB_PASSWORD");
 
-  Connection conn = DriverManager.getConnection(url, user, password);
+    Connection conn = DriverManager.getConnection(url, user, password);
 
-  String sql = "show table status";
+    String sql = "show table status";
 
-  PreparedStatement psmt = conn.prepareStatement(sql);
-  ResultSet rs = psmt.executeQuery();
+    PreparedStatement psmt = conn.prepareStatement(sql);
+    ResultSet rs = psmt.executeQuery();
 
-  ResultSetMetaData rsmd = rs.getMetaData();  // 컬럼의 정보
-  int count = rsmd.getColumnCount();          // 컬럼의 수
+    ResultSetMetaData rsmd = rs.getMetaData();  // 컬럼의 정보
+    int count = rsmd.getColumnCount();          // 컬럼의 수
 
 %>
 
 <table border="1">
-  <tr>
+    <tr>
+        <%
+            for (int i=0; i<count + 1; i++) {
+        %>
+        <td><%=rsmd.getColumnName(i)%></td>
+        <%
+            }
+        %>
+    </tr>
+
     <%
-        for (int i=0; i<count + 1; i++) {
+        while (rs.next()) {
     %>
-            <td><%=rsmd.getColumnName(i)%></td>
+    <tr>
+        <%
+            for (int i=1; i<count + 1; i++) {
+                String  cols = rs.getString(i);
+        %>
+        <td><%=cols%></td>
+        <%
+            }
+        %>
+    </tr>
     <%
         }
     %>
-  </tr>
-
-  <%
-    while (rs.next()) {
-  %>
-    <tr>
-      <%
-          for (int i=1; i<count + 1; i++) {
-              String  cols = rs.getString(i);
-      %>
-            <td><%=cols%></td>
-      <%
-          }
-      %>
-    </tr>
-  <%
-  }
-  %>
 </table>
 
 <%
