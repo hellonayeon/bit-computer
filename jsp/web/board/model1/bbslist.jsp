@@ -185,7 +185,13 @@ for(int i = 0;i < bbsPage; i++){
 
 </div>
 
-<a href="bbswrite.jsp">글쓰기</a>
+<div>
+	<a href="bbswrite.jsp">글쓰기</a>
+</div><br><br>
+
+<div>
+	<a href="pdslist.jsp">자료실</a>
+</div>
 
 <script type="text/javascript">
 let search = "<%=search %>";
