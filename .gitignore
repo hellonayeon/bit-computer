@@ -8,3 +8,6 @@ out
 
 # Data
 database/mysql/data
+
+# Web Project
+target
