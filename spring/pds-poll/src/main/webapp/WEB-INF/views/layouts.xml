@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+  <definition name="main.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+    <put-attribute name="header" value="/WEB-INF/views/commons/header.jsp" />
+    <put-attribute name="top_inc" value="/WEB-INF/views/commons/top_inc.jsp" />
+    <put-attribute name="top_menu" value="/WEB-INF/views/commons/top_menu.jsp" />
+    <put-attribute name="left_menu" value="/WEB-INF/views/left_menu.jsp" />
+    <put-attribute name="main" value="/WEB-INF/views/main.jsp" />
+    <put-attribute name="bottom_inc" value="/WEB-INF/views/commons/bottom_inc.jsp" />
+  </definition>
+
+  <definition name="pdslist.tiles" extends="main.tiles">
+    <put-attribute name="left_menu" value="/WEB-INF/views/pds/pds_left_menu.jsp"/>
+    <put-attribute name="main" value="/WEB-INF/views/pds/pds_list.jsp"/>
+  </definition>
+
+  <definition name="pdswrite.tiles" extends="pdslist.tiles">
+    <put-attribute name="main" value="/WEB-INF/views/pds/pds_write.jsp"/>
+  </definition>
+
+  <definition name="pdsdetail.tiles" extends="pdslist.tiles">
+    <put-attribute name="main" value="/WEB-INF/views/pds/pds_detail.jsp"/>
+  </definition>
+
+  <!-- 투표 -->
+  <definition name="polllist.tiles" extends="main.tiles">
+    <put-attribute name="left_menu" value="/WEB-INF/views/poll/poll_left_menu.jsp"/>
+    <put-attribute name="main" value="/WEB-INF/views/poll/poll_list.jsp"/>
+  </definition>
+
+  <definition name="pollmake.tiles" extends="polllist.tiles">
+    <put-attribute name="main" value="/WEB-INF/views/poll/poll_make.jsp"/>
+  </definition>
+
+  <definition name="polldetail.tiles" extends="polllist.tiles">
+    <put-attribute name="main" value="/WEB-INF/views/poll/poll_detail.jsp"/>
+  </definition>
+</tiles-definitions>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Pds">
+    <select id="pdslist" resultType="me.hellonayeon.pds.dto.PdsDto">
+        SELECT seq, id, title, content, filename, newfilename, regdate
+        FROM PDS
+        ORDER BY seq desc
+    </select>
+
+    <select id="uploadpds" resultType="me.hellonayeon.pds.dto.PdsDto">
+        INSERT into pds (id, title, content, filename, newfilename, readcount, downcount, regdate)
+        VALUES(#{id}, #{title}, #{content}, #{filename}, #{newfilename}, 0, 0, now())
+    </select>
+
+    <select id="pdsdetail" resultType="me.hellonayeon.pds.dto.PdsDto">
+        SELECT seq, id, title, content, filename, newfilename, regdate
+        FROM PDS
+        WHERE seq = #{seq}
+    </select>
+</mapper>

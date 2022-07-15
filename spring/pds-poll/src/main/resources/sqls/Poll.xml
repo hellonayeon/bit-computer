@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Poll">
+  
+  <select id="getPollList" resultType="me.hellonayeon.poll.dto.PollDto">
+    SELECT poll_id pollId, id, question, s_date sDate, e_date eDate, item_count itemCount, poll_total pollTotal, reg_date regDate
+    FROM POLL
+    ORDER BY s_date DESC;
+  </select>
+
+  <!-- 투표 여부 확인 -->
+  <select id="isVoter" parameterType="me.hellonayeon.poll.dto.Voter"
+    resultType="Integer">
+    SELECT IFNULL(COUNT(*), 0)
+    FROM VOTER
+    WHERE poll_id=#{pollId} AND id=#{id};
+
+  </select>
+
+  <!-- 투표 만들기 -->
+  <!-- 투표 주제 -->
+  <insert id="makePoll" parameterType="me.hellonayeon.poll.dto.PollDto">
+    INSERT INTO POLL (id, question, s_date, e_date, item_count, poll_total, reg_date)
+    VALUES (#{id}, #{question}, #{sDate}, #{eDate}, #{itemCount}, 0, now())
+  </insert>
+
+  <!-- 투표 보기 -->
+  <insert id="makePollSub" parameterType="me.hellonayeon.poll.dto.PollSubDto">
+    INSERT INTO POLL_SUB (poll_id, answer, a_count)
+    VALUES ( (SELECT NULLIF(max(poll_id), 0 ) FROM POLL), #{answer}, 0)
+  </insert>
+
+  <select id="getPoll" parameterType="me.hellonayeon.poll.dto.PollDto"
+  resultType="me.hellonayeon.poll.dto.PollDto">
+    SELECT poll_id pollId, id, question, s_date sDate, e_date eDate, item_count itemCount, poll_total pollTotal, reg_date regDate
+    FROM POLL
+    WHERE poll_id=#{pollId}
+  </select>
+
+  <!-- 투표 보기들 -->
+  <select id="getPollSubList" parameterType="me.hellonayeon.poll.dto.PollDto"
+    resultType="me.hellonayeon.poll.dto.PollSubDto">
+    SELECT poll_sub_id pollSubId, poll_id pollId, answer, a_count aCount
+    FROM POLL_SUB
+    WHERE poll_id=#{pollId}
+  </select>
+
+</mapper>
