@@ -48,4 +48,28 @@
     WHERE poll_id=#{pollId}
   </select>
 
+  <!-- 투표를 했을 때 -->
+  <!-- 투표자 추가 -->
+  <insert id="pollingVoter" parameterType="me.hellonayeon.poll.dto.Voter">
+    INSERT INTO VOTER (poll_id, poll_sub_id, id, reg_date)
+    VALUES (#{pollId}, #{pollSubId}, #{id}, now())
+  </insert>
+
+
+  <!-- 어느 투표 주제 (통계) -->
+  <update id="pollingPoll" parameterType="me.hellonayeon.poll.dto.Voter">
+    UPDATE POLL
+    SET poll_total = poll_total + 1
+    WHERE poll_id = #{pollId}
+  </update>
+
+  <!-- 어느 투표 보기 (통계) -->
+  <update id="pollingSub" parameterType="me.hellonayeon.poll.dto.Voter">
+    UPDATE poll_sub
+    SET a_count=a_count+1
+    WHERE poll_sub_id=#{pollSubId} and poll_id=#{pollId}
+  </update>
+
+
+
 </mapper>

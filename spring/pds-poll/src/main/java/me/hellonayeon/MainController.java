@@ -17,7 +17,7 @@ class MainController {
     public String main(HttpServletRequest req) {
         logger.info("MainController.class main() = {}", new Date());
 
-        req.getSession().setAttribute("loginId", "hellonayeon");
+        req.getSession().setAttribute("loginId", "nabong");
 
         return "main.tiles";
     }

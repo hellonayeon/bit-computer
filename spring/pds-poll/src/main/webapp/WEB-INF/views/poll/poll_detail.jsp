@@ -8,12 +8,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Poll Detail</title>
-</head>
-<body>
-
 <%
     String id = (String) request.getSession().getAttribute("loginId");
 
@@ -21,7 +15,7 @@
     List<PollSubDto> pollSubList = (List<PollSubDto>) request.getAttribute("pollSubList");
 %>
 
-<form action="polling" method="GET">
+<form action="polling.do" method="GET">
     <table class="list_table">
         <col width="200"><col width="200">
 
@@ -78,6 +72,3 @@
         </tr>
     </table>
 </form>
-
-</body>
-</html>

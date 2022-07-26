@@ -44,11 +44,11 @@ public class PollSubDto {
         this.answer = answer;
     }
 
-    public int getaCount() {
+    public int getACount() {
         return aCount;
     }
 
-    public void setaCount(int aCount) {
+    public void setACount(int aCount) {
         this.aCount = aCount;
     }
 }

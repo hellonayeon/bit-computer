@@ -39,4 +39,8 @@
   <definition name="polldetail.tiles" extends="polllist.tiles">
     <put-attribute name="main" value="/WEB-INF/views/poll/poll_detail.jsp"/>
   </definition>
+
+  <definition name="pollresult.tiles" extends="polllist.tiles">
+    <put-attribute name="main" value="/WEB-INF/views/poll/poll_result.jsp"/>
+  </definition>
 </tiles-definitions>

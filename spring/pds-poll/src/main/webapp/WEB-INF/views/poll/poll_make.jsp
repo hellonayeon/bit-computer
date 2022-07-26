@@ -6,11 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Poll Make</title>
-</head>
-<body>
 
 <%
 //    String id = (String) request.getAttribute("id");
@@ -185,6 +180,3 @@
       }
     }
 </script>
-
-</body>
-</html>

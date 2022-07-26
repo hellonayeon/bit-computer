@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import me.hellonayeon.poll.dto.PollBean;
 import me.hellonayeon.poll.dto.PollDto;
 import me.hellonayeon.poll.dto.PollSubDto;
+import me.hellonayeon.poll.dto.Voter;
 import me.hellonayeon.poll.service.PollService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,5 +67,30 @@ public class PollController {
         model.addAttribute("pollSubList", list);
 
         return "polldetail.tiles";
+    }
+
+    @RequestMapping(value = "polling.do", method = RequestMethod.GET)
+    public String polling(Voter voter) {
+        logger.info("PollController polling(): {}", new Date());
+
+        service.polling(voter);
+
+        return "redirect:polllist.do";
+    }
+
+    @RequestMapping(value = "pollresult.do", method = RequestMethod.GET)
+    public String getPollResult(PollDto poll, Model model) {
+        logger.info("PollController getPollResult(): {}", new Date());
+
+        // Poll (투표 주제)
+        PollDto dto = service.getPoll(poll);
+
+        // PollSub (보기들)
+        List<PollSubDto> list = service.getPollSubList(poll);
+
+        model.addAttribute("poll", dto);
+        model.addAttribute("pollSubList", list);
+
+        return "pollresult.tiles";
     }
 }
