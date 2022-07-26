@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style type="text/css">
+.center{
+	margin: auto;
+	width: 60%;
+	border: 3px solid #00ff00;
+	padding: 10px;
+}
+</style>
+
+</head>
+<body>
+
+<h2>회원가입</h2>
+
+<!-- id확인 -->
+<div class="center">
+<table border="1">
+<tr>
+	<th>아이디</th>
+	<td>
+		<input type="text" id="user_id" size="20"><br>
+		<p id="idcheck" style="font-size: 8px"></p>
+		<input type="button" id="idBtn" value="아이디확인"><br>
+		
+		<input type="text" id="id" size="20" readonly="readonly">
+	</td>
+</tr>
+<tr>
+	<th>패스워드</th>
+	<td>
+		<input type="text" id="pwd" size="20">
+	</td>
+</tr>
+<tr>
+	<th>이름</th>
+	<td>
+		<input type="text" id="name" size="20">
+	</td>
+</tr>
+<tr>
+	<th>이메일</th>
+	<td>
+		<input type="text" id="email" size="20">
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+		<button type="button" id="regiBtn">회원가입</button>
+	</td>
+</tr>
+</table>
+
+</div>
+
+<script type="text/javascript">
+$(function () {
+	
+	$("#idBtn").click(function () {	
+		$.ajax({
+			url:"http://localhost:3000/getId",
+			type:"post",			
+			data:{ "id":$("#user_id").val() },
+			success:function( data ){
+				if(data.trim() == "OK"){
+					$("#idcheck").css("color", "#0000ff");
+					$("#idcheck").html('사용할 수 있는 id입니다');
+					
+					$("#id").val($("#user_id").val());
+				}else{
+					$("#idcheck").css("color", "#ff0000");
+					$("#idcheck").html('사용 중인 id입니다');
+					$("#user_id").val("");
+					$("#id").val("");
+				}			
+			},
+			error:function(){
+				alert("error");
+			}
+		});
+		
+	});
+	
+	$("#regiBtn").click(function () {	
+		$.ajax({
+			url:"http://localhost:3000/account",
+			type:"post",
+			data:{ id:$("#id").val(), pwd:$("#pwd").val(), name:$("#name").val(), email:$("#email").val() },
+			success:function(resp){
+				alert('success');
+				//alert(resp);
+				if(resp == "OK"){
+					alert("회원가입에 성공했습니다");
+					location.href = "login.html";
+				}
+			},
+			error:function(){
+				alert('error');	
+			}			
+		});		
+	});
+	
+});
+</script>
+
+
+</body>
+</html>
