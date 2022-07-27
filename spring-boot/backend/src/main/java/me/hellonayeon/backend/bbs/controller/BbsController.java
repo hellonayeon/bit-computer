@@ -66,6 +66,13 @@ public class BbsController {
 		
 		return service.getBbsCount(param);
 	}
+
+	@RequestMapping(value = "/getBbs", method = RequestMethod.GET)
+	public BbsDto getBbs(Integer seq) {
+		System.out.println("BbsController getBbs " + new Date());
+
+		return service.getBbs(seq);
+	}
 }
 
 

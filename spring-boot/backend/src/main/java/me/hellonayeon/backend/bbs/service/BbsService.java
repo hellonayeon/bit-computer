@@ -36,7 +36,8 @@ public class BbsService {
 	public int getBbsCount(BbsParam param) {
 		return dao.getBbsCount(param);
 	}
-	
+
+	public BbsDto getBbs(Integer seq) { return dao.getBbs(seq); }
 }
 
 

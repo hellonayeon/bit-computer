@@ -79,7 +79,13 @@
 	 </if>
 </select>
 
-
+<!-- 특정 게시글 -->
+<select id="getBbs" parameterType="Integer" resultType="me.hellonayeon.backend.bbs.dto.BbsDto">
+	select seq, id, ref, step, depth, title, content, wdate, del, readcount
+	from bbs
+	where seq=#{seq}
+	order by ref desc, step asc
+</select>
 
 </mapper>
 
