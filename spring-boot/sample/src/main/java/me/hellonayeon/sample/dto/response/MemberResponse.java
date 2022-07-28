@@ -1,4 +1,4 @@
-package me.hellonayeon.backend.hellosample.dto.response;
+package me.hellonayeon.sample.dto.response;
 
 public class MemberResponse {
 

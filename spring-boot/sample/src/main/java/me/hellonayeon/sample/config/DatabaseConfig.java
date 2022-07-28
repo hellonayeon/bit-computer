@@ -1,4 +1,4 @@
-package me.hellonayeon.backend.hellosample.config;
+package me.hellonayeon.sample.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -16,21 +16,21 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-//@Configuration
-//@PropertySource("classpath:/application.properties")
+@Configuration
+@PropertySource("classpath:/application.properties")
 public class DatabaseConfig {
 
     private final Logger logger = LoggerFactory.getLogger(DatabaseConfig.class);
 
-//    @Bean
-//    @ConfigurationProperties(prefix = "spring.datasource.hikari")
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource.hikari")
     public HikariConfig hikariConfig() {
         logger.info("DatabaseConfig dataSource(): {}", new Date());
 
         return new HikariConfig();
     }
 
-//    @Bean
+    @Bean
     public DataSource dataSource() {
         logger.info("DatabaseConfig dataSource(): {}", new Date());
 
@@ -40,7 +40,7 @@ public class DatabaseConfig {
         return dataSource;
     }
 
-//    @Bean
+    @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         logger.info("DatabaseConfig sqlSessionFactory(): {}", new Date());
 
@@ -55,7 +55,7 @@ public class DatabaseConfig {
         return (SqlSessionFactory) sqlSessionFactoryBean.getObject();
     }
 
-//    @Bean
+    @Bean
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }

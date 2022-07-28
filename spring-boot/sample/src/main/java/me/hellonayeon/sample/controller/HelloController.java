@@ -1,17 +1,17 @@
-package me.hellonayeon.backend.hellosample.controller;
+package me.hellonayeon.sample.controller;
 
 import java.util.Date;
 import java.util.List;
-import me.hellonayeon.backend.hellosample.service.MemberService;
-import me.hellonayeon.backend.hellosample.dto.request.MemberRequest;
-import me.hellonayeon.backend.hellosample.dto.response.MemberResponse;
+import me.hellonayeon.sample.dto.request.MemberRequest;
+import me.hellonayeon.sample.dto.response.MemberResponse;
+import me.hellonayeon.sample.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-//@RestController // @Controller + @ResponseBody
+@RestController // @Controller + @ResponseBody
 public class HelloController {
 
     private final Logger logger = LoggerFactory.getLogger(HelloController.class);

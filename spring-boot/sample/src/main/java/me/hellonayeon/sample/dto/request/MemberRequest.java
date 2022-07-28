@@ -1,4 +1,4 @@
-package me.hellonayeon.backend.hellosample.dto.request;
+package me.hellonayeon.sample.dto.request;
 
 public class MemberRequest {
     private String id;
