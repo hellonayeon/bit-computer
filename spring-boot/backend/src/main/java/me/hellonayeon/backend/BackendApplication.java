@@ -1,8 +1,9 @@
 package me.hellonayeon.backend;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@org.springframework.boot.autoconfigure.SpringBootApplication
+@SpringBootApplication
 public class SpringBootApplication {
 
     public static void main(String[] args) {
