@@ -88,9 +88,9 @@ function BbsList() {
 			<table className="table table-hover">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
+						<th className="col-1">번호</th>
+						<th className="col-8">제목</th>
+						<th className="col-3">작성자</th>
 					</tr>
 				</thead>
 
@@ -125,7 +125,7 @@ function BbsList() {
 function TableRow(props) {
 	return (
 		<tr>
-			<td>{props.cnt}</td>
+			<th>{props.cnt}</th>
 			<td className="underline">{props.obj.title}</td>
 			<td>{props.obj.id}</td>
 		</tr>
