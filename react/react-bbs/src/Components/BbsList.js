@@ -126,36 +126,43 @@ function BbsList() {
 
 /* 글 목록 테이블 행 컴포넌트 */
 function TableRow(props) {
+	const bbs = props.obj;
+
 	return (
-		
 			<tr>
 				
 					<th>{props.cnt}</th>
-					<td className="underline">
-						{/* <Arrow></Arrow> */}
-						<Link to={{pathname: `/bbsdetail/${props.obj.seq}`}}>
-							{props.obj.title}
+					<td >
+						<Arrow depth={bbs.depth}></Arrow> &nbsp; { /* 답글 화살표 */ }
+						<Link to={{pathname: `/bbsdetail/${bbs.seq}`}}> { /* 게시글 상세 링크 */ }
+							<span className="underline" >{bbs.title} </span> { /* 게시글 제목 */ }
 						</Link>
 					</td>
-					<td>{props.obj.id}</td>
+					<td>{bbs.id}</td>
 				
 			</tr>
 		
 	);
 }
 
-// function Arrow( depth ) {
-// 	if (depth === 0) {
-// 		return null;
-// 	}
+const tap = "\u00A0\u00A0\u00A0\u00A0";
+function Arrow( props ) {
+	const depth = props.depth;
 
-// 	let tap = "\u00A0\u00A0\u00A0\u00A0";	
-// 	let taps = "";
-// 	for(let i = 0;i < depth; i++){
-// 		taps += tap;
-// 	}
+	if (depth === 0) {
+		return null;
+	}
 
-// 	return ( taps <img src="/images/arrow.png" width='20px' height='20px'/> );
-// }
+	const taps = [];
+	for(let i = 0; i < depth; i++) {
+		taps.push(tap);
+	}
+
+	return (
+		<>
+			{taps} <img src="/images/arrow.png" width='20px' height='20px'/>
+		</> 
+	 );
+}
 
 export default BbsList;
