@@ -1,10 +1,10 @@
 package me.hellonayeon.backend.bbs.dto.response;
 
-public class BbsSeqResponse {
+public class CreateBbsResponse {
 
     private Integer seq;
 
-    public BbsSeqResponse(Integer seq) {
+    public CreateBbsResponse(Integer seq) {
         this.seq = seq;
     }
 

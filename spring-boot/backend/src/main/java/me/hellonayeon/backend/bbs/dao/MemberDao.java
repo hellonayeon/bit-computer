@@ -1,6 +1,6 @@
 package me.hellonayeon.backend.bbs.dao;
 
-import me.hellonayeon.backend.bbs.dto.MemberDto;
+import me.hellonayeon.backend.domain.Member;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MemberDao {
 
-	int getId(MemberDto dto);
-	int account(MemberDto dto);
-	MemberDto login(MemberDto dto);
+	int getId(Member dto);
+	int account(Member dto);
+	Member login(Member dto);
 }

@@ -3,9 +3,15 @@ package me.hellonayeon.backend.bbs.service;
 import java.util.List;
 
 import me.hellonayeon.backend.bbs.dao.BbsDao;
-import me.hellonayeon.backend.bbs.dto.BbsDto;
-import me.hellonayeon.backend.bbs.dto.BbsParam;
-import org.springframework.beans.factory.annotation.Autowired;
+import me.hellonayeon.backend.bbs.dto.param.CreateBbsParam;
+import me.hellonayeon.backend.bbs.dto.request.CreateBbsRequest;
+import me.hellonayeon.backend.bbs.dto.response.CreateBbsResponse;
+import me.hellonayeon.backend.domain.Bbs;
+import me.hellonayeon.backend.bbs.dto.param.BbsCountParam;
+import me.hellonayeon.backend.bbs.dto.param.BbsListParam;
+import me.hellonayeon.backend.bbs.dto.request.BbsListRequest;
+import me.hellonayeon.backend.bbs.dto.response.BbsListResponse;
+import me.hellonayeon.backend.bbs.dto.response.BbsResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,31 +19,52 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class BbsService {
 
-	@Autowired
-	BbsDao dao;
-	
-	public List<BbsDto> getBbsList() {
-		return dao.getBbsList();
+	private final BbsDao dao;
+
+	public BbsService(BbsDao dao) {
+		this.dao = dao;
 	}
-	
-	public boolean writeBbs(BbsDto dto) {
-		int n = dao.writeBbs(dto);
-		return n>0;
+
+	public BbsListResponse getBbsList(BbsListRequest req) {
+
+		BbsListParam bbsListParam = new BbsListParam(req);
+		setBbsPageParam(bbsListParam);
+		List<Bbs> bbsList = getBbsSearchPageList(bbsListParam);
+
+		int pageCnt = getBbsCount(new BbsCountParam(req));
+
+		return new BbsListResponse(bbsList, pageCnt);
 	}
-	
-	public List<BbsDto> getBbsSearchList(BbsParam param) {
-		return dao.getBbsSearchList(param);
+
+	/* 페이지 설정 */
+	private void setBbsPageParam(BbsListParam param) {
+		int page = param.getPage() - 1;
+		int start = page * 10 + 1;
+		int end = (page + 1) * 10;
+
+		param.setPageStart(start);
+		param.setPageEnd(end);
 	}
-	
-	public List<BbsDto> getBbsSearchPageList(BbsParam param) {
+
+	/* 글 목록 */
+	private List<Bbs> getBbsSearchPageList(BbsListParam param) {
 		return dao.getBbsSearchPageList(param);
 	}
-	
-	public int getBbsCount(BbsParam param) {
+
+	/* 글의 총 개수 */
+	private Integer getBbsCount(BbsCountParam param) {
 		return dao.getBbsCount(param);
 	}
 
-	public BbsDto getBbs(Integer seq) { return dao.getBbs(seq); }
+	/* 특정 글 */
+	public BbsResponse getBbs(Integer seq) { return new BbsResponse(dao.getBbs(seq)); }
+
+
+	public CreateBbsResponse createBbs(CreateBbsRequest req) {
+		CreateBbsParam param = new CreateBbsParam(req);
+		dao.createBbs(param);
+		return new CreateBbsResponse(param.getSeq());
+	}
 }
 
 
