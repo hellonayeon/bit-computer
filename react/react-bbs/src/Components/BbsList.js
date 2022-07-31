@@ -21,7 +21,7 @@ function BbsList() {
 	const [totalCnt, setTotalCnt] = useState(0);
 
 	// Link 용 (함수) 
-	let history = useNavigate();
+	let navigate = useNavigate();
 
 
 	/* [GET /bbs]: 게시글 목록 */
@@ -52,7 +52,7 @@ function BbsList() {
 	const search = () => {
 		console.log("[BbsList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
 
-		history("/bbslist");
+		navigate("/bbslist");
 		getBbsList(choiceVal, searchVal, 1);
 	}
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function BbsDetail() {
@@ -30,6 +31,19 @@ function BbsDetail() {
 
 	return (
 		<div>
+
+			{
+				/* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
+				(sessionStorage.getItem("id") == bbs.id) ?
+				<div className="my-3 d-flex justify-content-end">
+
+					<Link className="btn btn-primary" to="/bbswrite">수정</Link> &nbsp; &nbsp;
+					<Link className="btn btn-danger" to="/bbswrite">삭제</Link>
+				</div>
+				:
+				null
+			}
+
 			<table className="table">
 				<tbody>
 					<tr>
@@ -68,6 +82,10 @@ function BbsDetail() {
 					</tr>
 				</tbody>
 			</table>
+
+			<div className="my-3 d-flex justify-content-center">
+				<Link className="btn btn-primary" to="/bbslist">글 목록</Link>
+			</div>
 		</div>
 	);
 }
