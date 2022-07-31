@@ -8,6 +8,8 @@ import "../css/page.css";
 
 function BbsList() {
 
+	sessionStorage.setItem("id", "hellonayeon");
+
 	const [bbsList, setBbsList] = useState([]);
 
 	// 검색용 Hook
@@ -25,16 +27,16 @@ function BbsList() {
 	/* [GET /bbs]: 게시글 목록 */
 	const getBbsList = async (choice, search, page) => {
 
-		await axios.get("http://localhost:3000/getBbsReactList", { params: { "choice": choice, "search": search, "page": page } })
+		await axios.get("http://localhost:3000/bbs", { params: { "choice": choice, "search": search, "page": page } })
 			.then((resp) => {
-				console.log("[BbsList.js useEffect()] success :D");
+				console.log("[BbsList.js] useEffect() success :D");
 				console.log(resp.data);
 
 				setBbsList(resp.data.bbsList);
-				setTotalCnt(resp.data.cnt);
+				setTotalCnt(resp.data.pageCnt);
 			})
 			.catch((err) => {
-				console.log("[BbsList.js useEffect()] error :<");
+				console.log("[BbsList.js] useEffect() error :<");
 				console.log(err);
 
 			});
@@ -122,14 +124,38 @@ function BbsList() {
 	);
 }
 
+/* 글 목록 테이블 행 컴포넌트 */
 function TableRow(props) {
 	return (
-		<tr>
-			<th>{props.cnt}</th>
-			<td className="underline">{props.obj.title}</td>
-			<td>{props.obj.id}</td>
-		</tr>
+		
+			<tr>
+				
+					<th>{props.cnt}</th>
+					<td className="underline">
+						{/* <Arrow></Arrow> */}
+						<Link to={{pathname: `/bbsdetail/${props.obj.seq}`}}>
+							{props.obj.title}
+						</Link>
+					</td>
+					<td>{props.obj.id}</td>
+				
+			</tr>
+		
 	);
 }
+
+// function Arrow( depth ) {
+// 	if (depth === 0) {
+// 		return null;
+// 	}
+
+// 	let tap = "\u00A0\u00A0\u00A0\u00A0";	
+// 	let taps = "";
+// 	for(let i = 0;i < depth; i++){
+// 		taps += tap;
+// 	}
+
+// 	return ( taps <img src="/images/arrow.png" width='20px' height='20px'/> );
+// }
 
 export default BbsList;

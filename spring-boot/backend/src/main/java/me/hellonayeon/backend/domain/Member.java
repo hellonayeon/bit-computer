@@ -1,6 +1,6 @@
-package me.hellonayeon.backend.bbs.dto;
+package me.hellonayeon.backend.domain;
 
-public class MemberDto {
+public class Member {
 
 	private String id;
 	private String pwd;
@@ -8,10 +8,10 @@ public class MemberDto {
 	private String email;
 	private int auth;
 	
-	public MemberDto() {
+	public Member() {
 	}
 
-	public MemberDto(String id, String pwd, String name, String email, int auth) {
+	public Member(String id, String pwd, String name, String email, int auth) {
 		super();
 		this.id = id;
 		this.pwd = pwd;

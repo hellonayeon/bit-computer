@@ -1,6 +1,6 @@
-package me.hellonayeon.backend.bbs.dto;
+package me.hellonayeon.backend.domain;
 
-public class BbsDto {
+public class Bbs {
 
 	private int seq;
 	private String id;
@@ -11,16 +11,16 @@ public class BbsDto {
 	
 	private String title;
 	private String content;
-	private String wdate;
+	private String createdAt; // 작성일
 	
 	private int del;
-	private int readcount;
+	private int readCount; // 조회수
 	
-	public BbsDto() {
+	public Bbs() {
 	}
 
-	public BbsDto(int seq, String id, int ref, int step, int depth, String title, String content, String wdate, int del,
-			int readcount) {
+	public Bbs(int seq, String id, int ref, int step, int depth, String title, String content, String createdAt, int del,
+			int readCount) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -29,12 +29,12 @@ public class BbsDto {
 		this.depth = depth;
 		this.title = title;
 		this.content = content;
-		this.wdate = wdate;
+		this.createdAt = createdAt;
 		this.del = del;
-		this.readcount = readcount;
+		this.readCount = readCount;
 	}
 
-	public BbsDto(String id, String title, String content) {
+	public Bbs(String id, String title, String content) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -97,12 +97,12 @@ public class BbsDto {
 		this.content = content;
 	}
 
-	public String getWdate() {
-		return wdate;
+	public String getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setWdate(String wdate) {
-		this.wdate = wdate;
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public int getDel() {
@@ -113,18 +113,18 @@ public class BbsDto {
 		this.del = del;
 	}
 
-	public int getReadcount() {
-		return readcount;
+	public int getReadCount() {
+		return readCount;
 	}
 
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
 	}
 
 	@Override
 	public String toString() {
 		return "BbsDto [seq=" + seq + ", id=" + id + ", ref=" + ref + ", step=" + step + ", depth=" + depth + ", title="
-				+ title + ", content=" + content + ", wdate=" + wdate + ", del=" + del + ", readcount=" + readcount
+				+ title + ", content=" + content + ", createdAt=" + createdAt + ", del=" + del + ", readCount=" + readCount
 				+ "]";
 	}
 	

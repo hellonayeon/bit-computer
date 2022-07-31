@@ -1,5 +1,7 @@
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import BbsList from "./Components/BbsList";
+import BbsDetail from "./Components/BbsDetail";
+import BbsWrite from "./Components/BbsWrite";
 
 
 function App() {
@@ -45,6 +47,7 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/bbslist" element={<BbsList />}></Route>
                 <Route path="/bbswrite" element={<BbsWrite />}></Route>
+                <Route path="/bbsdetail/:seq" element={<BbsDetail />}></Route>
               </Routes>
             </div>
           </div>
@@ -73,14 +76,6 @@ function Home() {
   return (
     <div>
       <h2>Home</h2>
-    </div>
-  );
-}
-
-function BbsWrite() {
-  return (
-    <div>
-      <h2>BbsWrite</h2>
     </div>
   );
 }
