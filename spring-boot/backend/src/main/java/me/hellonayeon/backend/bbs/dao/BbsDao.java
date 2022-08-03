@@ -2,6 +2,7 @@ package me.hellonayeon.backend.bbs.dao;
 
 import java.util.List;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsParam;
+import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
 import me.hellonayeon.backend.domain.Bbs;
 import me.hellonayeon.backend.bbs.dto.param.BbsCountParam;
 import me.hellonayeon.backend.bbs.dto.param.BbsListParam;
@@ -19,5 +20,7 @@ public interface BbsDao {
 
 	Bbs getBbs(Integer seq);
 
-	Integer createBbs(CreateBbsParam param);
+	void createBbs(CreateBbsParam param);
+
+	Integer updateBbs(UpdateBbsParam param);
 }

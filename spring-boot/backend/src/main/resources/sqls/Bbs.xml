@@ -63,6 +63,16 @@
 		VALUES (#{id}, 0, 0, 0, #{title}, #{content}, NOW(), 1, 0)
 	</insert>
 
+	<!-- 게시글 수정 -->
+	<!-- 수정 성공 시 1(수정한 레코드 개수) 을 반환, 실패 시 0 을 반환 -->
+	<update id="updateBbs" parameterType="me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam">
+
+		UPDATE bbs
+		SET content=#{content}, title=#{title}
+		WHERE seq=#{seq}
+
+	</update>
+
 </mapper>
 
 
