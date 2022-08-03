@@ -2,6 +2,8 @@ import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import BbsList from "./Components/BbsList";
 import BbsDetail from "./Components/BbsDetail";
 import BbsWrite from "./Components/BbsWrite";
+import BbsUpdate from "./Components/BbsUpdate";
+import BbsDelete from "./Components/BbsDelete";
 
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
                 <Route path="/bbslist" element={<BbsList />}></Route>
                 <Route path="/bbswrite" element={<BbsWrite />}></Route>
                 <Route path="/bbsdetail/:seq" element={<BbsDetail />}></Route>
+                <Route path="/bbsupdate" element={<BbsUpdate />}></Route>
+                {/* <Route path="/bbsdelete/:seq" element={<BbsDelete />}></Route> */}
               </Routes>
             </div>
           </div>

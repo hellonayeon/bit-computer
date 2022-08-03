@@ -29,6 +29,13 @@ function BbsDetail() {
 		getBbsDetail();
 	}, []);
 
+	const updateBbsData = {
+		seq: bbs.seq,
+		id: bbs.id,
+		title: bbs.title,
+		content: bbs.content
+	}
+
 	return (
 		<div>
 
@@ -37,8 +44,8 @@ function BbsDetail() {
 				(sessionStorage.getItem("id") == bbs.id) ?
 				<div className="my-3 d-flex justify-content-end">
 
-					<Link className="btn btn-primary" to="/bbswrite">수정</Link> &nbsp; &nbsp;
-					<Link className="btn btn-danger" to="/bbswrite">삭제</Link>
+					<Link className="btn btn-primary"  to="/bbsupdate" state={{ bbs: updateBbsData }}>수정</Link> &nbsp; &nbsp;
+					<Link className="btn btn-danger"  to={{pathname: `/bbsdelete/${seq}`}}>삭제</Link>
 				</div>
 				:
 				null
