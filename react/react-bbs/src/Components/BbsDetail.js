@@ -67,20 +67,20 @@ function BbsDetail() {
 	return (
 		<div>
 
+			<div className="my-3 d-flex justify-content-end">
+				<Link className="btn btn-primary" to={{pathname: `/bbsanswer/${bbs.seq}` }} state={{ parentBbs: parentBbs }}>답글 달기</Link> &nbsp;
+
 			{
 				/* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
 				(sessionStorage.getItem("id") == bbs.id) ?
-				<div className="my-3 d-flex justify-content-end">
-
-					<Link className="btn btn-primary"  to="/bbsupdate" state={{ bbs: updateBbs }}>수정</Link> &nbsp; &nbsp;
-					<button className="btn btn-danger"  onClick={deleteBbs}>삭제</button>
-				</div>
+					<>
+						<Link className="btn btn-primary"  to="/bbsupdate" state={{ bbs: updateBbs }}>수정</Link> &nbsp;
+						<button className="btn btn-danger"  onClick={deleteBbs}>삭제</button>
+					</>
 				:
 				null
 			}
 
-			<div className="my-3 d-flex justify-content-end">
-				<Link className="btn btn-primary" to={{pathname: `/bbsanswer/${bbs.seq}` }} state={{ parentBbs: parentBbs }}>답글 달기</Link>
 			</div>
 
 			<table className="table">
