@@ -1,8 +1,11 @@
 package me.hellonayeon.backend.bbs.service;
 
+import java.util.Date;
 import java.util.List;
 
+import java.util.Objects;
 import me.hellonayeon.backend.bbs.dao.BbsDao;
+import me.hellonayeon.backend.bbs.dto.param.CreateBbsAnswerParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsParam;
 import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
 import me.hellonayeon.backend.bbs.dto.request.CreateBbsRequest;
@@ -66,6 +69,21 @@ public class BbsService {
 	public CreateBbsResponse createBbs(CreateBbsRequest req) {
 		CreateBbsParam param = new CreateBbsParam(req);
 		dao.createBbs(param);
+		return new CreateBbsResponse(param.getSeq());
+	}
+
+	/* 답글 추가 */
+	public CreateBbsResponse createBbsAnswer(Integer parentSeq, CreateBbsRequest req) {
+		Integer updatedRecordCount = dao.updateBbsStep(parentSeq);
+		Integer bbsAnswerCount = dao.getBbsAnswerCount(parentSeq);
+		// TODO - 예외처리
+		if (!Objects.equals(updatedRecordCount, bbsAnswerCount)) {
+			System.out.println("BbsService createBbsAnswer: Fail update parent bbs step !!");
+			return null;
+		}
+
+		CreateBbsAnswerParam param = new CreateBbsAnswerParam(parentSeq, req);
+		dao.createBbsAnswer(param);
 		return new CreateBbsResponse(param.getSeq());
 	}
 

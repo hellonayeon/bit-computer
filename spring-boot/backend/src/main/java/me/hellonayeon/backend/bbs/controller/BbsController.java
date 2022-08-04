@@ -50,9 +50,16 @@ public class BbsController {
 	/* [POST] /bbs 게시글 작성 */
 	@PostMapping
 	public ResponseEntity<CreateBbsResponse> createBbs(CreateBbsRequest req) {
-		System.out.println("BbsController writeBbs " + new Date());
+		System.out.println("BbsController createBbs " + new Date());
 
 		return ResponseEntity.ok(service.createBbs(req));
+	}
+
+	@PostMapping("/{parentSeq}/answer")
+	public ResponseEntity<CreateBbsResponse> createBbsAnswer(@PathVariable Integer parentSeq, @RequestBody CreateBbsRequest req) {
+		System.out.println("BbsController createBbsAnswer " + new Date());
+
+		return ResponseEntity.ok(service.createBbsAnswer(parentSeq, req));
 	}
 
 	/* [PATCH] /bbs/{seq} 게시글 수정  */
