@@ -45,12 +45,12 @@ public class BbsController {
 		return ResponseEntity.ok(service.getBbsList(req));
 	}
 
-	/* [GET /bbs/{seq}] 게시글 상세 API */
+	/* [GET /bbs/{seq}?readerId={id}] 게시글 상세 API */
 	@GetMapping("/{seq}")
-	public ResponseEntity<BbsResponse> getBbs(@PathVariable  Integer seq) {
+	public ResponseEntity<BbsResponse> getBbs(@PathVariable  Integer seq, @RequestParam String readerId) {
 		System.out.println("BbsController getBbs() " + new Date());
 
-		return ResponseEntity.ok(service.getBbs(seq));
+		return ResponseEntity.ok(service.getBbs(seq, readerId));
 	}
 
 	/* [POST] /bbs 게시글 작성 */
@@ -103,7 +103,6 @@ public class BbsController {
 
 		return ResponseEntity.ok(service.createComment(seq, req));
 	}
-
 }
 
 

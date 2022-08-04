@@ -10,6 +10,7 @@ import me.hellonayeon.backend.bbs.dto.param.CreateBbsAnswerParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateCommentParam;
 import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
+import me.hellonayeon.backend.bbs.dto.param.CreateReadCountParam;
 import me.hellonayeon.backend.bbs.dto.request.CommentRequest;
 import me.hellonayeon.backend.bbs.dto.request.CreateBbsRequest;
 import me.hellonayeon.backend.bbs.dto.request.CreateCommentRequest;
@@ -38,28 +39,28 @@ public class BbsService {
 		this.dao = dao;
 	}
 
+	/* 게시글 조회 */
 	public BbsListResponse getBbsList(BbsListRequest req) {
 		BbsListParam param = new BbsListParam(req);
 		param.setPageParam(req.getPage(), 10);
 
-		List<Bbs> bbsList = getBbsSearchPageList(param);
-		int pageCnt = getBbsCount(new BbsCountParam(req));
+		List<Bbs> bbsList = dao.getBbsSearchPageList(param);
+		int pageCnt = dao.getBbsCount(new BbsCountParam(req));
 
 		return new BbsListResponse(bbsList, pageCnt);
 	}
 
-	/* 글 목록 */
-	private List<Bbs> getBbsSearchPageList(BbsListParam param) {
-		return dao.getBbsSearchPageList(param);
-	}
-
-	/* 글의 총 개수 */
-	private Integer getBbsCount(BbsCountParam param) {
-		return dao.getBbsCount(param);
-	}
-
 	/* 특정 글 */
-	public BbsResponse getBbs(Integer seq) { return new BbsResponse(dao.getBbs(seq)); }
+	/* 조회수 수정 */
+	public BbsResponse getBbs(Integer seq, String readerId) {
+		CreateReadCountParam param = new CreateReadCountParam(seq, readerId);
+		Integer result = dao.createBbsReadCount(param); // 조회수 히스토리 처리 (insert: 1, update: 2)
+		if (result == 1) {
+			Integer updatedRecordCount = dao.increaseBbsReadCount(seq); // 조회수 증가
+		}
+
+		return new BbsResponse(dao.getBbs(seq));
+	}
 
 	/* 글 추가 */
 	public CreateBbsResponse createBbs(CreateBbsRequest req) {

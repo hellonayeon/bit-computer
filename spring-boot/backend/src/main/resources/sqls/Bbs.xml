@@ -56,9 +56,23 @@
 		ORDER BY ref DESC, step ASC
 	</select>
 
+	<!-- 게시글 조회수 레코드 생성 -->
+	<insert id="createBbsReadCount" parameterType="me.hellonayeon.backend.bbs.dto.param.CreateReadCountParam">
+		INSERT INTO read_history (bbs_seq, id, latest_access_at) VALUES (#{bbsSeq}, #{readerId}, NOW())
+		ON DUPLICATE KEY
+		UPDATE latest_access_at=NOW();
+	</insert>
+
+	<!-- 게시글 조회수 수정 -->
+	<update id="increaseBbsReadCount" parameterType="Integer">
+		UPDATE bbs
+		SET read_count = read_count + 1
+		WHERE seq = #{seq}
+	</update>
+
 	<!-- 게시글 작성 -->
 	<insert id="createBbs" parameterType="me.hellonayeon.backend.bbs.dto.param.CreateBbsParam"
-					useGeneratedKeys="true" keyProperty="seq">
+					useGeneratedKeys="true" keyProperty="insertOrUpdateResult">
 		INSERT bbs (id, ref, step, depth, title, content, created_at, del, read_count)
 		VALUES (#{id}, 0, 0, 0, #{title}, #{content}, NOW(), 0, 0)
 	</insert>
