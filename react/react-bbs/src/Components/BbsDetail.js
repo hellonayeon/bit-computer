@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CommentWrite from "./CommentWrite";
 import CommentList from "./CommentList";
@@ -11,17 +11,38 @@ function BbsDetail() {
 	const [bbs, setBbs] = useState({});
 	const { seq } = useParams(); // 파라미터 가져오기
 
+	const navigate = useNavigate();
+
 	const getBbsDetail = async () => {
 
 		await axios.get(`http://localhost:3000/bbs/${seq}`)
 		.then((resp) => {
-			console.log("[BbsDetail.js] useEffect() success :D");
+			console.log("[BbsDetail.js] getBbsDetail() success :D");
 			console.log(resp.data);
 
 			setBbs(resp.data.bbs);
 		})
 		.catch((err) => {
-			console.log("[BbsDetail.js] useEffect() error :<");
+			console.log("[BbsDetail.js] getBbsDetail() error :<");
+			console.log(err);
+		});
+
+	}
+
+	const deleteBbs = async () => {
+
+		await axios.delete(`http://localhost:3000/bbs/${seq}`)
+		.then((resp) => {
+			console.log("[BbsDetail.js] deleteBbs() success :D");
+			console.log(resp.data);
+
+			if (resp.data.deletedRecordCount == 1) {
+				alert("게시글을 성공적으로 삭제했습니다 :D");
+				navigate("/bbslist");
+			}
+
+		}).catch((err) => {
+			console.log("[BbsDetail.js] deleteBbs() error :<");
 			console.log(err);
 		});
 
@@ -52,7 +73,7 @@ function BbsDetail() {
 				<div className="my-3 d-flex justify-content-end">
 
 					<Link className="btn btn-primary"  to="/bbsupdate" state={{ bbs: updateBbs }}>수정</Link> &nbsp; &nbsp;
-					<Link className="btn btn-danger"  to={{pathname: `/bbsdelete/${seq}`}}>삭제</Link>
+					<button className="btn btn-danger"  onClick={deleteBbs}>삭제</button>
 				</div>
 				:
 				null

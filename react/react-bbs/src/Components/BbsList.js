@@ -130,13 +130,30 @@ function TableRow(props) {
 			<tr>
 				
 					<th>{props.cnt}</th>
-					<td >
-						<Arrow depth={bbs.depth}></Arrow> &nbsp; { /* 답글 화살표 */ }
-						<Link to={{pathname: `/bbsdetail/${bbs.seq}`}}> { /* 게시글 상세 링크 */ }
-							<span className="underline" >{bbs.title} </span> { /* 게시글 제목 */ }
-						</Link>
-					</td>
-					<td>{bbs.id}</td>
+					{
+						(bbs.del == 0) ?
+						// 삭제되지 않은 게시글
+						<>
+							<td >
+								<Arrow depth={bbs.depth}></Arrow> &nbsp; { /* 답글 화살표 */}
+
+								<Link to={{ pathname: `/bbsdetail/${bbs.seq}` }}> { /* 게시글 상세 링크 */}
+									<span className="underline" >{bbs.title} </span> { /* 게시글 제목 */}
+								</Link>
+							</td>
+							<td>{bbs.id}</td>
+						</>
+						:
+						// 삭제된 게시글
+						<>
+							<td>
+								<Arrow depth={bbs.depth}></Arrow> &nbsp; { /* 답글 화살표 */}
+
+								<span>⚠️ 이 글은 작성자에 의해 삭제됐습니다.</span>
+							</td>
+						</>	
+					}
+					
 				
 			</tr>
 		

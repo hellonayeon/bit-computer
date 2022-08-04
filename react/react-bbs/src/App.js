@@ -3,12 +3,11 @@ import BbsList from "./Components/BbsList";
 import BbsDetail from "./Components/BbsDetail";
 import BbsWrite from "./Components/BbsWrite";
 import BbsUpdate from "./Components/BbsUpdate";
-import BbsDelete from "./Components/BbsDelete";
 import BbsAnswer from "./Components/BbsAnswer";
 
 
 function App() {
-	sessionStorage.setItem("id", "hellonayeon");
+	sessionStorage.setItem("id", "nayeon");
 
   return (
     <div>
@@ -55,7 +54,6 @@ function App() {
                 <Route path="/bbsdetail/:seq" element={<BbsDetail />}></Route>
                 <Route path="/bbsupdate" element={<BbsUpdate />}></Route>
                 <Route path="/bbsanswer/:parentSeq" element={<BbsAnswer />}></Route>
-                {/* <Route path="/bbsdelete/:seq" element={<BbsDelete />}></Route> */}
               </Routes>
             </div>
           </div>
