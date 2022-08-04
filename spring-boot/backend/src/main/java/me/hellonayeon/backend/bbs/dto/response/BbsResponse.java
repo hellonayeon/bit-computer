@@ -1,6 +1,6 @@
 package me.hellonayeon.backend.bbs.dto.response;
 
-import me.hellonayeon.backend.domain.Bbs;
+import me.hellonayeon.backend.bbs.domain.Bbs;
 
 public class BbsResponse {
 

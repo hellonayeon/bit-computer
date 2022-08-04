@@ -1,7 +1,7 @@
 package me.hellonayeon.backend.bbs.dto.response;
 
 import java.util.List;
-import me.hellonayeon.backend.domain.Bbs;
+import me.hellonayeon.backend.bbs.domain.Bbs;
 
 public class BbsListResponse {
 

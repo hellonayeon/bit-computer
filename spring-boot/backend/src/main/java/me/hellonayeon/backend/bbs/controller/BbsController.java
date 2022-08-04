@@ -1,13 +1,16 @@
 package me.hellonayeon.backend.bbs.controller;
 
 import java.util.Date;
-import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
+import me.hellonayeon.backend.bbs.dto.request.CommentRequest;
 import me.hellonayeon.backend.bbs.dto.request.BbsListRequest;
 import me.hellonayeon.backend.bbs.dto.request.CreateBbsRequest;
+import me.hellonayeon.backend.bbs.dto.request.CreateCommentRequest;
 import me.hellonayeon.backend.bbs.dto.request.UpdateBbsRequest;
+import me.hellonayeon.backend.bbs.dto.response.CommentResponse;
 import me.hellonayeon.backend.bbs.dto.response.BbsListResponse;
 import me.hellonayeon.backend.bbs.dto.response.BbsResponse;
 import me.hellonayeon.backend.bbs.dto.response.CreateBbsResponse;
+import me.hellonayeon.backend.bbs.dto.response.CreateCommentResponse;
 import me.hellonayeon.backend.bbs.dto.response.UpdateBbsResponse;
 import me.hellonayeon.backend.bbs.service.BbsService;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -55,6 +59,7 @@ public class BbsController {
 		return ResponseEntity.ok(service.createBbs(req));
 	}
 
+	/* [POST] /bbs/{parentSeq}/answer 게시글 답글 작성  */
 	@PostMapping("/{parentSeq}/answer")
 	public ResponseEntity<CreateBbsResponse> createBbsAnswer(@PathVariable Integer parentSeq, @RequestBody CreateBbsRequest req) {
 		System.out.println("BbsController createBbsAnswer " + new Date());
@@ -69,6 +74,24 @@ public class BbsController {
 		System.out.println("BbsController updateBbs " + new Date());
 
 		return ResponseEntity.ok(service.updateBbs(seq, req));
+	}
+
+	/* [GET] /bbs/{seq}/comment 댓글 조회 */
+	@GetMapping("/{seq}/comment")
+	public ResponseEntity<CommentResponse> getBbsCommentList(@PathVariable Integer seq,
+																@ModelAttribute CommentRequest req) {
+		System.out.println("BbsController getBbsCommentList " + new Date());
+
+		return ResponseEntity.ok(service.getBbsCommentList(seq, req));
+	}
+
+	/* [POST] /bbs/{seq}/comment 댓글 작성 */
+	@PostMapping("/{seq}/comment")
+	public ResponseEntity<CreateCommentResponse> createComment(@PathVariable Integer seq,
+																@RequestBody CreateCommentRequest req) {
+		System.out.println("BbsController createComment " + new Date());
+
+		return ResponseEntity.ok(service.createComment(seq, req));
 	}
 
 }

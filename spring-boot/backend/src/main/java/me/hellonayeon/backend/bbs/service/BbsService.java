@@ -1,18 +1,24 @@
 package me.hellonayeon.backend.bbs.service;
 
-import java.util.Date;
 import java.util.List;
 
 import java.util.Objects;
 import me.hellonayeon.backend.bbs.dao.BbsDao;
+import me.hellonayeon.backend.bbs.domain.Comment;
+import me.hellonayeon.backend.bbs.dto.param.CommentListParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsAnswerParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsParam;
+import me.hellonayeon.backend.bbs.dto.param.CreateCommentParam;
 import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
+import me.hellonayeon.backend.bbs.dto.request.CommentRequest;
 import me.hellonayeon.backend.bbs.dto.request.CreateBbsRequest;
+import me.hellonayeon.backend.bbs.dto.request.CreateCommentRequest;
 import me.hellonayeon.backend.bbs.dto.request.UpdateBbsRequest;
+import me.hellonayeon.backend.bbs.dto.response.CommentResponse;
 import me.hellonayeon.backend.bbs.dto.response.CreateBbsResponse;
+import me.hellonayeon.backend.bbs.dto.response.CreateCommentResponse;
 import me.hellonayeon.backend.bbs.dto.response.UpdateBbsResponse;
-import me.hellonayeon.backend.domain.Bbs;
+import me.hellonayeon.backend.bbs.domain.Bbs;
 import me.hellonayeon.backend.bbs.dto.param.BbsCountParam;
 import me.hellonayeon.backend.bbs.dto.param.BbsListParam;
 import me.hellonayeon.backend.bbs.dto.request.BbsListRequest;
@@ -32,24 +38,13 @@ public class BbsService {
 	}
 
 	public BbsListResponse getBbsList(BbsListRequest req) {
+		BbsListParam param = new BbsListParam(req);
+		param.setPageParam(req.getPage(), 10);
 
-		BbsListParam bbsListParam = new BbsListParam(req);
-		setBbsPageParam(bbsListParam);
-		List<Bbs> bbsList = getBbsSearchPageList(bbsListParam);
-
+		List<Bbs> bbsList = getBbsSearchPageList(param);
 		int pageCnt = getBbsCount(new BbsCountParam(req));
 
 		return new BbsListResponse(bbsList, pageCnt);
-	}
-
-	/* 페이지 설정 */
-	private void setBbsPageParam(BbsListParam param) {
-		int page = param.getPage() - 1;
-		int start = page * 10 + 1;
-		int end = (page + 1) * 10;
-
-		param.setPageStart(start);
-		param.setPageEnd(end);
 	}
 
 	/* 글 목록 */
@@ -91,6 +86,24 @@ public class BbsService {
 	public UpdateBbsResponse updateBbs(Integer seq, UpdateBbsRequest req) {
 		Integer updatedRecordCount = dao.updateBbs(new UpdateBbsParam(seq, req));
 		return new UpdateBbsResponse(updatedRecordCount);
+	}
+
+	/* 댓글 조회 */
+	public CommentResponse getBbsCommentList(Integer seq, CommentRequest req) {
+		CommentListParam param = new CommentListParam(seq);
+		param.setPageParam(req.getPage(), 5);
+
+		List<Comment> commentList = dao.getCommentPageList(param);
+		Integer pageCnt = dao.getCommentCount(seq);
+
+		return new CommentResponse(commentList, pageCnt);
+	}
+
+	/* 댓글 작성 */
+	public CreateCommentResponse createComment(Integer seq, CreateCommentRequest req) {
+		CreateCommentParam param = new CreateCommentParam(seq, req);
+		dao.createComment(param);
+		return new CreateCommentResponse(param.getSeq());
 	}
 }
 
