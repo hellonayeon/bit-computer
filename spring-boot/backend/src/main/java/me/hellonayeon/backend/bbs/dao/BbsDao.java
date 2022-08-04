@@ -2,13 +2,13 @@ package me.hellonayeon.backend.bbs.dao;
 
 import java.util.List;
 import me.hellonayeon.backend.bbs.domain.Bbs;
-import me.hellonayeon.backend.bbs.domain.Comment;
+import me.hellonayeon.backend.comment.domain.Comment;
 import me.hellonayeon.backend.bbs.dto.param.BbsCountParam;
 import me.hellonayeon.backend.bbs.dto.param.BbsListParam;
-import me.hellonayeon.backend.bbs.dto.param.CommentListParam;
+import me.hellonayeon.backend.comment.dto.param.CommentListParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsAnswerParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsParam;
-import me.hellonayeon.backend.bbs.dto.param.CreateCommentParam;
+import me.hellonayeon.backend.comment.dto.param.CreateCommentParam;
 import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateReadCountParam;
 import org.apache.ibatis.annotations.Mapper;
@@ -36,10 +36,4 @@ public interface BbsDao {
 	Integer updateBbs(UpdateBbsParam param);
 
 	Integer deleteBbs(Integer seq);
-
-	List<Comment> getCommentPageList(CommentListParam param);
-	Integer getCommentCount(Integer seq);
-
-	void createComment(CreateCommentParam param);
-	Integer deleteComment(Integer seq);
 }

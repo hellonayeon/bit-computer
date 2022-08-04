@@ -1,7 +1,7 @@
-package me.hellonayeon.backend.bbs.service;
+package me.hellonayeon.backend.member.service;
 
-import me.hellonayeon.backend.bbs.dao.MemberDao;
-import me.hellonayeon.backend.bbs.domain.Member;
+import me.hellonayeon.backend.member.dao.MemberDao;
+import me.hellonayeon.backend.member.domain.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

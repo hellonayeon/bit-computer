@@ -1,6 +1,8 @@
-package me.hellonayeon.backend.bbs.dto.param;
+package me.hellonayeon.backend.comment.dto.param;
 
-public class CommentListParam extends PageParam{
+import me.hellonayeon.backend.bbs.dto.param.PageParam;
+
+public class CommentListParam extends PageParam {
 
     private Integer bbsSeq; // 게시글 번호
 

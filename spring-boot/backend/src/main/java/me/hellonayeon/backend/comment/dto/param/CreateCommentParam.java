@@ -1,4 +1,4 @@
-package me.hellonayeon.backend.bbs.dto.param;
+package me.hellonayeon.backend.comment.dto.param;
 
 import me.hellonayeon.backend.bbs.dto.request.CreateCommentRequest;
 

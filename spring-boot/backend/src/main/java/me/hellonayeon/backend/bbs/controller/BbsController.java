@@ -1,13 +1,13 @@
 package me.hellonayeon.backend.bbs.controller;
 
 import java.util.Date;
-import me.hellonayeon.backend.bbs.dto.param.DeleteCommentResponse;
-import me.hellonayeon.backend.bbs.dto.request.CommentRequest;
+import me.hellonayeon.backend.comment.dto.response.DeleteCommentResponse;
+import me.hellonayeon.backend.comment.dto.request.CommentRequest;
 import me.hellonayeon.backend.bbs.dto.request.BbsListRequest;
 import me.hellonayeon.backend.bbs.dto.request.CreateBbsRequest;
 import me.hellonayeon.backend.bbs.dto.request.CreateCommentRequest;
 import me.hellonayeon.backend.bbs.dto.request.UpdateBbsRequest;
-import me.hellonayeon.backend.bbs.dto.response.CommentResponse;
+import me.hellonayeon.backend.comment.dto.response.CommentResponse;
 import me.hellonayeon.backend.bbs.dto.response.BbsListResponse;
 import me.hellonayeon.backend.bbs.dto.response.BbsResponse;
 import me.hellonayeon.backend.bbs.dto.response.CreateBbsResponse;
@@ -79,38 +79,12 @@ public class BbsController {
 		return ResponseEntity.ok(service.updateBbs(seq, req));
 	}
 
+	/* [DELETE] /bbs/{seq} 게시글 삭제  */
 	@DeleteMapping("/{seq}")
 	public ResponseEntity<DeleteBbsResponse> deleteBbs(@PathVariable Integer seq) {
 		System.out.println("BbsController deleteBbs " + new Date());
 
 		return ResponseEntity.ok(service.deleteBbs(seq));
-	}
-
-
-	/* [GET] /bbs/{seq}/comment 댓글 조회 */
-	@GetMapping("/{seq}/comment")
-	public ResponseEntity<CommentResponse> getBbsCommentList(@PathVariable Integer seq,
-																@ModelAttribute CommentRequest req) {
-		System.out.println("BbsController getBbsCommentList " + new Date());
-
-		return ResponseEntity.ok(service.getBbsCommentList(seq, req));
-	}
-
-	/* [POST] /bbs/{seq}/comment 댓글 작성 */
-	@PostMapping("/{seq}/comment")
-	public ResponseEntity<CreateCommentResponse> createComment(@PathVariable Integer seq,
-																@RequestBody CreateCommentRequest req) {
-		System.out.println("BbsController createComment " + new Date());
-
-		return ResponseEntity.ok(service.createComment(seq, req));
-	}
-
-	/* [DELETE] /bbs/comment/{seq} 댓글 삭제 */
-	@DeleteMapping("/comment/{seq}")
-	public ResponseEntity<DeleteCommentResponse> deleteComment(@PathVariable Integer seq) {
-		System.out.println("BbsController deleteComment " + new Date());
-
-		return ResponseEntity.ok(service.deleteComment(seq));
 	}
 }
 

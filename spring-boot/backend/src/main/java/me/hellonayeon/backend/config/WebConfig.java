@@ -1,4 +1,4 @@
-package me.hellonayeon.backend.bbs.config;
+package me.hellonayeon.backend.config;
 
 
 import org.springframework.context.annotation.Configuration;

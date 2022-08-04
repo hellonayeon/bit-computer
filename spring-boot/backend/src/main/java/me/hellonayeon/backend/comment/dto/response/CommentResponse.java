@@ -1,8 +1,7 @@
-package me.hellonayeon.backend.bbs.dto.response;
+package me.hellonayeon.backend.comment.dto.response;
 
 import java.util.List;
-import me.hellonayeon.backend.bbs.domain.Comment;
-import me.hellonayeon.backend.bbs.dto.request.CommentRequest;
+import me.hellonayeon.backend.comment.domain.Comment;
 
 public class CommentResponse {
 

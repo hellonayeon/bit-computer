@@ -1,10 +1,10 @@
-package me.hellonayeon.backend.bbs.controller;
+package me.hellonayeon.backend.member.controller;
 
 import java.util.Date;
 
 
-import me.hellonayeon.backend.bbs.domain.Member;
-import me.hellonayeon.backend.bbs.service.MemberService;
+import me.hellonayeon.backend.member.domain.Member;
+import me.hellonayeon.backend.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

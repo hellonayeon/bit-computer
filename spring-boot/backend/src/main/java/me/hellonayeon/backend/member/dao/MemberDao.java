@@ -1,6 +1,6 @@
-package me.hellonayeon.backend.bbs.dao;
+package me.hellonayeon.backend.member.dao;
 
-import me.hellonayeon.backend.bbs.domain.Member;
+import me.hellonayeon.backend.member.domain.Member;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

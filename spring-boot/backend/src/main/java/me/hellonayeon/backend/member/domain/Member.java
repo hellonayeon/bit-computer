@@ -1,4 +1,4 @@
-package me.hellonayeon.backend.bbs.domain;
+package me.hellonayeon.backend.member.domain;
 
 public class Member {
 

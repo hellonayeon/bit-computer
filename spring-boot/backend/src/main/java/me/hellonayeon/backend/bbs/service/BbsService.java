@@ -1,32 +1,23 @@
 package me.hellonayeon.backend.bbs.service;
 
 import java.util.List;
-
 import java.util.Objects;
 import me.hellonayeon.backend.bbs.dao.BbsDao;
-import me.hellonayeon.backend.bbs.domain.Comment;
-import me.hellonayeon.backend.bbs.dto.param.CommentListParam;
-import me.hellonayeon.backend.bbs.dto.param.CreateBbsAnswerParam;
-import me.hellonayeon.backend.bbs.dto.param.CreateBbsParam;
-import me.hellonayeon.backend.bbs.dto.param.CreateCommentParam;
-import me.hellonayeon.backend.bbs.dto.param.DeleteCommentResponse;
-import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
-import me.hellonayeon.backend.bbs.dto.param.CreateReadCountParam;
-import me.hellonayeon.backend.bbs.dto.request.CommentRequest;
-import me.hellonayeon.backend.bbs.dto.request.CreateBbsRequest;
-import me.hellonayeon.backend.bbs.dto.request.CreateCommentRequest;
-import me.hellonayeon.backend.bbs.dto.request.UpdateBbsRequest;
-import me.hellonayeon.backend.bbs.dto.response.CommentResponse;
-import me.hellonayeon.backend.bbs.dto.response.CreateBbsResponse;
-import me.hellonayeon.backend.bbs.dto.response.CreateCommentResponse;
-import me.hellonayeon.backend.bbs.dto.response.DeleteBbsResponse;
-import me.hellonayeon.backend.bbs.dto.response.UpdateBbsResponse;
 import me.hellonayeon.backend.bbs.domain.Bbs;
 import me.hellonayeon.backend.bbs.dto.param.BbsCountParam;
 import me.hellonayeon.backend.bbs.dto.param.BbsListParam;
+import me.hellonayeon.backend.bbs.dto.param.CreateBbsAnswerParam;
+import me.hellonayeon.backend.bbs.dto.param.CreateBbsParam;
+import me.hellonayeon.backend.bbs.dto.param.CreateReadCountParam;
+import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
 import me.hellonayeon.backend.bbs.dto.request.BbsListRequest;
+import me.hellonayeon.backend.bbs.dto.request.CreateBbsRequest;
+import me.hellonayeon.backend.bbs.dto.request.UpdateBbsRequest;
 import me.hellonayeon.backend.bbs.dto.response.BbsListResponse;
 import me.hellonayeon.backend.bbs.dto.response.BbsResponse;
+import me.hellonayeon.backend.bbs.dto.response.CreateBbsResponse;
+import me.hellonayeon.backend.bbs.dto.response.DeleteBbsResponse;
+import me.hellonayeon.backend.bbs.dto.response.UpdateBbsResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -95,30 +86,6 @@ public class BbsService {
 	public DeleteBbsResponse deleteBbs(Integer seq) {
 		Integer deletedRecordCount = dao.deleteBbs(seq);
 		return new DeleteBbsResponse(deletedRecordCount);
-	}
-
-	/* 댓글 조회 */
-	public CommentResponse getBbsCommentList(Integer seq, CommentRequest req) {
-		CommentListParam param = new CommentListParam(seq);
-		param.setPageParam(req.getPage(), 5);
-
-		List<Comment> commentList = dao.getCommentPageList(param);
-		Integer pageCnt = dao.getCommentCount(seq);
-
-		return new CommentResponse(commentList, pageCnt);
-	}
-
-	/* 댓글 작성 */
-	public CreateCommentResponse createComment(Integer seq, CreateCommentRequest req) {
-		CreateCommentParam param = new CreateCommentParam(seq, req);
-		dao.createComment(param);
-		return new CreateCommentResponse(param.getSeq());
-	}
-
-	/* 댓글 삭제 */
-	public DeleteCommentResponse deleteComment(Integer seq) {
-		Integer deletedRecordCount = dao.deleteComment(seq);
-		return new DeleteCommentResponse(deletedRecordCount);
 	}
 }
 
