@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CommentWrite from "./CommentWrite";
 import CommentList from "./CommentList";
 
@@ -15,7 +15,7 @@ function BbsDetail() {
 
 	const getBbsDetail = async () => {
 
-		await axios.get(`http://localhost:3000/bbs/${seq}`)
+		await axios.get(`http://localhost:3000/bbs/${seq}`, {params: {readerId: sessionStorage.getItem("id")}})
 		.then((resp) => {
 			console.log("[BbsDetail.js] getBbsDetail() success :D");
 			console.log(resp.data);
