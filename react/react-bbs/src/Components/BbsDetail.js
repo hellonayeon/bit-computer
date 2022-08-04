@@ -29,11 +29,16 @@ function BbsDetail() {
 		getBbsDetail();
 	}, []);
 
-	const updateBbsData = {
+	const updateBbs = {
 		seq: bbs.seq,
 		id: bbs.id,
 		title: bbs.title,
 		content: bbs.content
+	}
+
+	const parentBbs = {
+		id: bbs.id,
+		title: bbs.title
 	}
 
 	return (
@@ -44,7 +49,7 @@ function BbsDetail() {
 				(sessionStorage.getItem("id") == bbs.id) ?
 				<div className="my-3 d-flex justify-content-end">
 
-					<Link className="btn btn-primary"  to="/bbsupdate" state={{ bbs: updateBbsData }}>수정</Link> &nbsp; &nbsp;
+					<Link className="btn btn-primary"  to="/bbsupdate" state={{ bbs: updateBbs }}>수정</Link> &nbsp; &nbsp;
 					<Link className="btn btn-danger"  to={{pathname: `/bbsdelete/${seq}`}}>삭제</Link>
 				</div>
 				:
@@ -89,6 +94,10 @@ function BbsDetail() {
 					</tr>
 				</tbody>
 			</table>
+
+			<div className="my-3 d-flex justify-content-center">
+				<Link className="btn btn-primary" to={{pathname: `/bbsanswer/${bbs.seq}` }} state={{ parentBbs: parentBbs }}>답글 달기</Link>
+			</div>
 
 			<div className="my-3 d-flex justify-content-center">
 				<Link className="btn btn-primary" to="/bbslist">글 목록</Link>
