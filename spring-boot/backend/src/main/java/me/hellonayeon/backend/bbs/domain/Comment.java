@@ -7,6 +7,7 @@ public class Comment {
     private String content; // 댓글 내용
     private Integer bbsSeq; // 게시글 번호
     private String createdAt; // 댓글 생성 일자
+    private Integer del; // 삭제 여부
 
     public Integer getSeq() {
         return seq;
@@ -46,5 +47,13 @@ public class Comment {
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Integer getDel() {
+        return del;
+    }
+
+    public void setDel(Integer del) {
+        this.del = del;
     }
 }

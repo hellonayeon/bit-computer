@@ -1,6 +1,7 @@
 package me.hellonayeon.backend.bbs.controller;
 
 import java.util.Date;
+import me.hellonayeon.backend.bbs.dto.param.DeleteCommentResponse;
 import me.hellonayeon.backend.bbs.dto.request.CommentRequest;
 import me.hellonayeon.backend.bbs.dto.request.BbsListRequest;
 import me.hellonayeon.backend.bbs.dto.request.CreateBbsRequest;
@@ -102,6 +103,14 @@ public class BbsController {
 		System.out.println("BbsController createComment " + new Date());
 
 		return ResponseEntity.ok(service.createComment(seq, req));
+	}
+
+	/* [DELETE] /bbs/comment/{seq} 댓글 삭제 */
+	@DeleteMapping("/comment/{seq}")
+	public ResponseEntity<DeleteCommentResponse> deleteComment(@PathVariable Integer seq) {
+		System.out.println("BbsController deleteComment " + new Date());
+
+		return ResponseEntity.ok(service.deleteComment(seq));
 	}
 }
 

@@ -9,6 +9,7 @@ import me.hellonayeon.backend.bbs.dto.param.CommentListParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsAnswerParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateCommentParam;
+import me.hellonayeon.backend.bbs.dto.param.DeleteCommentResponse;
 import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateReadCountParam;
 import me.hellonayeon.backend.bbs.dto.request.CommentRequest;
@@ -112,6 +113,12 @@ public class BbsService {
 		CreateCommentParam param = new CreateCommentParam(seq, req);
 		dao.createComment(param);
 		return new CreateCommentResponse(param.getSeq());
+	}
+
+	/* 댓글 삭제 */
+	public DeleteCommentResponse deleteComment(Integer seq) {
+		Integer deletedRecordCount = dao.deleteComment(seq);
+		return new DeleteCommentResponse(deletedRecordCount);
 	}
 }
 

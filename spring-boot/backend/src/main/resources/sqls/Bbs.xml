@@ -124,9 +124,9 @@
 	<select id="getCommentPageList" parameterType="me.hellonayeon.backend.bbs.dto.param.CommentListParam"
 					resultType="me.hellonayeon.backend.bbs.domain.Comment">
 
-		SELECT seq, id, content, bbs_seq bbsSeq, created_at createdAt
+		SELECT seq, id, content, bbs_seq bbsSeq, created_at createdAt, del
 		FROM (
-		    SELECT row_number() OVER(ORDER BY created_at DESC) AS rnum, seq, id, content, bbs_seq, created_at
+		    SELECT row_number() OVER(ORDER BY created_at DESC) AS rnum, seq, id, content, bbs_seq, created_at, del
 		    FROM comment
 				WHERE bbs_seq=#{bbsSeq}) a
 		WHERE rnum BETWEEN ${pageStart} AND ${pageEnd}
@@ -147,6 +147,13 @@
 		INSERT INTO comment (id, content, bbs_seq, created_at)
 		VALUES (#{id}, #{content}, #{bbsSeq}, NOW())
 	</insert>
+
+	<!-- 댓글 삭제 -->
+	<update id="deleteComment" parameterType="Integer">
+		UPDATE comment
+		SET del = 1
+		WHERE seq = #{seq}
+	</update>
 
 </mapper>
 

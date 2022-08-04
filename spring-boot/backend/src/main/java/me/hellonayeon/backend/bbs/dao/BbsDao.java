@@ -41,4 +41,5 @@ public interface BbsDao {
 	Integer getCommentCount(Integer seq);
 
 	void createComment(CreateCommentParam param);
+	Integer deleteComment(Integer seq);
 }
