@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"
 import Pagination from "react-js-pagination";
 
 function CommentList(props) {
@@ -33,7 +34,6 @@ function CommentList(props) {
 			});
 	}
 
-
 	useEffect(() => {
 		getCommentList(1);
 	}, []);
@@ -41,13 +41,9 @@ function CommentList(props) {
 	return (
 		<>
 
-			{
-				commentList.map(function (comment, idx) {
-					return (
-						<CommentDiv obj={comment} key={idx} />
-					);
-				})
-			}
+			<div className="my-1 d-flex justify-content-center">
+				<h5>📖 댓글 페이지 📖</h5>
+			</div>
 
 			<Pagination
 				activePage={page}
@@ -57,6 +53,13 @@ function CommentList(props) {
 				prevPageText={"‹"}
 				nextPageText={"›"}
 				onChange={changePage} />
+			{
+				commentList.map(function (comment, idx) {
+					return (
+						<CommentDiv obj={comment} key={idx} />
+					);
+				})
+			}
 
 		</>
 
@@ -67,43 +70,75 @@ function CommentList(props) {
 function CommentDiv(props) {
 	const comment = props.obj;
 
-	return (
-		<>
-			
-			{/* 상단 영역 (프로필 이미지, 댓글 작성자, 댓글 작성시간) */}
-			<div className="my-1 d-flex justify-content-center">
-				<div className="col-1">
-					<img src="/images/profile-placeholder.png" alt="프로필 이미지"
-						className="profile-img" />
-				</div>
-				<div className="col-5">
-					<div className="row">
-						<span>{comment.id}</span>
-					</div>
-					<div className="row">
-						<span>{comment.createdAt}</span>
-					</div>
-				</div>
+	const navigate = useNavigate();
 
-				{
-					/* 자신이 작성한 댓글인 경우에만 수정 삭제 가능 */
-					(sessionStorage.getItem("id") == comment.id) ?
-						<div className="col-4 d-flex justify-content-end">
-							<button className="btn btn-primary">수정</button> &nbsp;
-							<button className="btn btn-danger">삭제</button>
-						</div>
-						:
-						null
+	/* 댓글 삭제 */
+	const deleteComment = async () => {
+		await axios.delete(`http://localhost:3000/bbs/comment/${comment.seq}`)
+			.then((resp) => {
+				console.log("[BbsComment.js] deleteComment() success :D");
+				console.log(resp.data);
+
+				if (resp.data.deletedRecordCount == 1) {
+					alert("답글을 성공적으로 삭제했습니다 :D");
+					navigate(0);
 				}
-			</div>
+			}).catch((err) => {
+				console.log("[BbsComment.js] deleteComment() error :<");
+				console.log(err);
+			});
+	}
 
-			{/* 하단 영역 (댓글 내용) */}
-			<div className="my-1 d-flex justify-content-center">
-				<textarea className="col-10" rows="5" value={comment.content || ""} readOnly></textarea>
-			</div>
 
-		</>
-	);
+	// 삭제되지 않은 댓글의 경우
+	if (comment.del == 0) {
+		return (
+			<>
+				{/* 상단 영역 (프로필 이미지, 댓글 작성자, 댓글 작성시간) */}
+				<div className="my-1 d-flex justify-content-center">
+					<div className="col-1">
+						<img src="/images/profile-placeholder.png" alt="프로필 이미지"
+							className="profile-img" />
+					</div>
+					<div className="col-5">
+						<div className="row">
+							<span>{comment.id}</span>
+						</div>
+						<div className="row">
+							<span>{comment.createdAt}</span>
+						</div>
+					</div>
+
+					{
+						/* 자신이 작성한 댓글인 경우에만 수정 삭제 가능 */
+						(sessionStorage.getItem("id") == comment.id) ?
+							<div className="col-4 d-flex justify-content-end">
+								<button className="btn btn-danger" onClick={deleteComment}>삭제</button>
+							</div>
+							:
+							null
+					}
+				</div>
+
+				{/* 하단 영역 (댓글 내용) */}
+				<div className="my-3 d-flex justify-content-center">
+					<textarea className="col-10" rows="5" value={comment.content || ""} readOnly></textarea>
+				</div>
+			</>
+		);
+	}
+
+	// 삭제된 댓글의 경우
+	else {
+		return (
+			<>
+				<div className="my-5 d-flex justify-content-center">
+					<span>⚠️ 작성자에 의해 삭제된 댓글입니다.</span>
+				</div>
+			</>
+		);
+	}
 }
+
 
 export default CommentList;
