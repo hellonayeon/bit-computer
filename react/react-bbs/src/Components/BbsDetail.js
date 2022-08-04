@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import CommentWrite from "./CommentWrite";
+import CommentList from "./CommentList";
 
 
 function BbsDetail() {
@@ -56,6 +58,10 @@ function BbsDetail() {
 				null
 			}
 
+			<div className="my-3 d-flex justify-content-end">
+				<Link className="btn btn-primary" to={{pathname: `/bbsanswer/${bbs.seq}` }} state={{ parentBbs: parentBbs }}>답글 달기</Link>
+			</div>
+
 			<table className="table">
 				<tbody>
 					<tr>
@@ -96,12 +102,15 @@ function BbsDetail() {
 			</table>
 
 			<div className="my-3 d-flex justify-content-center">
-				<Link className="btn btn-primary" to={{pathname: `/bbsanswer/${bbs.seq}` }} state={{ parentBbs: parentBbs }}>답글 달기</Link>
-			</div>
-
-			<div className="my-3 d-flex justify-content-center">
 				<Link className="btn btn-primary" to="/bbslist">글 목록</Link>
-			</div>
+			</div><br/><br/>
+
+			{/* 댓글 작성 컴포넌트 */}
+			<CommentWrite seq={seq}/>
+			
+			{/* 댓글 리스트 컴포넌트 */}
+			<CommentList  seq={seq}/>
+
 		</div>
 	);
 }

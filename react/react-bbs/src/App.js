@@ -8,6 +8,8 @@ import BbsAnswer from "./Components/BbsAnswer";
 
 
 function App() {
+	sessionStorage.setItem("id", "hellonayeon");
+
   return (
     <div>
 

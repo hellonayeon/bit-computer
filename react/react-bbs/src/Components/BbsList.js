@@ -8,8 +8,6 @@ import "../css/page.css";
 
 function BbsList() {
 
-	sessionStorage.setItem("id", "hellonayeon");
-
 	const [bbsList, setBbsList] = useState([]);
 
 	// 검색용 Hook
@@ -56,7 +54,7 @@ function BbsList() {
 		getBbsList(choiceVal, searchVal, 1);
 	}
 
-	const chagePage = (page) => {
+	const changePage = (page) => {
 		setPage(page);
 		getBbsList(choiceVal, searchVal, page);
 	}
@@ -114,7 +112,7 @@ function BbsList() {
 				pageRangeDisplayed={5}
 				prevPageText={"‹"}
 				nextPageText={"›"}
-				onChange={chagePage} />
+				onChange={changePage} />
 				
 			<div className="my-5 d-flex justify-content-center">
 				<Link className="btn btn-primary" to="/bbswrite">글쓰기</Link>
