@@ -17,6 +17,7 @@ import me.hellonayeon.backend.bbs.dto.request.UpdateBbsRequest;
 import me.hellonayeon.backend.bbs.dto.response.CommentResponse;
 import me.hellonayeon.backend.bbs.dto.response.CreateBbsResponse;
 import me.hellonayeon.backend.bbs.dto.response.CreateCommentResponse;
+import me.hellonayeon.backend.bbs.dto.response.DeleteBbsResponse;
 import me.hellonayeon.backend.bbs.dto.response.UpdateBbsResponse;
 import me.hellonayeon.backend.bbs.domain.Bbs;
 import me.hellonayeon.backend.bbs.dto.param.BbsCountParam;
@@ -86,6 +87,12 @@ public class BbsService {
 	public UpdateBbsResponse updateBbs(Integer seq, UpdateBbsRequest req) {
 		Integer updatedRecordCount = dao.updateBbs(new UpdateBbsParam(seq, req));
 		return new UpdateBbsResponse(updatedRecordCount);
+	}
+
+	/* 게시글 삭제 */
+	public DeleteBbsResponse deleteBbs(Integer seq) {
+		Integer deletedRecordCount = dao.deleteBbs(seq);
+		return new DeleteBbsResponse(deletedRecordCount);
 	}
 
 	/* 댓글 조회 */

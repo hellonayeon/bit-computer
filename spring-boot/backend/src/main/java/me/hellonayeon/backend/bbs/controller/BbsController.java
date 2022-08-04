@@ -11,9 +11,11 @@ import me.hellonayeon.backend.bbs.dto.response.BbsListResponse;
 import me.hellonayeon.backend.bbs.dto.response.BbsResponse;
 import me.hellonayeon.backend.bbs.dto.response.CreateBbsResponse;
 import me.hellonayeon.backend.bbs.dto.response.CreateCommentResponse;
+import me.hellonayeon.backend.bbs.dto.response.DeleteBbsResponse;
 import me.hellonayeon.backend.bbs.dto.response.UpdateBbsResponse;
 import me.hellonayeon.backend.bbs.service.BbsService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -75,6 +77,14 @@ public class BbsController {
 
 		return ResponseEntity.ok(service.updateBbs(seq, req));
 	}
+
+	@DeleteMapping("/{seq}")
+	public ResponseEntity<DeleteBbsResponse> deleteBbs(@PathVariable Integer seq) {
+		System.out.println("BbsController deleteBbs " + new Date());
+
+		return ResponseEntity.ok(service.deleteBbs(seq));
+	}
+
 
 	/* [GET] /bbs/{seq}/comment 댓글 조회 */
 	@GetMapping("/{seq}/comment")

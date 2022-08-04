@@ -32,6 +32,8 @@ public interface BbsDao {
 
 	Integer updateBbs(UpdateBbsParam param);
 
+	Integer deleteBbs(Integer seq);
+
 	List<Comment> getCommentPageList(CommentListParam param);
 	Integer getCommentCount(Integer seq);
 
