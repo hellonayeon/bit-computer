@@ -49,17 +49,16 @@ function CommentWrite(props) {
 						<img src="/images/profile-placeholder.png" alt="프로필 이미지"
 							className="profile-img"/>
 					</div>
-					<div className="col-11">
+					<div className="col-7">
 						<span>{id}</span>
+					</div>
+					<div className="col-2 my-1 d-flex justify-content-end">
+						<button className="btn btn-primary" onClick={createComment}>댓글 추가</button>
 					</div>
 				</div>
 				{/* 하단 영역 (댓글 내용) */}
 				<div className="my-1 d-flex justify-content-center">
-					<textarea className="col-12" rows="5" value={content} onChange={chageContent}></textarea>
-				</div>
-
-				<div className="my-3 d-flex justify-content-end">
-					<button className="btn btn-primary" onClick={createComment}>댓글 추가</button>
+					<textarea className="col-10" rows="5" value={content} onChange={chageContent}></textarea>
 				</div><br/><br/>
 		</>
 	)
