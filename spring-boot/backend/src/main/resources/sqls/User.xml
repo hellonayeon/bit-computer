@@ -3,21 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="me.hellonayeon.backend.member.dao.MemberDao">
+<mapper namespace="me.hellonayeon.backend.user.dao.UserDao">
 
-<select id="getId" parameterType="me.hellonayeon.backend.member.domain.Member" resultType="java.lang.Integer">
+<select id="getId" parameterType="me.hellonayeon.backend.user.domain.User" resultType="java.lang.Integer">
 	select count(*)
 	from member
 	where id=#{id}
 </select>
 
-<insert id="account" parameterType="me.hellonayeon.backend.member.domain.Member">
+<insert id="account" parameterType="me.hellonayeon.backend.user.domain.User">
 	insert into member(id, pwd, name, email, auth)
 	values(#{id}, #{pwd}, #{name}, #{email}, 3)
 </insert>
 
-<select id="login" parameterType="me.hellonayeon.backend.member.domain.Member"
-	resultType="me.hellonayeon.backend.member.domain.Member">
+<select id="login" parameterType="me.hellonayeon.backend.user.domain.User"
+	resultType="me.hellonayeon.backend.user.domain.User">
 	select id, name, email, auth
 	from member
 	where id=#{id} and pwd=#{pwd}

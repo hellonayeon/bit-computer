@@ -38,7 +38,7 @@ public class BbsController {
 		this.service = service;
 	}
 
-	/* [GET /bbs] 게시글 목록 API */
+	/* [GET /bbs?choice={choice}&search={search}&page={page}] 게시글 목록 API */
 	@GetMapping
 	public ResponseEntity<BbsListResponse> getBbsList(@ModelAttribute BbsListRequest req){
 		System.out.println("BbsController getBbsList() " + new Date());
@@ -56,7 +56,7 @@ public class BbsController {
 
 	/* [POST] /bbs 게시글 작성 */
 	@PostMapping
-	public ResponseEntity<CreateBbsResponse> createBbs(CreateBbsRequest req) {
+	public ResponseEntity<CreateBbsResponse> createBbs(@RequestBody CreateBbsRequest req) {
 		System.out.println("BbsController createBbs " + new Date());
 
 		return ResponseEntity.ok(service.createBbs(req));

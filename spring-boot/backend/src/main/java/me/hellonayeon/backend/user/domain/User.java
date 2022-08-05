@@ -1,6 +1,6 @@
-package me.hellonayeon.backend.member.domain;
+package me.hellonayeon.backend.user.domain;
 
-public class Member {
+public class User {
 
 	private String id;
 	private String pwd;
@@ -8,10 +8,10 @@ public class Member {
 	private String email;
 	private int auth;
 	
-	public Member() {
+	public User() {
 	}
 
-	public Member(String id, String pwd, String name, String email, int auth) {
+	public User(String id, String pwd, String name, String email, int auth) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -62,6 +62,12 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "MemberDto [id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", auth=" + auth + "]";
-	}	
+		return "User{" +
+			"id='" + id + '\'' +
+			", pwd='" + pwd + '\'' +
+			", name='" + name + '\'' +
+			", email='" + email + '\'' +
+			", auth=" + auth +
+			'}';
+	}
 }

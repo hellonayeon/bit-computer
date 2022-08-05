@@ -22,12 +22,12 @@ public class CommentService {
     }
 
     /* 댓글 조회 */
-    public CommentResponse getBbsCommentList(Integer seq, CommentRequest req) {
-        CommentListParam param = new CommentListParam(seq);
+    public CommentResponse getBbsCommentList(CommentRequest req) {
+        CommentListParam param = new CommentListParam(req.getBbsSeq());
         param.setPageParam(req.getPage(), 5);
 
         List<Comment> commentList = dao.getCommentPageList(param);
-        Integer pageCnt = dao.getCommentCount(seq);
+        Integer pageCnt = dao.getCommentCount(req.getBbsSeq());
 
         return new CommentResponse(commentList, pageCnt);
     }

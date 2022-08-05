@@ -1,14 +1,14 @@
-package me.hellonayeon.backend.member.dao;
+package me.hellonayeon.backend.user.dao;
 
-import me.hellonayeon.backend.member.domain.Member;
+import me.hellonayeon.backend.user.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 @Mapper
 @Repository
-public interface MemberDao {
+public interface UserDao {
 
-	int getId(Member dto);
-	int account(Member dto);
-	Member login(Member dto);
+	int getId(User dto);
+	int account(User dto);
+	User login(User dto);
 }
