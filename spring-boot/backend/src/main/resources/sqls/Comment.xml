@@ -29,8 +29,8 @@
 	<!-- 댓글 추가 -->
 	<insert id="createComment" parameterType="me.hellonayeon.backend.comment.dto.param.CreateCommentParam"
 					useGeneratedKeys="true" keyProperty="seq">
-		INSERT INTO comment (id, content, bbs_seq, created_at)
-		VALUES (#{id}, #{content}, #{bbsSeq}, NOW())
+		INSERT INTO comment (id, content, bbs_seq, created_at, del)
+		VALUES (#{id}, #{content}, #{bbsSeq}, NOW(), 0)
 	</insert>
 
 	<!-- 댓글 삭제 -->

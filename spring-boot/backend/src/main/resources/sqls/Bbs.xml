@@ -57,7 +57,7 @@
 	</select>
 
 	<!-- 게시글 조회수 레코드 생성 -->
-	<insert id="createBbsReadCount" parameterType="me.hellonayeon.backend.bbs.dto.param.CreateReadCountParam">
+	<insert id="createBbsReadCountHistory" parameterType="me.hellonayeon.backend.bbs.dto.param.CreateReadCountParam">
 		INSERT INTO read_history (bbs_seq, id, latest_access_at) VALUES (#{bbsSeq}, #{readerId}, NOW())
 		ON DUPLICATE KEY
 		UPDATE latest_access_at=NOW();
@@ -72,7 +72,7 @@
 
 	<!-- 게시글 작성 -->
 	<insert id="createBbs" parameterType="me.hellonayeon.backend.bbs.dto.param.CreateBbsParam"
-					useGeneratedKeys="true" keyProperty="insertOrUpdateResult">
+					useGeneratedKeys="true" keyProperty="seq">
 		INSERT bbs (id, ref, step, depth, title, content, created_at, del, read_count)
 		VALUES (#{id}, 0, 0, 0, #{title}, #{content}, NOW(), 0, 0)
 	</insert>
@@ -118,41 +118,6 @@
 		UPDATE bbs
 		SET del = 1
 		WHERE seq=#{seq}
-	</update>
-
-	<!-- 댓글 조회 -->
-	<select id="getCommentPageList" parameterType="me.hellonayeon.backend.comment.dto.param.CommentListParam"
-					resultType="me.hellonayeon.backend.comment.domain.Comment">
-
-		SELECT seq, id, content, bbs_seq bbsSeq, created_at createdAt, del
-		FROM (
-		    SELECT row_number() OVER(ORDER BY created_at DESC) AS rnum, seq, id, content, bbs_seq, created_at, del
-		    FROM comment
-				WHERE bbs_seq=#{bbsSeq}) a
-		WHERE rnum BETWEEN ${pageStart} AND ${pageEnd}
-
-	</select>
-
-	<!-- 댓글 총 개수 조회 -->
-	<select id="getCommentCount" parameterType="Integer" resultType="Integer">
-
-		SELECT ifnull(count(*), 0)
-		FROM comment
-		WHERE bbs_seq=#{seq}
-	</select>
-
-	<!-- 댓글 추가 -->
-	<insert id="createComment" parameterType="me.hellonayeon.backend.comment.dto.param.CreateCommentParam"
-					useGeneratedKeys="true" keyProperty="seq">
-		INSERT INTO comment (id, content, bbs_seq, created_at)
-		VALUES (#{id}, #{content}, #{bbsSeq}, NOW())
-	</insert>
-
-	<!-- 댓글 삭제 -->
-	<update id="deleteComment" parameterType="Integer">
-		UPDATE comment
-		SET del = 1
-		WHERE seq = #{seq}
 	</update>
 
 </mapper>

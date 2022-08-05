@@ -1,6 +1,7 @@
 package me.hellonayeon.backend.user.dao;
 
 import me.hellonayeon.backend.user.domain.User;
+import me.hellonayeon.backend.user.dto.param.CreateUserParam;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDao {
 
-	int getId(User dto);
-	int account(User dto);
-	User login(User dto);
+	Integer isExistUserId(String id);
+
+	Integer createUser(CreateUserParam param);
 }

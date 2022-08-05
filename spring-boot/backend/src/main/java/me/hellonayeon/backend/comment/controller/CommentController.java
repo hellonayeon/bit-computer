@@ -31,7 +31,7 @@ public class CommentController {
     /* [GET] /comment?bbsSeq={seq}&page={page} 댓글 조회 */
     @GetMapping
     public ResponseEntity<CommentResponse> getBbsCommentList(@ModelAttribute CommentRequest req) {
-        System.out.println("BbsController getBbsCommentList " + new Date());
+        System.out.println("CommentController getBbsCommentList " + new Date());
 
         return ResponseEntity.ok(service.getBbsCommentList(req));
     }
@@ -40,7 +40,7 @@ public class CommentController {
     @PostMapping
     public ResponseEntity<CreateCommentResponse> createComment(@RequestParam Integer bbsSeq,
         @RequestBody CreateCommentRequest req) {
-        System.out.println("BbsController createComment " + new Date());
+        System.out.println("CommentController createComment " + new Date());
 
         return ResponseEntity.ok(service.createComment(bbsSeq, req));
     }
@@ -48,7 +48,7 @@ public class CommentController {
     /* [DELETE] /comment/{seq} 댓글 삭제 */
     @DeleteMapping("/{seq}")
     public ResponseEntity<DeleteCommentResponse> deleteComment(@PathVariable Integer seq) {
-        System.out.println("BbsController deleteComment " + new Date());
+        System.out.println("CommentController deleteComment " + new Date());
 
         return ResponseEntity.ok(service.deleteComment(seq));
     }

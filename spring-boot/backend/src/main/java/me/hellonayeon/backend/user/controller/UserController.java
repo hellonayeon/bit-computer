@@ -1,16 +1,26 @@
 package me.hellonayeon.backend.user.controller;
 
 import java.util.Date;
-
-
-import me.hellonayeon.backend.user.domain.User;
+import javax.validation.Valid;
+import me.hellonayeon.backend.user.dto.request.JoinRequest;
+import me.hellonayeon.backend.user.dto.response.JoinResponse;
+import me.hellonayeon.backend.user.exception.UserException;
 import me.hellonayeon.backend.user.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
 	private final UserService service;
@@ -19,34 +29,43 @@ public class UserController {
 		this.service = service;
 	}
 
-	@RequestMapping(value = "/getId", method = RequestMethod.POST)
-	public String getId(User dto) {
-		System.out.println("MemberController getId " + new Date());
-		boolean b = service.getId(dto);
-		if(b) {
-			return "NO";
-		}else {
-			return "OK";
-		}
+	@GetMapping
+	public ResponseEntity<?> checkIdDuplicate(@RequestParam String id) {
+		System.out.println("UserController checkIdDuplicate " + new Date());
+
+		HttpStatus status = service.checkIdDuplicate(id);
+		return new ResponseEntity<>(status);
 	}
-	
-	@RequestMapping(value = "/account", method = RequestMethod.POST)
-	public String account(User dto) {
-		System.out.println("MemberController account " + new Date());
-		boolean b = service.account(dto);
-		if(!b) {
-			return "NO";
-		}
-		
-		return "OK";		
+
+	@PostMapping("/join")
+	public ResponseEntity<JoinResponse> join(@Valid @RequestBody JoinRequest req) {
+		System.out.println("UserController join " + new Date());
+
+		return ResponseEntity.ok(service.join(req));
 	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public User login(User dto) {
-		System.out.println("MemberController login " + new Date());
-		
-		User mem = service.login(dto);
-		return mem;
+
+	/* 요청 DTO 검증 예외처리 핸들러 */
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+		System.out.println("UserController handleMethodArgumentNotValidException " + new Date());
+
+		BindingResult bs = e.getBindingResult();
+		StringBuilder sb = new StringBuilder();
+		bs.getFieldErrors().forEach(err -> {
+			sb.append(String.format("[%s]: %s.\n입력된 값: %s",
+						err.getField(), err.getDefaultMessage(), err.getRejectedValue()));
+		});
+
+		// Map 으로 보낸다면 프론트에서 사용하기 더 편리할 듯 !
+		return new ResponseEntity<>(sb.toString(), HttpStatus.BAD_REQUEST);
+	}
+
+	/* 사용자 관련 요청 예외처리 핸들러 */
+	@ExceptionHandler(UserException.class)
+	public ResponseEntity<?> handleUserException(UserException e) {
+		System.out.println("UserController handlerUserException " + new Date());
+
+		return new ResponseEntity<>(e.getMessage(), e.getStatus());
 	}
 }
 

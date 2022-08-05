@@ -2,15 +2,12 @@ package me.hellonayeon.backend.bbs.dao;
 
 import java.util.List;
 import me.hellonayeon.backend.bbs.domain.Bbs;
-import me.hellonayeon.backend.comment.domain.Comment;
 import me.hellonayeon.backend.bbs.dto.param.BbsCountParam;
 import me.hellonayeon.backend.bbs.dto.param.BbsListParam;
-import me.hellonayeon.backend.comment.dto.param.CommentListParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsAnswerParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateBbsParam;
-import me.hellonayeon.backend.comment.dto.param.CreateCommentParam;
-import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
 import me.hellonayeon.backend.bbs.dto.param.CreateReadCountParam;
+import me.hellonayeon.backend.bbs.dto.param.UpdateBbsParam;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +21,7 @@ public interface BbsDao {
 	Integer getBbsCount(BbsCountParam param);
 
 	Bbs getBbs(Integer seq);
-	Integer createBbsReadCount(CreateReadCountParam param);
+	Integer createBbsReadCountHistory(CreateReadCountParam param);
 	Integer increaseBbsReadCount(Integer seq);
 
 	void createBbs(CreateBbsParam param);

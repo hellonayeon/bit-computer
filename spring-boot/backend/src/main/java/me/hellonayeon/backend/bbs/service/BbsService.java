@@ -46,7 +46,7 @@ public class BbsService {
 	/* 조회수 수정 */
 	public BbsResponse getBbs(Integer seq, String readerId) {
 		CreateReadCountParam param = new CreateReadCountParam(seq, readerId);
-		Integer result = dao.createBbsReadCount(param); // 조회수 히스토리 처리 (insert: 1, update: 2)
+		Integer result = dao.createBbsReadCountHistory(param); // 조회수 히스토리 처리 (insert: 1, update: 2)
 		if (result == 1) {
 			Integer updatedRecordCount = dao.increaseBbsReadCount(seq); // 조회수 증가
 		}

@@ -5,23 +5,23 @@
   
 <mapper namespace="me.hellonayeon.backend.user.dao.UserDao">
 
-<select id="getId" parameterType="me.hellonayeon.backend.user.domain.User" resultType="java.lang.Integer">
+<select id="isExistUserId" parameterType="String" resultType="java.lang.Integer">
 	select count(*)
-	from member
+	from user
 	where id=#{id}
 </select>
 
-<insert id="account" parameterType="me.hellonayeon.backend.user.domain.User">
-	insert into member(id, pwd, name, email, auth)
-	values(#{id}, #{pwd}, #{name}, #{email}, 3)
+<insert id="createUser" parameterType="me.hellonayeon.backend.user.dto.param.CreateUserParam">
+	insert into user(id, pwd, name, email)
+	values(#{id}, #{pwd}, #{name}, #{email})
 </insert>
 
-<select id="login" parameterType="me.hellonayeon.backend.user.domain.User"
-	resultType="me.hellonayeon.backend.user.domain.User">
-	select id, name, email, auth
-	from member
-	where id=#{id} and pwd=#{pwd}
-</select>
+<!--<select id="login" parameterType="me.hellonayeon.backend.user.domain.User"-->
+<!--	resultType="me.hellonayeon.backend.user.domain.User">-->
+<!--	select id, name, email-->
+<!--	from user-->
+<!--	where id=#{id} and pwd=#{pwd}-->
+<!--</select>-->
 
 </mapper>
 
