@@ -4,6 +4,8 @@ import BbsDetail from "./Components/bbs/BbsDetail";
 import BbsWrite from "./Components/bbs/BbsWrite";
 import BbsUpdate from "./Components/bbs/BbsUpdate";
 import BbsAnswer from "./Components/comment/BbsAnswer";
+import Login from "./Components/user/Login";
+import Join from "./Components/user/Join";
 
 
 function App() {
@@ -22,11 +24,15 @@ function App() {
         <nav className="navbar navbar-expand-md navbar-dark bg-info sticky-top">
           <div className="container">
 
-            <div className="collapse navbar-collapse" id="navbar-content">
+            <div className="navbar-collapse collapse justify-content-between" id="navbar-content">
               <ul className="navbar-nav mr-auto">
+
+                {/* 메인 화면 */}
                 <li className="nav-item">
                   <Link className="nav-link" to="/">🏡 Home</Link>
                 </li>
+
+                {/* 게시판 */}
                 <li className="nav-item dropdown">
 
                     <div className="nav-link dropdown-toggle" id="navbarDropdown" 
@@ -38,7 +44,17 @@ function App() {
                       <Link className="dropdown-item" to="/bbswrite">글추가</Link>
                     </div>   
                   </li>
+              </ul>
+              <ul className="navbar-nav ml-auto">
+                {/* 로그인 */}
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">로그인</Link>
+                </li>
 
+                {/* 회원가입 */}
+                <li className="nav-item">
+                  <Link className="nav-link" to="/join">회원가입</Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -49,11 +65,15 @@ function App() {
             <div className="container">
               <Routes>
                 <Route path="/" element={<Home />}></Route>
+
                 <Route path="/bbslist" element={<BbsList />}></Route>
                 <Route path="/bbswrite" element={<BbsWrite />}></Route>
                 <Route path="/bbsdetail/:seq" element={<BbsDetail />}></Route>
                 <Route path="/bbsupdate" element={<BbsUpdate />}></Route>
                 <Route path="/bbsanswer/:parentSeq" element={<BbsAnswer />}></Route>
+
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/join" element={<Join />}></Route>
               </Routes>
             </div>
           </div>
