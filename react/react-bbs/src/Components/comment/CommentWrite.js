@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../css/style.css";
+import "../../css/style.css";
 
 function CommentWrite(props) {
 
@@ -24,7 +24,7 @@ function CommentWrite(props) {
 			bbsSeq: seq
 		}
 
-		await axios.post(`http://localhost:3000/bbs/${seq}/comment`, req)
+		await axios.post(`http://localhost:3000/comment`, req, { params: {"bbsSeq": seq} })
 		.then((resp) => {
 			console.log("[CommentWrite.js] createComment() success :D");
 			console.log(resp.data);

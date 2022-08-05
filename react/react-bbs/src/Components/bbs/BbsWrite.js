@@ -19,8 +19,14 @@ function BbsWrite() {
 
 	/* [POST /bbs]: 게시글 작성 */
 	const createBbs = async() => {
-		await axios.post("http://localhost:3000/bbs", null, 
-						{ params: {id: sessionStorage.getItem("id"), title: title, content: content}})
+
+		const req = {
+			id: sessionStorage.getItem("id"), 
+			title: title, 
+			content: content
+		}
+
+		await axios.post("http://localhost:3000/bbs", req)
 		.then((resp) => {
 			console.log("[BbsWrite.js] createBbs() success :D");
 			console.log(resp.data);

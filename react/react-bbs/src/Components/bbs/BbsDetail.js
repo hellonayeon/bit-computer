@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { Link, useLocation } from "react-router-dom";
-import CommentWrite from "./CommentWrite";
-import CommentList from "./CommentList";
+import { Link } from "react-router-dom";
+import CommentWrite from "../comment/CommentWrite";
+import CommentList from "../comment/CommentList";
 
 
 function BbsDetail() {
@@ -36,7 +36,7 @@ function BbsDetail() {
 			console.log("[BbsDetail.js] deleteBbs() success :D");
 			console.log(resp.data);
 
-			if (resp.data.deletedRecordCount == 1) {
+			if (resp.data.deletedRecordCount === 1) {
 				alert("게시글을 성공적으로 삭제했습니다 :D");
 				navigate("/bbslist");
 			}

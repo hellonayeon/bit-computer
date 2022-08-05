@@ -1,9 +1,9 @@
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
-import BbsList from "./Components/BbsList";
-import BbsDetail from "./Components/BbsDetail";
-import BbsWrite from "./Components/BbsWrite";
-import BbsUpdate from "./Components/BbsUpdate";
-import BbsAnswer from "./Components/BbsAnswer";
+import BbsList from "./Components/bbs/BbsList";
+import BbsDetail from "./Components/bbs/BbsDetail";
+import BbsWrite from "./Components/bbs/BbsWrite";
+import BbsUpdate from "./Components/bbs/BbsUpdate";
+import BbsAnswer from "./Components/comment/BbsAnswer";
 
 
 function App() {

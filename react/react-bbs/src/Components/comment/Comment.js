@@ -17,7 +17,7 @@ function Comment(props) {
 
 	/* 댓글 삭제 */
 	const deleteComment = async () => {
-		await axios.delete(`http://localhost:3000/bbs/comment/${comment.seq}`)
+		await axios.delete(`http://localhost:3000/comment/${comment.seq}`)
 			.then((resp) => {
 				console.log("[BbsComment.js] deleteComment() success :D");
 				console.log(resp.data);
