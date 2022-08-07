@@ -6,8 +6,7 @@ import Main from "./Components/app/Main"
 import Footer from "./Components/app/Footer"
 import AuthProvider from "./Components/context/AuthProvider"
 import HttpHeadersProvider from "./Components/context/HttpHeadersProvider";
-
-
+import "./css/style.css"
 
 function App() {
 
