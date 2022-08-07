@@ -1,11 +1,13 @@
-package me.hellonayeon.backend.user.controller;
+package me.hellonayeon.backend.member.controller;
 
 import java.util.Date;
 import javax.validation.Valid;
-import me.hellonayeon.backend.user.dto.request.JoinRequest;
-import me.hellonayeon.backend.user.dto.response.JoinResponse;
-import me.hellonayeon.backend.user.exception.UserException;
-import me.hellonayeon.backend.user.service.UserService;
+import me.hellonayeon.backend.member.dto.request.JoinRequest;
+import me.hellonayeon.backend.member.dto.request.LoginRequest;
+import me.hellonayeon.backend.member.dto.response.JoinResponse;
+import me.hellonayeon.backend.member.dto.response.LoginResponse;
+import me.hellonayeon.backend.member.exception.MemberException;
+import me.hellonayeon.backend.member.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -21,11 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class MemberController {
 
-	private final UserService service;
+	private final MemberService service;
 
-	public UserController(UserService service) {
+	public MemberController(MemberService service) {
 		this.service = service;
 	}
 
@@ -44,6 +46,14 @@ public class UserController {
 		return ResponseEntity.ok(service.join(req));
 	}
 
+	@PostMapping("/login")
+	public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest req) {
+		System.out.println("UserController login " + new Date());
+
+		return ResponseEntity.ok(service.login(req));
+	}
+
+
 	/* 요청 DTO 검증 예외처리 핸들러 */
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
@@ -61,8 +71,8 @@ public class UserController {
 	}
 
 	/* 사용자 관련 요청 예외처리 핸들러 */
-	@ExceptionHandler(UserException.class)
-	public ResponseEntity<?> handleUserException(UserException e) {
+	@ExceptionHandler(MemberException.class)
+	public ResponseEntity<?> handleUserException(MemberException e) {
 		System.out.println("UserController handlerUserException " + new Date());
 
 		return new ResponseEntity<>(e.getMessage(), e.getStatus());

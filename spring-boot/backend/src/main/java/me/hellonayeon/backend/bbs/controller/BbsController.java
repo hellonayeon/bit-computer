@@ -1,17 +1,12 @@
 package me.hellonayeon.backend.bbs.controller;
 
 import java.util.Date;
-import me.hellonayeon.backend.comment.dto.response.DeleteCommentResponse;
-import me.hellonayeon.backend.comment.dto.request.CommentRequest;
 import me.hellonayeon.backend.bbs.dto.request.BbsListRequest;
 import me.hellonayeon.backend.bbs.dto.request.CreateBbsRequest;
-import me.hellonayeon.backend.bbs.dto.request.CreateCommentRequest;
 import me.hellonayeon.backend.bbs.dto.request.UpdateBbsRequest;
-import me.hellonayeon.backend.comment.dto.response.CommentResponse;
 import me.hellonayeon.backend.bbs.dto.response.BbsListResponse;
 import me.hellonayeon.backend.bbs.dto.response.BbsResponse;
 import me.hellonayeon.backend.bbs.dto.response.CreateBbsResponse;
-import me.hellonayeon.backend.bbs.dto.response.CreateCommentResponse;
 import me.hellonayeon.backend.bbs.dto.response.DeleteBbsResponse;
 import me.hellonayeon.backend.bbs.dto.response.UpdateBbsResponse;
 import me.hellonayeon.backend.bbs.service.BbsService;

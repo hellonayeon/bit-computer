@@ -1,12 +1,12 @@
-package me.hellonayeon.backend.user.exception;
+package me.hellonayeon.backend.member.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class UserException extends RuntimeException {
+public class MemberException extends RuntimeException {
 
     private HttpStatus status;
 
-    public UserException(String message, HttpStatus status) {
+    public MemberException(String message, HttpStatus status) {
         super(message);
         this.status = status;
     }

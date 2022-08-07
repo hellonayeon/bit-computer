@@ -1,4 +1,4 @@
-package me.hellonayeon.backend.user.dto.request;
+package me.hellonayeon.backend.member.dto.request;
 
 import javax.validation.constraints.NotBlank;
 

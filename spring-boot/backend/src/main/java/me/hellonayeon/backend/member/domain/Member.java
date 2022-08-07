@@ -1,23 +1,21 @@
-package me.hellonayeon.backend.user.domain;
+package me.hellonayeon.backend.member.domain;
 
-public class User {
+public class Member {
 
 	private String id;
 	private String pwd;
 	private String name;
 	private String email;
-	private int auth;
-	
-	public User() {
+
+	public Member() {
 	}
 
-	public User(String id, String pwd, String name, String email, int auth) {
+	public Member(String id, String pwd, String name, String email, int auth) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
 		this.email = email;
-		this.auth = auth;
 	}
 
 	public String getId() {
@@ -52,14 +50,6 @@ public class User {
 		this.email = email;
 	}
 
-	public int getAuth() {
-		return auth;
-	}
-
-	public void setAuth(int auth) {
-		this.auth = auth;
-	}
-
 	@Override
 	public String toString() {
 		return "User{" +
@@ -67,7 +57,6 @@ public class User {
 			", pwd='" + pwd + '\'' +
 			", name='" + name + '\'' +
 			", email='" + email + '\'' +
-			", auth=" + auth +
 			'}';
 	}
 }

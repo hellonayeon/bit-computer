@@ -1,4 +1,4 @@
-package me.hellonayeon.backend.user.dto.response;
+package me.hellonayeon.backend.member.dto.response;
 
 public class JoinResponse {
 

@@ -1,15 +1,15 @@
-package me.hellonayeon.backend.user.dto.param;
+package me.hellonayeon.backend.member.dto.param;
 
-import me.hellonayeon.backend.user.dto.request.JoinRequest;
+import me.hellonayeon.backend.member.dto.request.JoinRequest;
 
-public class CreateUserParam {
+public class CreateMemberParam {
 
     private String id;
     private String name;
     private String pwd;
     private String email;
 
-    public CreateUserParam(JoinRequest req, String encodedPwd) {
+    public CreateMemberParam(JoinRequest req, String encodedPwd) {
         this.id = req.getId();
         this.name = req.getName();
         this.email = req.getEmail();
