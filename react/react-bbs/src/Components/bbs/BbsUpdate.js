@@ -1,8 +1,13 @@
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthProvider from "../context/AuthProvider";
+import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
 function BbsUpdate() {
+
+	const { headers, setHeaders } = useContext(HttpHeadersContext);
+	const { auth, setAuth } = useContext(AuthProvider);
 
 	const navigate = useNavigate();
 
@@ -21,8 +26,14 @@ function BbsUpdate() {
 	}
 
 	const updateBbs = async () => {
-	
-		await axios.patch(`http://localhost:3000/bbs/${bbs.seq}`, {id: localStorage.getItem("id"), title: title, content: content})
+
+		const req = {
+			id: auth, 
+			title: title, 
+			content: content
+		}
+
+		await axios.patch(`http://localhost:3000/bbs/${bbs.seq}`, req, {headers: headers})
 		.then((resp) => {
 			console.log("[BbsUpdate.js] updateBbs() success :D");
 			console.log(resp.data);

@@ -1,8 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
 function BbsWrite() {
+
+	const { headers, setHeaders } = useContext(HttpHeadersContext);
 
 	const navigate = useNavigate();
 
@@ -19,10 +22,6 @@ function BbsWrite() {
 
 	/* [POST /bbs]: 게시글 작성 */
 	const createBbs = async() => {
-
-		const headers = {
-			'Authorization': `Bearer ${localStorage.getItem("bbs_access_token")}`
-		}
 
 		const req = {
 			id: localStorage.getItem("id"), 

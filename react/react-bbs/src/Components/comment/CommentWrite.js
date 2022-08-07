@@ -1,10 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "../../css/style.css";
+import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
 function CommentWrite(props) {
+
+	const { headers, setHeaders } = useContext(HttpHeadersContext);
 
 	const id = localStorage.getItem("id");
 	const seq = props.seq;
@@ -18,11 +21,7 @@ function CommentWrite(props) {
 	}
 
 	const createComment = async() => {
-
-		const headers = {
-			'Authorization': `Bearer ${localStorage.getItem("bbs_access_token")}`
-		}
-
+		
 		const req = {
 			id: id,
 			content: content,

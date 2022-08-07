@@ -1,9 +1,14 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom"
+import { AuthContext } from "../context/AuthProvider";
+import { HttpHeadersContext } from "../context/HttpHeadersProvider";
+
 
 /* 댓글 컴포넌트 */
 function Comment(props) {
+	const {auth, setAuth} = useContext(AuthContext);
+	const {headers, setHeaders} = useContext(HttpHeadersContext);
 	const comment = props.obj;
 
 	const navigate = useNavigate();
@@ -14,6 +19,36 @@ function Comment(props) {
 	const changeContent = (event) => {
 		setContent(event.target.value);
 	};
+
+	/* 댓글 수정 */
+	const updateComment = async () => {
+
+		const req = {
+			id: auth,
+			content: content
+		};
+
+		await axios.patch(`http://localhost:3000/comment/${comment.seq}`, req, {headers: headers})
+		.then((resp) => {
+			
+			console.log("[Comment.js] updateComment() success :D");
+			console.log(resp.data);
+
+			alert(resp.data + "번 댓글을 성공적으로 수정했습니다 !");
+			navigate(0);
+
+		}).catch((err) => {
+
+			console.log("[Comment.js] updateComment() error :<");
+			console.log(err);
+
+			alert(err.response.data);
+
+		});
+
+
+		updateToggle();
+	}
 
 	/* 댓글 삭제 */
 	const deleteComment = async () => {
@@ -30,11 +65,6 @@ function Comment(props) {
 				console.log("[BbsComment.js] deleteComment() error :<");
 				console.log(err);
 			});
-	}
-
-	/* 댓글 수정 */
-	const updateComment = async () => {
-		updateToggle();
 	}
 
 	function updateToggle() { 

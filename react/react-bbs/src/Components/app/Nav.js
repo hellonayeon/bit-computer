@@ -33,8 +33,21 @@ function Nav() {
 					</ul>
 					<ul className="navbar-nav ml-auto">
 
-						{
-							(!auth) ?
+						{							
+							(localStorage.getItem("id") || auth) ?
+								<>
+									{/* 회원 정보 */}
+									<li className="nav-item">
+										<span className="nav-link"> {auth ? auth : localStorage.getItem("id")} 님 반값습니다 👋🏻 </span>
+									</li>
+
+									{/* 로그아웃 */}
+									<li className="nav-item">
+										<Link className="nav-link" to="/logout">로그아웃</Link>
+									</li>
+
+								</>
+								:
 								<>
 									{/* 로그인 */}
 									<li className="nav-item">
@@ -44,18 +57,6 @@ function Nav() {
 									{/* 회원가입 */}
 									<li className="nav-item">
 										<Link className="nav-link" to="/join">회원가입</Link>
-									</li>
-								</>
-								:
-								<>
-									{/* 회원 정보 */}
-									<li className="nav-item">
-										<span className="nav-link"> {auth} 님 반값습니다 👋🏻 </span>
-									</li>
-
-									{/* 로그아웃 */}
-									<li className="nav-item">
-										<Link className="nav-link" to="/logout">로그아웃</Link>
 									</li>
 								</>
 						}

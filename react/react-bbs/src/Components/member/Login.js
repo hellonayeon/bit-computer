@@ -4,10 +4,12 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
+import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
 function Login() {
 
 	const { auth, setAuth } = useContext(AuthContext);
+	const { headers, setHeaders } = useContext(HttpHeadersContext);
 
 	const navigate = useNavigate();
 
@@ -40,7 +42,8 @@ function Login() {
 				localStorage.setItem("bbs_access_token", resp.data.jwt);
 				localStorage.setItem("id", resp.data.id);
 
-				setAuth(resp.data.id);
+				setAuth(resp.data.id); // 사용자 인증 정보(아이디 저장)
+				setHeaders({"Authorization": `Bearer ${resp.data.jwt}`}); // 헤더 Authorization 필드 저장
 
 				navigate("/bbslist");
 			

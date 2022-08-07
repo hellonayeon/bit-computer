@@ -5,16 +5,11 @@ import Nav from "./Components/app/Nav"
 import Main from "./Components/app/Main"
 import Footer from "./Components/app/Footer"
 import AuthProvider from "./Components/context/AuthProvider"
-import { createContext } from "react";
+import HttpHeadersProvider from "./Components/context/HttpHeadersProvider";
 
 
 
 function App() {
-
-  const AuthContext = createContext({
-    isAuth: false,
-    id: null
-  });
 
   return (
     <div>
@@ -23,8 +18,10 @@ function App() {
         <Header />
         
         <AuthProvider>
-          <Nav />
-          <Main />
+          <HttpHeadersProvider>
+            <Nav />
+            <Main />
+          </HttpHeadersProvider>
         </AuthProvider>
 
         <Footer />

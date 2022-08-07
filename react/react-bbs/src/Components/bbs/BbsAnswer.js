@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
 function BbsAnswer() {
+
+	const { headers, setHeaders } = useContext(HttpHeadersContext);
 
 	const navigate = useNavigate();
 
@@ -31,7 +34,7 @@ function BbsAnswer() {
 			content: content
 		}
 		
-		await axios.post(`http://localhost:3000/bbs/${parentSeq}/answer`, req)
+		await axios.post(`http://localhost:3000/bbs/${parentSeq}/answer`, req, {headers: headers})
 		.then((resp) => {
 			console.log("[BbsAnswer.js] createBbsAnswer() success :D");
 			console.log(resp.data);
