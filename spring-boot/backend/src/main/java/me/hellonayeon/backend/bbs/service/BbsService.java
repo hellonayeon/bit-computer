@@ -45,10 +45,13 @@ public class BbsService {
 	/* 특정 글 */
 	/* 조회수 수정 */
 	public BbsResponse getBbs(Integer seq, String readerId) {
-		CreateReadCountParam param = new CreateReadCountParam(seq, readerId);
-		Integer result = dao.createBbsReadCountHistory(param); // 조회수 히스토리 처리 (insert: 1, update: 2)
-		if (result == 1) {
-			Integer updatedRecordCount = dao.increaseBbsReadCount(seq); // 조회수 증가
+		// 로그인 한 사용자의 조회수만 카운팅
+		if (!readerId.isEmpty()) {
+			CreateReadCountParam param = new CreateReadCountParam(seq, readerId);
+			Integer result = dao.createBbsReadCountHistory(param); // 조회수 히스토리 처리 (insert: 1, update: 2)
+			if (result == 1) {
+				Integer updatedRecordCount = dao.increaseBbsReadCount(seq); // 조회수 증가
+			}
 		}
 
 		return new BbsResponse(dao.getBbs(seq));
