@@ -80,7 +80,7 @@ function BbsUpdate() {
 			</table>
 
 			<div className="my-3 d-flex justify-content-center">
-				<button className="btn btn-primary" onClick={updateBbs}>수정하기</button>
+				<button className="btn btn-dark" onClick={updateBbs}><i className="fas fa-pen"></i> 수정하기</button>
 			</div>
 		</div>
 	);

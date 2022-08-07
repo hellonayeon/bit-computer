@@ -113,7 +113,7 @@ function Comment(props) {
 								<textarea className="col-10" rows="5" value={content} onChange={changeContent}></textarea>
 							</div>
 							<div className="my-1 d-flex justify-content-center">
-								<button className="btn btn-primary" onClick={updateComment}>수정 완료</button>
+								<button className="btn btn-dark" onClick={updateComment}><i className="fas fa-edit"></i>  수정 완료</button>
 							</div>
 						</>
 					:
