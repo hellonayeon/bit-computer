@@ -77,7 +77,7 @@ function Login() {
 			</table><br />
 
 			<div className="my-1 d-flex justify-content-center">
-				<button className="btn btn-outline-secondary" onClick={login}><i class="fas fa-sign-in-alt"></i> 로그인</button>
+				<button className="btn btn-outline-secondary" onClick={login}><i className="fas fa-sign-in-alt"></i> 로그인</button>
 			</div>
 
 		</div>

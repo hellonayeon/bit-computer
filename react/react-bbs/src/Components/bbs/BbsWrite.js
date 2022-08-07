@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
 function BbsWrite() {
 
+	const { auth, setAuth } = useContext(AuthContext)
 	const { headers, setHeaders } = useContext(HttpHeadersContext);
 
 	const navigate = useNavigate();
@@ -42,6 +44,13 @@ function BbsWrite() {
 			console.log(err);
 		});
 	}
+
+	useEffect(() => {
+		if (!auth) {
+			alert("로그인 한 사용자만 게시글을 작성할 수 있습니다 !");
+			navigate(-1);
+		}
+	}, []);
 
 
 	return (

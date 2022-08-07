@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CommentWrite from "../comment/CommentWrite";
 import CommentList from "../comment/CommentList";
+import { AuthContext } from "../context/AuthProvider";
+
 
 
 function BbsDetail() {
+
+	const { auth, setAuth } = useContext(AuthContext)
 
 	const [bbs, setBbs] = useState({});
 	const { seq } = useParams(); // 파라미터 가져오기
@@ -15,7 +19,7 @@ function BbsDetail() {
 
 	const getBbsDetail = async () => {
 
-		await axios.get(`http://localhost:3000/bbs/${seq}`, {params: {readerId: localStorage.getItem("id")}})
+		await axios.get(`http://localhost:3000/bbs/${seq}`, {params: {readerId: auth ? auth : ""}})
 		.then((resp) => {
 			console.log("[BbsDetail.js] getBbsDetail() success :D");
 			console.log(resp.data);
@@ -129,8 +133,14 @@ function BbsDetail() {
 			</div><br/><br/>
 
 			{/* 댓글 작성 컴포넌트 */}
-			<CommentWrite seq={seq}/>
+			{
+				(auth) ? // 로그인한 사용자만 댓글 작성 가능
+					<CommentWrite seq={seq}/>
+				:
+					null
+			}
 			
+
 			{/* 댓글 리스트 컴포넌트 */}
 			<CommentList  seq={seq}/>
 

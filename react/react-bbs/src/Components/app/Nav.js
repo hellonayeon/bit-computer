@@ -15,7 +15,7 @@ function Nav() {
 
 						{/* 메인 화면 */}
 						<li className="nav-item">
-							<Link className="nav-link" to="/"><i class="fas fa-home"></i> Home</Link>
+							<Link className="nav-link" to="/"><i className="fas fa-home"></i> Home</Link>
 						</li>
 
 						{/* 게시판 */}
@@ -38,12 +38,12 @@ function Nav() {
 								<>
 									{/* 회원 정보 */}
 									<li className="nav-item">
-										<span className="nav-link"> {auth} 님 반갑습니다 <i class="fab fa-ello"></i> &nbsp; </span>
+										<span className="nav-link"> {auth} 님 반갑습니다 <i className="fab fa-ello"></i> &nbsp; </span>
 									</li>
 
 									{/* 로그아웃 */}
 									<li className="nav-item">
-										<Link className="nav-link" to="/logout"><i class="fas fa-sign-out-alt"></i> 로그아웃</Link>
+										<Link className="nav-link" to="/logout"><i className="fas fa-sign-out-alt"></i> 로그아웃</Link>
 									</li>
 
 								</>

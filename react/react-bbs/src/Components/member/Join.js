@@ -100,7 +100,7 @@ function Join() {
 						<th className="col-2">아이디</th>
 						<td>
 							<input type="text" value={id} onChange={changeId} size="50px" /> &nbsp; &nbsp;
-							<button className="btn btn-outline-danger" onClick={checkIdDuplicate}><i class="fas fa-check"></i> 아이디 중복 확인</button>
+							<button className="btn btn-outline-danger" onClick={checkIdDuplicate}><i className="fas fa-check"></i> 아이디 중복 확인</button>
 						</td>
 					</tr>
 
@@ -135,7 +135,7 @@ function Join() {
 			</table><br />
 
 			<div className="my-3 d-flex justify-content-center">
-				<button className="btn btn-outline-secondary" onClick={join}><i class="fas fa-user-plus"></i> 회원가입</button>
+				<button className="btn btn-outline-secondary" onClick={join}><i className="fas fa-user-plus"></i> 회원가입</button>
 			</div>
 
 		</div>
