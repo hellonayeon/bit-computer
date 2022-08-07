@@ -97,47 +97,45 @@ function Join() {
 			<table className="table">
 				<tbody>
 					<tr>
-						<th className="table-primary">아이디</th>
+						<th className="col-2">아이디</th>
 						<td>
-							<input type="text" value={id} onChange={changeId} size="50px" />
-						</td>
-						<td>
-							<button className="btn btn-primary" onClick={checkIdDuplicate}>아이디 중복 확인</button>
+							<input type="text" value={id} onChange={changeId} size="50px" /> &nbsp; &nbsp;
+							<button className="btn btn-outline-danger" onClick={checkIdDuplicate}><i class="fas fa-check"></i> 아이디 중복 확인</button>
 						</td>
 					</tr>
 
 					<tr>
-						<th className="table-primary">이름</th>
+						<th>이름</th>
 						<td>
 							<input type="text" value={name} onChange={changeName} size="50px" />
 						</td>
 					</tr>
 
 					<tr>
-						<th className="table-primary">비밀번호</th>
+						<th>비밀번호</th>
 						<td>
 							<input type="password" value={pwd} onChange={changePwd} size="50px" />
 						</td>
 					</tr>
 
 					<tr>
-						<th className="table-primary">비밀번호 확인</th>
+						<th>비밀번호 확인</th>
 						<td>
 							<input type="password" value={checkPwd} onChange={changeCheckPwd} size="50px" />
 						</td>
 					</tr>
 
 					<tr>
-						<th className="table-primary">이메일</th>
+						<th>이메일</th>
 						<td>
-							<input type="text" value={email} onChange={changeEmail} size="50px" />
+							<input type="text" value={email} onChange={changeEmail} size="100px" />
 						</td>
 					</tr>
 				</tbody>
 			</table><br />
 
 			<div className="my-3 d-flex justify-content-center">
-				<button className="btn btn-primary" onClick={join}>회원가입</button>
+				<button className="btn btn-outline-secondary" onClick={join}><i class="fas fa-user-plus"></i> 회원가입</button>
 			</div>
 
 		</div>

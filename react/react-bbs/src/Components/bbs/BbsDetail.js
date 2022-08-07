@@ -68,14 +68,14 @@ function BbsDetail() {
 		<div>
 
 			<div className="my-3 d-flex justify-content-end">
-				<Link className="btn btn-primary" to={{pathname: `/bbsanswer/${bbs.seq}` }} state={{ parentBbs: parentBbs }}>답글 달기</Link> &nbsp;
+				<Link className="btn btn-outline-secondary" to={{pathname: `/bbsanswer/${bbs.seq}` }} state={{ parentBbs: parentBbs }}><i className="fas fa-pen"></i> 답글쓰기</Link> &nbsp;
 
 			{
 				/* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
 				(localStorage.getItem("id") == bbs.id) ?
 					<>
-						<Link className="btn btn-primary"  to="/bbsupdate" state={{ bbs: updateBbs }}>수정</Link> &nbsp;
-						<button className="btn btn-danger"  onClick={deleteBbs}>삭제</button>
+						<Link className="btn btn-outline-secondary"  to="/bbsupdate" state={{ bbs: updateBbs }}><i className="fas fa-edit"></i> 수정</Link> &nbsp;
+						<button className="btn btn-outline-danger"  onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
 					</>
 				:
 				null
@@ -83,47 +83,49 @@ function BbsDetail() {
 
 			</div>
 
-			<table className="table">
+			<table className="table table-striped">
 				<tbody>
 					<tr>
-						<th className="table-primary">작성자</th>
+						<th className="col-3">작성자</th>
 						<td>
-							<input type="text" className="form-control"  value={bbs.id || ""} size="50px" readOnly />
+							<span>{bbs.id}</span>
 						</td>
 					</tr>
 
 					<tr>
-						<th className="table-primary">제목</th>
+						<th>제목</th>
 						<td>
-							<input type="text" className="form-control" value={bbs.title || ""} size="50px" readOnly />
+							<span>{bbs.title}</span>
 						</td>
 					</tr>
 
 					<tr>
-						<th className="table-primary">작성일</th>
+						<th>작성일</th>
 						<td>
-							<input type="text" className="form-control"  value={bbs.createdAt || ""} size="50px" readOnly />
+							<span>{bbs.createdAt}</span>
 						</td>
 					</tr>
 
 					<tr>
-						<th className="table-primary">조회수</th>
+						<th>조회수</th>
 						<td>
-							<input type="text" className="form-control"  value={bbs.readCount || "0"} size="50px" readOnly />
+							<span>{bbs.readCount}</span>
 						</td>
 					</tr>
 
 					<tr>
-						<th className="table-primary">내용</th>
+						<th>내용</th>
 						<td>
-							<textarea className="form-control" value={bbs.content || ""} rows="10" readOnly ></textarea>
+							<div>
+								{bbs.content}
+							</div>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
 			<div className="my-3 d-flex justify-content-center">
-				<Link className="btn btn-primary" to="/bbslist">글 목록</Link>
+				<Link className="btn btn-outline-secondary" to="/bbslist"><i className="fas fa-list"></i> 글목록</Link>
 			</div><br/><br/>
 
 			{/* 댓글 작성 컴포넌트 */}

@@ -82,7 +82,7 @@ function Comment(props) {
 					</div>
 					<div className="col-5">
 						<div className="row">
-							<span>{comment.id}</span>
+							<span className="comment-id">{comment.id}</span>
 						</div>
 						<div className="row">
 							<span>{comment.createdAt}</span>
@@ -94,8 +94,8 @@ function Comment(props) {
 						/* 자신이 작성한 댓글인 경우에만 수정 삭제 가능 */
 						(localStorage.getItem("id") == comment.id) ?
 							<>
-								<button className="btn btn-primary" onClick={updateToggle}>수정</button> &nbsp; 
-								<button className="btn btn-danger" onClick={deleteComment}>삭제</button>
+								<button className="btn btn-outline-secondary" onClick={updateToggle}><i className="fas fa-edit"></i> 수정</button> &nbsp; 
+								<button className="btn btn-outline-danger" onClick={deleteComment}><i className="fas fa-trash-alt"></i> 삭제</button>
 							
 							</>
 							:
@@ -120,7 +120,7 @@ function Comment(props) {
 						<>
 							{/* 하단 영역 (댓글 내용) */}
 							<div className="my-3 d-flex justify-content-center">
-								<textarea className="col-10" rows="5" value={content || ""} readOnly></textarea>
+								<div className="col-10 comment">{content}</div>
 							</div>
 						</>
 				}
@@ -135,7 +135,9 @@ function Comment(props) {
 		return (
 			<>
 				<div className="my-5 d-flex justify-content-center">
-					<span>⚠️ 작성자에 의해 삭제된 댓글입니다.</span>
+					<div className="comment">
+						<span className="del-span">⚠️ 작성자에 의해 삭제된 댓글입니다.</span>
+					</div>
 				</div>
 			</>
 		);

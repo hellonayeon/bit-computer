@@ -43,7 +43,7 @@ function CommentList(props) {
 		<>
 
 			<div className="my-1 d-flex justify-content-center">
-				<h5>📖 댓글 페이지 📖</h5>
+				<h5><i className="fas fa-paperclip"></i> 댓글 목록 </h5>
 			</div>
 
 			<Pagination
@@ -57,7 +57,9 @@ function CommentList(props) {
 			{
 				commentList.map(function (comment, idx) {
 					return (
-						<Comment obj={comment} key={idx} />
+						<div className="my-5" key={idx}>
+							<Comment obj={comment} key={idx} />
+						</div>
 					);
 				})
 			}

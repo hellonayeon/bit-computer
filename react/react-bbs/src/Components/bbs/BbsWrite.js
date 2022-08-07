@@ -72,7 +72,7 @@ function BbsWrite() {
 			</table>
 
 			<div className="my-5 d-flex justify-content-center">
-				<button className="btn btn-primary" onClick={createBbs}>등록하기</button>
+				<button className="btn btn-outline-secondary" onClick={createBbs}><i className="fas fa-pen"></i> 등록하기</button>
 			</div>
 		</div>
 	);

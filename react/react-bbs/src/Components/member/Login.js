@@ -61,14 +61,14 @@ function Login() {
 			<table className="table">
 				<tbody>
 					<tr>
-						<th className="table-primary">아이디</th>
+						<th className="col-3">아이디</th>
 						<td>
 							<input type="text" value={id} onChange={changeId} size="50px" />
 						</td>
 					</tr>
 
 					<tr>
-						<th className="table-primary">비밀번호</th>
+						<th>비밀번호</th>
 						<td>
 							<input type="password" value={pwd} onChange={changePwd} size="50px" />
 						</td>
@@ -76,8 +76,8 @@ function Login() {
 				</tbody>
 			</table><br />
 
-			<div className="my-3 d-flex justify-content-center">
-				<button className="btn btn-primary" onClick={login}>로그인</button>
+			<div className="my-1 d-flex justify-content-center">
+				<button className="btn btn-outline-secondary" onClick={login}><i class="fas fa-sign-in-alt"></i> 로그인</button>
 			</div>
 
 		</div>

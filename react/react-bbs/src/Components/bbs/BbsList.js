@@ -79,7 +79,7 @@ function BbsList() {
 							<input type="text" className="form-control" placeholder="검색어" value={searchVal} onChange={changeSearch} />
 						</td>
 						<td>
-							<button type="button" className="btn btn-primary" onClick={search}>검색</button>
+							<button type="button" className="btn btn-outline-secondary" onClick={search}><i className="fas fa-search"></i> 검색</button>
 						</td>
 					</tr>
 				</tbody>
@@ -105,7 +105,7 @@ function BbsList() {
 				</tbody>
 			</table>
 
-			<Pagination 
+			<Pagination className="pagination"
 				activePage={page}
 				itemsCountPerPage={10}
 				totalItemsCount={totalCnt}
@@ -115,7 +115,7 @@ function BbsList() {
 				onChange={changePage} />
 				
 			<div className="my-5 d-flex justify-content-center">
-				<Link className="btn btn-primary" to="/bbswrite">글쓰기</Link>
+				<Link className="btn btn-outline-secondary" to="/bbswrite"><i class="fas fa-pen"></i> &nbsp; 글쓰기</Link>
 			</div>
 
 		</div>
@@ -138,7 +138,7 @@ function TableRow(props) {
 								<Arrow depth={bbs.depth}></Arrow> &nbsp; { /* 답글 화살표 */}
 
 								<Link to={{ pathname: `/bbsdetail/${bbs.seq}` }}> { /* 게시글 상세 링크 */}
-									<span className="underline" >{bbs.title} </span> { /* 게시글 제목 */}
+									<span className="underline bbs-title" >{bbs.title} </span> { /* 게시글 제목 */}
 								</Link>
 							</td>
 							<td>{bbs.id}</td>
@@ -149,7 +149,7 @@ function TableRow(props) {
 							<td>
 								<Arrow depth={bbs.depth}></Arrow> &nbsp; { /* 답글 화살표 */}
 
-								<span>⚠️ 이 글은 작성자에 의해 삭제됐습니다.</span>
+								<span className="del-span">⚠️ 이 글은 작성자에 의해 삭제됐습니다.</span>
 							</td>
 						</>	
 					}
@@ -175,7 +175,7 @@ function Arrow( props ) {
 
 	return (
 		<>
-			{taps} <img src="/images/arrow.png" width='20px' height='20px'/>
+			{taps} <i className="fas fa-long-arrow-alt-right"></i>
 		</> 
 	 );
 }

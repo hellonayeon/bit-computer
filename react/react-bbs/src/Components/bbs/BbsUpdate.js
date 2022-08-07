@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import AuthProvider from "../context/AuthProvider";
+import { AuthContext } from "../context/AuthProvider";
 import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
 function BbsUpdate() {
 
 	const { headers, setHeaders } = useContext(HttpHeadersContext);
-	const { auth, setAuth } = useContext(AuthProvider);
+	const { auth, setAuth } = useContext(AuthContext);
 
 	const navigate = useNavigate();
 

@@ -100,7 +100,7 @@ function BbsAnswer() {
 			</table>
 
 			<div className="my-5 d-flex justify-content-center">
-				<button className="btn btn-primary" onClick={createBbsAnswer}>답글달기</button>
+				<button className="btn btn-outline-secondary" onClick={createBbsAnswer}><i className="fas fa-pen"></i> 답글달기</button>
 			</div>
 		</div>
 	);
