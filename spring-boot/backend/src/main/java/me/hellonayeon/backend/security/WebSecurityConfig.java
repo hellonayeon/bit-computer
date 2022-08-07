@@ -1,4 +1,4 @@
-package me.hellonayeon.backend.sequrity;
+package me.hellonayeon.backend.security;
 
 import java.util.Arrays;
 import java.util.List;
