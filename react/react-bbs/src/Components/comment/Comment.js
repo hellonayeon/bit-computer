@@ -24,7 +24,6 @@ function Comment(props) {
 	const updateComment = async () => {
 
 		const req = {
-			id: auth,
 			content: content
 		};
 
@@ -34,7 +33,7 @@ function Comment(props) {
 			console.log("[Comment.js] updateComment() success :D");
 			console.log(resp.data);
 
-			alert(resp.data + "번 댓글을 성공적으로 수정했습니다 !");
+			alert("댓글을 성공적으로 수정했습니다 !");
 			navigate(0);
 
 		}).catch((err) => {

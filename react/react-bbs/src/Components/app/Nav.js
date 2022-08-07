@@ -34,11 +34,11 @@ function Nav() {
 					<ul className="navbar-nav ml-auto">
 
 						{							
-							(localStorage.getItem("id") || auth) ?
+							(auth) ?
 								<>
 									{/* 회원 정보 */}
 									<li className="nav-item">
-										<span className="nav-link"> {auth ? auth : localStorage.getItem("id")} 님 반값습니다 👋🏻 </span>
+										<span className="nav-link"> {auth} 님 반값습니다 👋🏻 </span>
 									</li>
 
 									{/* 로그아웃 */}
