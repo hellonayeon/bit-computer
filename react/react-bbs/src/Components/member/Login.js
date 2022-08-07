@@ -1,10 +1,13 @@
 /* 로그인 컴포넌트 */
 
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthProvider";
 
 function Login() {
+
+	const { auth, setAuth } = useContext(AuthContext);
 
 	const navigate = useNavigate();
 
@@ -36,6 +39,8 @@ function Login() {
 				// JWT 토큰 저장
 				localStorage.setItem("bbs_access_token", resp.data.jwt);
 				localStorage.setItem("id", resp.data.id);
+
+				setAuth(resp.data.id);
 
 				navigate("/bbslist");
 			

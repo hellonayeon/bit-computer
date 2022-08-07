@@ -8,6 +8,7 @@ import BbsUpdate from "../bbs/BbsUpdate"
 import BbsAnswer from "../bbs/BbsAnswer"
 import Join from "../member/Join"
 import Login from "../member/Login"
+import Logout from "../member/Logout"
 
 
 function Router() {
@@ -24,6 +25,7 @@ function Router() {
 
 				<Route path="/login" element={<Login />}></Route>
 				<Route path="/join" element={<Join />}></Route>
+				<Route path="/logout" element={<Logout />}></Route>
 			</Routes>
 	);
 }
