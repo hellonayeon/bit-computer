@@ -7,10 +7,14 @@ import me.hellonayeon.backend.comment.dao.CommentDao;
 import me.hellonayeon.backend.comment.domain.Comment;
 import me.hellonayeon.backend.comment.dto.param.CommentListParam;
 import me.hellonayeon.backend.comment.dto.param.CreateCommentParam;
+import me.hellonayeon.backend.comment.dto.param.UpdateCommentParam;
 import me.hellonayeon.backend.comment.dto.request.CommentRequest;
+import me.hellonayeon.backend.comment.dto.request.UpdateCommentRequest;
 import me.hellonayeon.backend.comment.dto.response.CommentResponse;
 import me.hellonayeon.backend.comment.dto.response.DeleteCommentResponse;
+import me.hellonayeon.backend.comment.dto.response.UpdateCommentResponse;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CommentService {
@@ -44,4 +48,24 @@ public class CommentService {
         Integer deletedRecordCount = dao.deleteComment(seq);
         return new DeleteCommentResponse(deletedRecordCount);
     }
+
+    /* 댓글 수정 */
+    @Transactional
+    public UpdateCommentResponse updateComment(String id, Integer seq, UpdateCommentRequest req) {
+        Comment comment = dao.getCommentBySeq(seq);
+        if (!comment.getId().equals(id)) {
+            System.out.println("작성자만 댓글을 수정할 수 있습니다.");
+            return null;
+        }
+
+        Integer updatedRecordCount = dao.updateComment(new UpdateCommentParam(seq, req.getContent()));
+        if (updatedRecordCount != 1) {
+            System.out.println("댓글 수정에 실패했습니다.");
+            return null;
+        }
+
+        return new UpdateCommentResponse(updatedRecordCount);
+    }
+
+
 }

@@ -40,6 +40,21 @@
 		WHERE seq = #{seq}
 	</update>
 
+	<!-- 댓글 조회 -->
+	<select id="getCommentBySeq" parameterType="Integer"
+					resultType="me.hellonayeon.backend.comment.domain.Comment">
+		SELECT seq, id, content, bbs_seq bbsSeq, created_at createdAt, del
+		FROM comment
+		WHERE seq=#{seq}
+	</select>
+
+	<!-- 댓글 수정 -->
+	<update id="updateComment" parameterType="me.hellonayeon.backend.comment.dto.param.UpdateCommentParam">
+		UPDATE comment
+		SET content = #{content}
+		WHERE seq = #{seq}
+	</update>
+
 </mapper>
 
 
