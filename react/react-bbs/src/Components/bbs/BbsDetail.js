@@ -15,7 +15,7 @@ function BbsDetail() {
 
 	const getBbsDetail = async () => {
 
-		await axios.get(`http://localhost:3000/bbs/${seq}`, {params: {readerId: sessionStorage.getItem("id")}})
+		await axios.get(`http://localhost:3000/bbs/${seq}`, {params: {readerId: localStorage.getItem("id")}})
 		.then((resp) => {
 			console.log("[BbsDetail.js] getBbsDetail() success :D");
 			console.log(resp.data);
@@ -72,7 +72,7 @@ function BbsDetail() {
 
 			{
 				/* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
-				(sessionStorage.getItem("id") == bbs.id) ?
+				(localStorage.getItem("id") == bbs.id) ?
 					<>
 						<Link className="btn btn-primary"  to="/bbsupdate" state={{ bbs: updateBbs }}>수정</Link> &nbsp;
 						<button className="btn btn-danger"  onClick={deleteBbs}>삭제</button>

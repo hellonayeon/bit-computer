@@ -20,13 +20,17 @@ function BbsWrite() {
 	/* [POST /bbs]: 게시글 작성 */
 	const createBbs = async() => {
 
+		const headers = {
+			'Authorization': `Bearer ${localStorage.getItem("bbs_access_token")}`
+		}
+
 		const req = {
-			id: sessionStorage.getItem("id"), 
+			id: localStorage.getItem("id"), 
 			title: title, 
 			content: content
 		}
 
-		await axios.post("http://localhost:3000/bbs", req)
+		await axios.post("http://localhost:3000/bbs", req, {headers: headers})
 		.then((resp) => {
 			console.log("[BbsWrite.js] createBbs() success :D");
 			console.log(resp.data);
@@ -37,8 +41,6 @@ function BbsWrite() {
 		.catch((err) => {
 			console.log("[BbsWrite.js] createBbs() error :<");
 			console.log(err);
-
-
 		});
 	}
 
@@ -50,7 +52,7 @@ function BbsWrite() {
 					<tr>
 						<th className="table-primary">작성자</th>
 						<td>
-							<input type="text" className="form-control"  value={sessionStorage.getItem("id")} size="50px" readOnly />
+							<input type="text" className="form-control"  value={localStorage.getItem("id")} size="50px" readOnly />
 						</td>
 					</tr>
 

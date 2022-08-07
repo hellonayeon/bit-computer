@@ -26,7 +26,7 @@ function BbsAnswer() {
 	const createBbsAnswer = async () => {
 
 		const req = {
-			id: sessionStorage.getItem("id"),
+			id: localStorage.getItem("id"),
 			title: title,
 			content: content
 		}
@@ -76,7 +76,7 @@ function BbsAnswer() {
 					<tr>
 						<th className="table-primary">작성자</th>
 						<td>
-							<input type="text" className="form-control"  value={sessionStorage.getItem("id")} size="50px" readOnly />
+							<input type="text" className="form-control"  value={localStorage.getItem("id")} size="50px" readOnly />
 						</td>
 					</tr>
 

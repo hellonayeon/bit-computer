@@ -60,16 +60,19 @@ function Comment(props) {
 						</div>
 					</div>
 
+					<div className="col-4 d-flex justify-content-end">
 					{
 						/* 자신이 작성한 댓글인 경우에만 수정 삭제 가능 */
-						(sessionStorage.getItem("id") == comment.id) ?
-							<div className="col-4 d-flex justify-content-end">
+						(localStorage.getItem("id") == comment.id) ?
+							<>
 								<button className="btn btn-primary" onClick={updateToggle}>수정</button> &nbsp; 
 								<button className="btn btn-danger" onClick={deleteComment}>삭제</button>
-							</div>
+							
+							</>
 							:
 							null
 					}
+					</div>
 				</div>
 
 				{

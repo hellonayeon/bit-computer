@@ -22,7 +22,7 @@ function BbsUpdate() {
 
 	const updateBbs = async () => {
 	
-		await axios.patch(`http://localhost:3000/bbs/${bbs.seq}`, {id: sessionStorage.getItem("id"), title: title, content: content})
+		await axios.patch(`http://localhost:3000/bbs/${bbs.seq}`, {id: localStorage.getItem("id"), title: title, content: content})
 		.then((resp) => {
 			console.log("[BbsUpdate.js] updateBbs() success :D");
 			console.log(resp.data);

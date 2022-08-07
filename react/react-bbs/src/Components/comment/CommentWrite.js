@@ -6,7 +6,7 @@ import "../../css/style.css";
 
 function CommentWrite(props) {
 
-	const id = sessionStorage.getItem("id");
+	const id = localStorage.getItem("id");
 	const seq = props.seq;
 
 	const navigate = useNavigate();
@@ -18,13 +18,18 @@ function CommentWrite(props) {
 	}
 
 	const createComment = async() => {
+
+		const headers = {
+			'Authorization': `Bearer ${localStorage.getItem("bbs_access_token")}`
+		}
+
 		const req = {
 			id: id,
 			content: content,
 			bbsSeq: seq
 		}
 
-		await axios.post(`http://localhost:3000/comment`, req, { params: {"bbsSeq": seq} })
+		await axios.post(`http://localhost:3000/comment`, req, { params: {"bbsSeq": seq}, headers: headers})
 		.then((resp) => {
 			console.log("[CommentWrite.js] createComment() success :D");
 			console.log(resp.data);
